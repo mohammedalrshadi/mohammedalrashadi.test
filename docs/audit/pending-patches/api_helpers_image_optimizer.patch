@@ -1,0 +1,37 @@
+--- a/public_html/api/helpers/image_optimizer.php
++++ b/public_html/api/helpers/image_optimizer.php
+@@ -326,6 +326,14 @@
+         throw new RuntimeException('فشل في فك تشفير بيانات الصورة عبر محرك الرسومات.');
+     }
+ 
++    // GD cannot encode palette images (GIF, PNG-8) to WebP: imagewebp() reports success
++    // but writes a 0-byte file. Convert to truecolor first, keeping transparency.
++    if (!imageistruecolor($img)) {
++        imagepalettetotruecolor($img);
++        imagealphablending($img, false);
++        imagesavealpha($img, true);
++    }
++
+     return $img;
+ }
+ 
+@@ -367,7 +375,7 @@
+     $tmpFile = $destFile . '.tmp.' . bin2hex(random_bytes(6));
+     $success = @imagewebp($image, $tmpFile, $quality);
+ 
+-    if ($success && is_file($tmpFile)) {
++    if ($success && is_file($tmpFile) && filesize($tmpFile) > 0) {
+         if (!rename($tmpFile, $destFile)) {
+             @unlink($tmpFile);
+             return false;
+@@ -518,8 +526,8 @@
+         $lossyTmp    = $destBase . '.lossy.webp.tmp';
+ 
+         $losslessQuality = defined('IMG_WEBP_LOSSLESS') ? IMG_WEBP_LOSSLESS : 95;
+-        $losslessOk = @imagewebp($image, $losslessTmp, $losslessQuality);
+-        $lossyOk    = @imagewebp($image, $lossyTmp, 82);
++        $losslessOk = @imagewebp($image, $losslessTmp, $losslessQuality) && is_file($losslessTmp) && filesize($losslessTmp) > 0;
++        $lossyOk    = @imagewebp($image, $lossyTmp, 82) && is_file($lossyTmp) && filesize($lossyTmp) > 0;
+ 
+         $losslessSize = ($losslessOk && is_file($losslessTmp)) ? filesize($losslessTmp) : PHP_INT_MAX;
+         $lossySize    = ($lossyOk && is_file($lossyTmp)) ? filesize($lossyTmp) : PHP_INT_MAX;

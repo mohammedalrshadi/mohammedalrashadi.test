@@ -1,0 +1,74 @@
+--- a/public_html/api/products/upload_demo.php
++++ b/public_html/api/products/upload_demo.php
+@@ -90,6 +90,12 @@
+ }
+ 
+ // 2. Open ZIP and Validate Entire Structure
++if (!class_exists('ZipArchive')) {
++    http_response_code(501);
++    echo json_encode(['success' => false, 'message' => 'ZIP support is not available on this server.']);
++    exit;
++}
++
+ $zip = new ZipArchive();
+ if ($zip->open($file['tmp_name']) !== true) {
+     http_response_code(400);
+@@ -98,7 +104,8 @@
+ }
+ 
+ $totalUncompressedSize = 0;
+-$dangerousExtensions = ['php', 'php3', 'php4', 'php5', 'php7', 'php8', 'phtml', 'phar', 'inc', 'cgi', 'pl', 'py', 'pyc', 'sh', 'bash', 'exe', 'com', 'bat', 'cmd', 'ps1'];
++$actualUncompressedSize = 0;
++$dangerousExtensions = ['php', 'php3', 'php4', 'php5', 'php7', 'php8', 'phtml', 'phar', 'inc', 'cgi', 'pl', 'py', 'pyc', 'sh', 'bash', 'exe', 'com', 'bat', 'cmd', 'ps1', 'pht', 'phps', 'php6', 'phpt', 'shtml', 'shtm', 'htaccess', 'htpasswd', 'ini'];
+ 
+ $allNormalizedPaths = [];
+ $indexHtmlPaths = [];
+@@ -108,7 +115,7 @@
+     $filename = $stat['name'];
+ 
+     // Resource limits
+-    if ($i > DEMO_MAX_FILES) {
++    if ($i >= DEMO_MAX_FILES) {
+         $zip->close();
+         http_response_code(400);
+         echo json_encode(['success' => false, 'message' => 'Archive contains too many files (max ' . DEMO_MAX_FILES . ').']);
+@@ -148,7 +155,7 @@
+     }
+ 
+     // Dangerous extensions — check ALL files regardless of compression method
+-    if ($stat['size'] > 0 && substr($filename, -1) !== '/') {
++    if (substr($filename, -1) !== '/') {
+         $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+         if (in_array($ext, $dangerousExtensions, true)) {
+             $zip->close();
+@@ -156,6 +163,30 @@
+             echo json_encode(['success' => false, 'message' => "Executable server-side file detected ({$filename}). Upload rejected."]);
+             exit;
+         }
++
++        // Declared sizes can be forged: measure the real decompressed size, aborting early.
++        $entryStream = $zip->getStream($filename);
++        if ($entryStream === false) {
++            $zip->close();
++            http_response_code(400);
++            echo json_encode(['success' => false, 'message' => 'Failed to read an entry of the ZIP archive.']);
++            exit;
++        }
++        while (!feof($entryStream)) {
++            $chunk = fread($entryStream, 65536);
++            if ($chunk === false) {
++                break;
++            }
++            $actualUncompressedSize += strlen($chunk);
++            if ($actualUncompressedSize > DEMO_MAX_UNCOMPRESSED_SIZE) {
++                fclose($entryStream);
++                $zip->close();
++                http_response_code(400);
++                echo json_encode(['success' => false, 'message' => 'Uncompressed contents exceed 100MB limit.']);
++                exit;
++            }
++        }
++        fclose($entryStream);
+     }
+ }
+ 

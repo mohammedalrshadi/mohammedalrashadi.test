@@ -1,0 +1,28 @@
+# ============================================================
+# ADMIN-ONLY HEADER OVERRIDE (SEC-04)
+# ============================================================
+# The root .htaccess sets a baseline CSP for the whole site that
+# does NOT include cdnjs.cloudflare.com, because the public pages
+# never load anything from it (verified — see docs/SECURITY.md
+# asset inventory). The admin area still needs it for Font Awesome
+# CSS (admin/partials/layout_top.php, admin/login.php,
+# admin/run_migrations.php) in style-src/font-src. DOMPurify JS is
+# now self-hosted (see assets/vendor/dompurify/) and no longer
+# needs a script-src allowance for cdnjs at all.
+#
+# Rather than widen the public site's policy to match admin's
+# needs, this file re-declares the same header set for requests
+# under /admin/ with script-src/style-src/font-src additionally
+# allowing https://cdnjs.cloudflare.com. Every other directive
+# (X-Frame-Options, Referrer-Policy, Permissions-Policy, HSTS,
+# etc.) is identical to the root policy.
+# ============================================================
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "DENY"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=(), usb=()"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+    Header always set Strict-Transport-Security "max-age=15552000" env=IS_HTTPS
+</IfModule>

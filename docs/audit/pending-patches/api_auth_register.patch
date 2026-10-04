@@ -1,0 +1,31 @@
+--- a/public_html/api/auth/register.php
++++ b/public_html/api/auth/register.php
+@@ -161,17 +161,18 @@
+         (!empty($_SERVER['HTTP_X_FORWARDED_SSL'])   && $_SERVER['HTTP_X_FORWARDED_SSL']   === 'on')
+     );
+ 
+-    ini_set('session.cookie_httponly', '1');
+-    ini_set('session.cookie_secure',   $isHttps ? '1' : '0');
+-    ini_set('session.use_strict_mode', '1');
+-    session_set_cookie_params([
+-        'lifetime' => SESSION_LIFETIME,
+-        'path'     => '/',
+-        'secure'   => $isHttps,
+-        'httponly' => true,
+-        'samesite' => 'Lax',
+-    ]);
++    // Session settings can only be changed before a session is active (the CSRF step may have started one).
+     if (session_status() === PHP_SESSION_NONE) {
++        ini_set('session.cookie_httponly', '1');
++        ini_set('session.cookie_secure',   $isHttps ? '1' : '0');
++        ini_set('session.use_strict_mode', '1');
++        session_set_cookie_params([
++            'lifetime' => SESSION_LIFETIME,
++            'path'     => '/',
++            'secure'   => $isHttps,
++            'httponly' => true,
++            'samesite' => 'Lax',
++        ]);
+         session_start();
+     }
+     session_regenerate_id(true);

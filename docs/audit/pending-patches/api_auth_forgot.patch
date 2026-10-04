@@ -1,0 +1,22 @@
+--- a/public_html/api/auth/forgot.php
++++ b/public_html/api/auth/forgot.php
+@@ -104,6 +104,19 @@
+         exit;
+     }
+ 
++    // Cooldown: do not issue (or e-mail) another link while a fresh one is still pending.
++    // Stops mailbox flooding and keeps an attacker from invalidating the real link over and over.
++    $recent = $pdo->prepare(
++        'SELECT 1 FROM password_resets WHERE user_id = ? AND used_at IS NULL AND created_at > (NOW() - INTERVAL 2 MINUTE) LIMIT 1'
++    );
++    $recent->execute([$user['id']]);
++    if ($recent->fetchColumn()) {
++        echo json_encode($genericResponse);
++        exit;
++    }
++    // Every real dispatch counts against the per-IP limit (spraying many accounts).
++    loginRateLimitRecordFailure('forgot_' . $clientIp);
++
+     // 3. Generate cryptographically secure token
+     $rawToken  = bin2hex(random_bytes(32));
+     $tokenHash = hash('sha256', $rawToken);
