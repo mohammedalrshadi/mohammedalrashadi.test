@@ -117,67 +117,8 @@ if (!$isLoggedIn) {
     
     $counts = homeUserCounts($pdo, $userId);
 
-    // --- STATIC WATCH FACE GENERATION ---
-    $watchFaceSvg = '<svg viewBox="0 0 200 200" aria-hidden="true" width="100%" height="100%">';
-    $watchFaceSvg .= '<defs>';
-    $watchFaceSvg .= '  <radialGradient id="bg-grad" cx="50%" cy="50%" r="50%">';
-    $watchFaceSvg .= '    <stop offset="20%" stop-color="#0a1a14"/>';
-    $watchFaceSvg .= '    <stop offset="90%" stop-color="#050e09"/>';
-    $watchFaceSvg .= '    <stop offset="100%" stop-color="#030805"/>';
-    $watchFaceSvg .= '  </radialGradient>';
-    $watchFaceSvg .= '  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">';
-    $watchFaceSvg .= '    <feGaussianBlur stdDeviation="1.5" result="blur" />';
-    $watchFaceSvg .= '    <feComposite in="SourceGraphic" in2="blur" operator="over" />';
-    $watchFaceSvg .= '  </filter>';
-    $watchFaceSvg .= '</defs>';
-    
-    // Background dial
-    $watchFaceSvg .= '<circle cx="100" cy="100" r="98" fill="#030805" stroke="#16382a" stroke-width="2" />';
-    $watchFaceSvg .= '<circle cx="100" cy="100" r="95" fill="url(#bg-grad)" />';
-    
-    // Concentric tech circles
-    $watchFaceSvg .= '<g stroke="#20C978" fill="none">';
-    $watchFaceSvg .= '  <circle cx="100" cy="100" r="85" stroke-width="0.3" opacity="0.4" stroke-dasharray="1 3" />';
-    $watchFaceSvg .= '  <circle cx="100" cy="100" r="75" stroke-width="0.5" opacity="0.2" />';
-    $watchFaceSvg .= '  <circle cx="100" cy="100" r="65" stroke-width="0.3" opacity="0.3" stroke-dasharray="4 2" />';
-    $watchFaceSvg .= '  <circle cx="100" cy="100" r="50" stroke-width="0.2" opacity="0.5" />';
-    $watchFaceSvg .= '  <circle cx="100" cy="100" r="35" stroke-width="0.4" opacity="0.2" stroke-dasharray="2 4" />';
-    $watchFaceSvg .= '  <circle cx="100" cy="100" r="20" stroke-width="0.2" opacity="0.4" />';
-    $watchFaceSvg .= '</g>';
-
-    // Hour markers
-    $watchFaceSvg .= '<g class="watch-static-marks">';
-    for ($i = 0; $i < 12; $i++) {
-        $angle = $i * 30;
-        if ($i % 3 === 0) {
-            $watchFaceSvg .= '<rect x="98.5" y="10" width="3" height="15" fill="#e2e8f0" rx="1" transform="rotate('.$angle.' 100 100)" />';
-            $watchFaceSvg .= '<circle cx="100" cy="30" r="1.5" fill="#34D399" filter="url(#glow)" transform="rotate('.$angle.' 100 100)" />';
-        } else {
-            $watchFaceSvg .= '<circle cx="100" cy="15" r="1.5" fill="#94a3b8" transform="rotate('.$angle.' 100 100)" />';
-            $watchFaceSvg .= '<line x1="100" y1="20" x2="100" y2="25" stroke="#475569" stroke-width="1" transform="rotate('.$angle.' 100 100)" />';
-        }
-    }
-    $watchFaceSvg .= '</g>';
-    $watchFaceSvg .= '</svg>';
-
-    // --- WATCH HANDS GENERATION ---
-    $watchHandsSvg = '<svg viewBox="0 0 200 200" aria-hidden="true" width="100%" height="100%">';
-    $watchHandsSvg .= '<text class="watch-date-full" x="100" y="145" fill="#D1FAE5" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="500" letter-spacing="1" text-anchor="middle" opacity="0.6">'.date('D M j').'</text>';
-    $watchHandsSvg .= '<g class="watch-hour" transform="rotate(305 100 100)">';
-    $watchHandsSvg .= '  <path d="M100,108 L95,100 L100,50 Z" fill="#94a3b8" />';
-    $watchHandsSvg .= '  <path d="M100,108 L105,100 L100,50 Z" fill="#f8fafc" />';
-    $watchHandsSvg .= '</g>';
-    $watchHandsSvg .= '<g class="watch-min" transform="rotate(60 100 100)">';
-    $watchHandsSvg .= '  <path d="M100,110 L96,100 L100,20 Z" fill="#94a3b8" />';
-    $watchHandsSvg .= '  <path d="M100,110 L104,100 L100,20 Z" fill="#f8fafc" />';
-    $watchHandsSvg .= '</g>';
-    $watchHandsSvg .= '<g class="watch-sec" transform="rotate(0 100 100)">';
-    $watchHandsSvg .= '  <line x1="100" y1="120" x2="100" y2="15" stroke="#fbbf24" stroke-width="1.5" opacity="0.8" />';
-    $watchHandsSvg .= '  <line x1="100" y1="120" x2="100" y2="15" stroke="#fff" stroke-width="0.5" />';
-    $watchHandsSvg .= '  <circle cx="100" cy="100" r="3" fill="#fbbf24" />';
-    $watchHandsSvg .= '  <circle cx="100" cy="100" r="1.5" fill="#fff" />';
-    $watchHandsSvg .= '</g>';
-    $watchHandsSvg .= '</svg>';
+    // --- WATCH CLOCK GENERATION ---
+    // Rendered via HTML markup and js/world-clock.js
     ?>
     <div class="workspace-wrapper w-full">
     <section class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-6 pb-4 border-b border-border-subtle mb-6" aria-label="Workspace Header">
@@ -186,11 +127,19 @@ if (!$isLoggedIn) {
             <!-- Mobile Top Row -->
             <div class="flex justify-between items-center w-full md:hidden mb-4">
                 <span class="editorial-overline">WORKSPACE</span>
-                <!-- Mobile Watch Placeholder -->
-                <div class="relative flex items-center justify-center watch-container" style="width: 72px; height: 72px; aspect-ratio: 1/1;" data-size="72" id="workspace-watch-mobile" aria-hidden="true">
-                    <div class="absolute inset-0 z-0"><?= $watchFaceSvg ?></div>
-                    <canvas class="absolute z-10 pointer-events-none clock-of-life-canvas"></canvas>
-                    <div class="absolute inset-0 z-20 pointer-events-none"><?= $watchHandsSvg ?></div>
+                <!-- Mobile Watch -->
+                <div class="wt-clock-container" id="workspace-watch-mobile" aria-hidden="true" style="width: 120px; height: 120px;">
+                    <div class="wt-clock-face">
+                        <div class="wt-clock-rings"></div>
+                        <div class="wt-clock-markers"></div>
+                        <div class="wt-clock-date"><?= strtoupper(date('D M j')) ?></div>
+                        <div class="wt-clock-hands">
+                            <div class="wt-hand wt-hour-hand" id="hour-hand-mobile"></div>
+                            <div class="wt-hand wt-min-hand" id="min-hand-mobile"></div>
+                            <div class="wt-hand wt-sec-hand" id="sec-hand-mobile"></div>
+                        </div>
+                        <div class="wt-clock-center"></div>
+                    </div>
                 </div>
             </div>
             
@@ -233,10 +182,22 @@ if (!$isLoggedIn) {
         
         <!-- RIGHT COLUMN -->
         <div class="hidden md:flex flex-col items-end justify-start gap-3 md:col-span-4 lg:col-span-3">
-            <div class="relative flex items-center justify-center watch-container" style="width: 128px; height: 128px; aspect-ratio: 1/1;" data-size="128" id="workspace-watch-desktop" aria-hidden="true">
-                <div class="absolute inset-0 z-0"><?= $watchFaceSvg ?></div>
-                <canvas class="absolute z-10 pointer-events-none clock-of-life-canvas"></canvas>
-                <div class="absolute inset-0 z-20 pointer-events-none"><?= $watchHandsSvg ?></div>
+            <!-- Desktop Watch -->
+            <div class="wt-clock-container" id="workspace-watch-desktop" aria-hidden="true" style="width: clamp(240px, 20vw, 320px); aspect-ratio: 1/1;">
+                <div class="wt-clock-face">
+                    <div class="wt-clock-rings"></div>
+                    <div class="wt-clock-markers"></div>
+                    <div class="wt-clock-date"><?= strtoupper(date('D M j')) ?></div>
+                    <div class="wt-clock-hands">
+                        <div class="wt-hand wt-hour-hand" id="hour-hand-desktop"></div>
+                        <div class="wt-hand wt-min-hand" id="min-hand-desktop"></div>
+                        <div class="wt-hand wt-sec-hand" id="sec-hand-desktop"></div>
+                    </div>
+                    <div class="wt-clock-center"></div>
+                </div>
+                <button id="replay-seed-btn" class="wt-replay-btn" aria-label="Replay seed drop" style="display: none;">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
+                </button>
             </div>
             <time class="dash-clock-caption" id="workspace-caption-desktop"></time>
         </div>
@@ -489,4 +450,4 @@ if (!$isLoggedIn) {
     </div>
 <?php } ?>
 
-<script type="module" src="/js/clock_of_life.js"></script>
+

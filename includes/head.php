@@ -112,4 +112,9 @@ if (isUserLoggedIn()) {
 <!-- Precompiled Tailwind CSS & Global Design System (Zero Runtime CDN) -->
 <link rel="stylesheet" href="/css/tailwind.css?v=<?= file_exists(__DIR__ . '/../css/tailwind.css') ? filemtime(__DIR__ . '/../css/tailwind.css') : '1.0' ?>"/>
 <link rel="stylesheet" href="/css/styles.css?v=<?= file_exists(__DIR__ . '/../css/styles.css') ? filemtime(__DIR__ . '/../css/styles.css') : '1.0' ?>"/>
+<?php if (isset($currentPage) && $currentPage === 'home'): ?>
+<link rel="stylesheet" href="/css/world-tree.css?v=1.0"/>
+<script src="/js/world-clock.js?v=1.0" defer></script>
+<script src="/js/world-tree.js?v=1.0" defer></script>
+<?php endif; ?>
 <script src="/js/theme-toggle.js?v=<?= file_exists(__DIR__ . '/../js/theme-toggle.js') ? filemtime(__DIR__ . '/../js/theme-toggle.js') : '1.0' ?>" defer></script>

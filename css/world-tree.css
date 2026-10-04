@@ -1,0 +1,124 @@
+/* World Tree Prototype & Luxury Analog Clock Styles */
+
+/* -----------------------
+   Luxury Analog Clock
+----------------------- */
+.wt-clock-container {
+    position: relative;
+    border-radius: 50%;
+    /* Colors from existing vars */
+    background: var(--color-surface, #02120e);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px 2px rgba(16, 185, 129, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+}
+
+[data-theme="light"] .wt-clock-container, 
+html.light .wt-clock-container {
+    background: #031713; /* Keep dark face for contrast */
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.2), 0 0 20px 2px rgba(16, 185, 129, 0.15);
+}
+
+.wt-clock-face {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--color-border, #07241e);
+}
+
+.wt-clock-rings {
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    border: 1px dashed rgba(52, 211, 153, 0.2);
+}
+
+.wt-clock-markers {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background-image: 
+        repeating-conic-gradient(from 0deg, rgba(226, 232, 240, 0.8) 0deg 2deg, transparent 2deg 30deg),
+        repeating-conic-gradient(from 0deg, rgba(148, 163, 184, 0.4) 0deg 1deg, transparent 1deg 6deg);
+    -webkit-mask-image: radial-gradient(transparent 90%, black 90%);
+    mask-image: radial-gradient(transparent 90%, black 90%);
+}
+
+.wt-clock-date {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 0.65rem;
+    color: var(--color-text-muted, #94a3b8);
+    letter-spacing: 0.05em;
+}
+
+.wt-clock-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    background: #F59E0B; /* copper-gold */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.wt-clock-hands {
+    position: absolute;
+    inset: 0;
+}
+
+.wt-hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    background: #FFF;
+    border-radius: 4px;
+    /* initial rotation */
+    transform: rotate(0deg);
+    will-change: transform;
+}
+
+.wt-hour-hand {
+    width: 4px;
+    height: 35%;
+    margin-left: -2px;
+    opacity: 0.9;
+}
+
+.wt-min-hand {
+    width: 3px;
+    height: 45%;
+    margin-left: -1.5px;
+    opacity: 0.7;
+}
+
+.wt-sec-hand {
+    width: 1px;
+    height: 48%;
+    margin-left: -0.5px;
+    background: #F59E0B; /* copper-gold */
+}
+
+/* Replay Button */
+.wt-replay-btn {
+    position: absolute;
+    bottom: -30px;
+    right: 0;
+    background: transparent;
+    border: none;
+    color: var(--color-text-muted, #94a3b8);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.wt-replay-btn:hover {
+    color: var(--color-primary, #34D399);
+}
