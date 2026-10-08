@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en" class="is-animating">
+<head>
+  <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mohammed Alrashadi  Personal…</title>
+<meta name="description" content="Personal engineering platform and research notebook exploring systems architecture, database internals, computing fundamentals, and backend software engineering."/>
+
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://mohammedalrashadi.com/"/>
+
+<!-- Open Graph / Social -->
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Your Site Name"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="https://mohammedalrashadi.com/"/>
+<meta property="og:title" content="Mohammed Alrashadi  Personal Engineering Studio"/>
+<meta property="og:description" content="Personal engineering platform and research notebook exploring systems architecture, database internals, computing fundamentals, and backend software engineering."/>
+<meta property="og:image" content="https://mohammedalrashadi.com/assets/logo/logo.png"/>
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:url" content="https://mohammedalrashadi.com/"/>
+<meta name="twitter:title" content="Mohammed Alrashadi  Personal Engineering Studio"/>
+<meta name="twitter:description" content="Personal engineering platform and research notebook exploring systems architecture, database internals, computing fundamentals, and backend software engineering."/>
+<meta name="twitter:image" content="https://mohammedalrashadi.com/assets/logo/logo.png"/>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/logo/favicon.png?v=1790248314"/>
+<link rel="icon" type="image/png" sizes="192x192" href="./assets/logo/favicon.png?v=1790248314"/>
+<link rel="icon" type="image/png" sizes="512x512" href="./assets/logo/favicon.png?v=1790248314"/>
+<link rel="icon" sizes="any" href="./assets/logo/favicon.ico?v=1790248315"/>
+<link rel="apple-touch-icon" sizes="180x180" href="./assets/logo/apple-touch-icon.png?v=1790248314"/>
+
+<!-- RSS Feed Autodiscovery -->
+<link rel="alternate" type="application/rss+xml" title="Your Site Name — RSS Feed" href="./rss.xml"/>
+
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/></noscript>
+
+<noscript><style>html.is-animating .page-transition-wrapper{opacity:1;transform:none}.reveal-section{opacity:1;transform:none}</style></noscript>
+
+<!-- Instant Theme Initialization Script (Zero Flash, 3-Theme System) -->
+<script>
+  (function() {
+    try {
+      var stored = localStorage.getItem('site-theme') || localStorage.getItem('theme');
+      var validThemes = ['light', 'dark', 'green'];
+      var theme = (stored && validThemes.indexOf(stored) !== -1) ? stored : null;
+      if (!theme) {
+        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        theme = systemDark ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch(e) {}
+  })();
+</script>
+
+<!-- Precompiled Tailwind CSS & Global Design System (Zero Runtime CDN) -->
+<link rel="stylesheet" href="./css/tailwind.css?v=1791319284"/>
+<link rel="stylesheet" href="./css/styles.css?v=1791319492"/>
+<link rel="stylesheet" href="./css/world-tree.css?v=1791382226"/>
+<link rel="stylesheet" href="./css/new-design.css?v=1791319531"/>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('page-home');
+  });
+  // Clean up if the site uses an SPA router
+  window.addEventListener('beforeunload', function() {
+    document.body.classList.remove('page-home');
+  });
+</script>
+<script src="./js/world-clock.js?v=1791471793" defer></script>
+
+<script src="./js/theme-toggle.js?v=1790316877" defer></script>
+  
+  <!-- JSON-LD Structured Data: WebSite & Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Your Site Name",
+    "url": "https://mohammedalrashadi.com/",
+    "description": "Personal engineering platform and research notebook exploring systems architecture, database internals, computing fundamentals, and backend software engineering."
+}  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Your Name",
+    "url": "https://mohammedalrashadi.com/about.php",
+    "jobTitle": "Your Title",
+    "description": "",
+    "sameAs": [
+    ]
+}  </script>
+</head>
+<body class="page-home bg-background text-on-surface font-sans antialiased min-h-screen selection:bg-primary-container selection:text-on-primary">
+  
+  <style>
+/* Modern Glass Floating Header Architecture */
+.modern-header-wrapper {
+  position: absolute; top: 0; left: 0; right: 0; z-index: 100;
+  pointer-events: none; transition: all 0.3s ease;
+}
+.modern-header-inner {
+  pointer-events: auto; width: 100%; height: 64px;
+  background-color: var(--color-surface);
+  background-color: color-mix(in srgb, var(--color-surface) 90%, transparent);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0 1rem; transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .modern-header-wrapper { padding-top: 1rem; padding-left: clamp(1.5rem, 5vw, 4rem); padding-right: clamp(1.5rem, 5vw, 4rem); }
+  .modern-header-inner {
+    width: 100%; max-width: 2560px; height: 60px; gap: 2rem;
+    margin: 0 auto;
+    background-color: var(--color-surface);
+    background-color: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    padding: 0 1rem 0 1.5rem;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.2), inset 0 1px 0 var(--color-border-subtle);
+  }
+}
+
+/* Nav Links */
+.modern-nav { display: flex; align-items: center; gap: 0.375rem; }
+.modern-nav-link {
+  position: relative; font-size: 15px; font-weight: 500;
+  color: var(--color-text-secondary); padding: 0.5rem 0.75rem;
+  min-height: 44px; display: inline-flex; align-items: center;
+  transition: color 0.2s; white-space: nowrap;
+}
+.modern-nav-link:hover { color: var(--color-text-primary); }
+.modern-nav-link.active { color: var(--color-primary); }
+@media (min-width: 768px) {
+  .modern-nav-link.active::after {
+    content: ''; position: absolute; bottom: 0px; left: 15%; width: 70%; height: 2px;
+    background-color: var(--color-primary);
+    box-shadow: 0 -2px 8px 0px var(--color-primary);
+    border-radius: 2px 2px 0 0; opacity: 0.8;
+  }
+}
+
+/* Controls */
+.modern-controls { display: flex; align-items: center; gap: 0.5rem; }
+.modern-search-btn {
+  display: flex; align-items: center; gap: 0.5rem; height: 44px; min-height: 44px; padding: 0 1rem;
+  background-color: var(--color-surface-container); border: 1px solid var(--color-border);
+  border-radius: 9999px; color: var(--color-text-muted); font-size: 14px;
+  transition: all 0.2s; cursor: pointer;
+}
+.modern-search-btn:hover { background-color: var(--color-surface-container-high); color: var(--color-text-primary); }
+
+.modern-theme-btn {
+  display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+  color: var(--color-text-secondary); background: transparent; border: none;
+  border-radius: 50%; transition: color 0.2s; cursor: pointer;
+}
+.modern-theme-btn:hover { color: var(--color-text-primary); }
+.modern-theme-btn .material-symbols-outlined { font-size: 20px !important; }
+
+.modern-signin-btn {
+  display: flex; align-items: center; gap: 0.375rem; height: 44px; min-height: 44px; padding: 0 1.25rem;
+  background-color: var(--color-surface-container);
+  border: 1px solid var(--color-border); border-radius: 9999px;
+  color: var(--color-text-primary); font-size: 14px; font-weight: 500;
+  transition: all 0.2s; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.modern-signin-btn:hover { border-color: var(--color-outline); background-color: var(--color-surface-container-high); }
+.modern-signin-btn .material-symbols-outlined { font-size: 18px; color: var(--color-primary); }
+
+.modern-user-btn {
+  display: flex; align-items: center; gap: 0.375rem; height: 44px; min-height: 44px; padding: 0 0.375rem 0 0.75rem;
+  background-color: var(--color-surface-container); border: 1px solid var(--color-border);
+  border-radius: 9999px; color: var(--color-text-primary); transition: all 0.2s; cursor: pointer;
+}
+.modern-user-btn:hover { background-color: var(--color-surface-container-high); }
+.modern-user-avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background-color: var(--color-primary-container);
+  color: var(--color-primary); display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700; font-family: monospace;
+}
+
+/* ---- Progressive ("priority") navigation ----
+   Same floating pill + same links. As the window gets narrower (or the page
+   is zoomed in) links drop off the right end of the nav one by one into a
+   "More" menu, instead of squeezing or jumping to the hamburger. The
+   hamburger is only used on phones (< 768px). */
+.modern-header-inner > * { min-width: 0; }
+.modern-header-inner > .flex-shrink-0,
+.modern-controls { flex-shrink: 0; }
+.modern-signin-btn, .modern-search-btn { white-space: nowrap; flex-shrink: 0; }
+
+.hdr-desktop-nav { display: none; flex: 1 1 0; min-width: 0; align-items: center; justify-content: center; }
+.hdr-burger { display: flex; flex-shrink: 0; }
+.modern-nav { flex: 0 0 auto; flex-wrap: nowrap; }
+
+.modern-more { position: relative; display: none; align-items: center; }
+.modern-more-btn { display: inline-flex; align-items: center; gap: 0.125rem; background: none; border: 0; cursor: pointer; font-family: inherit; }
+.modern-more-btn .material-symbols-outlined { font-size: 18px !important; transition: transform 0.2s; }
+.modern-more.open .modern-more-btn { color: var(--color-text-primary); }
+.modern-more.open .modern-more-btn .material-symbols-outlined { transform: rotate(180deg); }
+.modern-more-menu {
+  display: none; flex-direction: column; gap: 2px; position: absolute; right: 0;
+  top: calc(100% + 14px); min-width: 200px; padding: 0.5rem; z-index: 120;
+  background-color: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: 1rem; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.4);
+}
+.modern-more.open .modern-more-menu { display: flex; }
+.modern-more-item {
+  display: none; padding: 0.625rem 0.875rem; border-radius: 0.625rem; white-space: nowrap;
+  font-size: 14.5px; font-weight: 500; color: var(--color-text-secondary); transition: background-color 0.2s, color 0.2s;
+}
+.modern-more-item:hover { background-color: var(--color-surface-container); color: var(--color-text-primary); }
+.modern-more-item.active { color: var(--color-primary); }
+
+@media (min-width: 768px) {
+  .hdr-desktop-nav { display: flex; }
+  .hdr-burger { display: none; }
+  .hdr-mobile-only { display: none !important; }
+}
+/* Tablet / laptop / zoomed-in (<1440px): a little tighter so more links stay visible */
+@media (min-width: 768px) and (max-width: 1439px) {
+  .modern-header-inner { gap: 1rem; padding: 0 0.75rem 0 1.25rem; }
+  .modern-nav { gap: 0.125rem; }
+  .modern-nav-link { padding: 0.5rem 0.6rem; }
+  .modern-controls { gap: 0.25rem; }
+}
+
+/* ---- Phones / very high zoom (<768px): same pill, hamburger menu ---- */
+@media (max-width: 767px) {
+  .modern-header-wrapper {
+    padding-top: 0.5rem;
+    padding-left: clamp(1rem, 5vw, 4rem);
+    padding-right: clamp(1rem, 5vw, 4rem);
+  }
+  .modern-header-inner {
+    height: 56px; gap: 0.5rem; margin: 0 auto; max-width: 2560px;
+    padding: 0 0.5rem 0 1rem;
+    background-color: var(--color-surface);
+    background-color: color-mix(in srgb, var(--color-surface) 85%, transparent);
+    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.2), inset 0 1px 0 var(--color-border-subtle);
+  }
+  #mobile-menu-button {
+    width: 44px; height: 44px; min-width: 44px; min-height: 44px;
+    border-radius: 9999px; padding: 0;
+    background-color: var(--color-surface-container);
+    border: 1px solid var(--color-border);
+  }
+  #mobile-navigation-drawer {
+    top: calc(0.5rem + 56px + 0.5rem);
+    left: clamp(1rem, 5vw, 4rem); right: clamp(1rem, 5vw, 4rem);
+    border: 1px solid var(--color-border); border-radius: 1.25rem;
+    max-height: calc(100vh - 5.5rem);
+    max-height: calc(100dvh - 5.5rem);
+  }
+}
+@media (max-width: 480px) {
+  .modern-header-inner { padding: 0 0.5rem 0 0.75rem; gap: 0.375rem; }
+  .modern-controls { gap: 0.25rem; }
+  .modern-signin-btn, .modern-search-btn { padding: 0 0.75rem; min-height: 44px; }
+  .modern-search-btn { min-width: 44px; justify-content: center; }
+}
+@media (max-width: 340px) {
+  .modern-search-btn { display: none; }
+}
+</style>
+
+<!-- Global Technical Editorial Header -->
+<header class="modern-header-wrapper">
+  <div class="modern-header-inner">
+    
+    <!-- 1. Brand / Identity (Left) -->
+    <div class="flex items-center flex-shrink-0">
+      <a class="flex items-center group text-decoration-none" href="./index.html" title="Home">
+        <div class="platform-logo-wrapper" title="Home" aria-label="Logo" style="display: flex; align-items: center; justify-content: center;">
+  <svg viewBox="0 0 40 40" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Simple Stylized M -->
+    <path d="M10 30 V10 L20 20 L30 10 V30" />
+  </svg>
+</div>
+      </a>
+    </div>
+
+    <!-- 2. Desktop Primary Navigation (Center) -->
+    <div class="hdr-desktop-nav" id="hdr-nav-wrap">
+      <nav class="modern-nav" id="hdr-nav" aria-label="Main Navigation">
+                  <a href="./index.html" 
+             class="modern-nav-link active" 
+             aria-current="page"             data-path="home">
+            Home          </a>
+                  <a href="./projects.html" 
+             class="modern-nav-link" 
+                          data-path="projects">
+            Projects          </a>
+                  <a href="./achievements.html" 
+             class="modern-nav-link" 
+                          data-path="achievements">
+            Achievements          </a>
+                  <a href="./lab.html" 
+             class="modern-nav-link" 
+                          data-path="lab">
+            Studio Lab          </a>
+                  <a href="./store.html" 
+             class="modern-nav-link" 
+                          data-path="store">
+            Store          </a>
+                  <a href="./gallery.html" 
+             class="modern-nav-link" 
+                          data-path="gallery">
+            Gallery          </a>
+                  <a href="./articles.html" 
+             class="modern-nav-link" 
+                          data-path="writing">
+            Writing          </a>
+                  <a href="./journey.html" 
+             class="modern-nav-link" 
+                          data-path="journey">
+            Journey          </a>
+                  <a href="./about.html" 
+             class="modern-nav-link" 
+                          data-path="about">
+            About          </a>
+        
+        <!-- Overflow ("More") menu: links that do not fit are moved here -->
+        <div class="modern-more" id="hdr-more">
+          <button type="button" class="modern-nav-link modern-more-btn" id="hdr-more-btn"
+                  aria-haspopup="menu" aria-expanded="false" aria-controls="hdr-more-menu">
+            More <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="modern-more-menu" id="hdr-more-menu" role="menu">
+                          <a href="./index.html"
+                 class="modern-more-item active"
+                 role="menuitem"
+                 aria-current="page">Home</a>
+                          <a href="./projects.html"
+                 class="modern-more-item"
+                 role="menuitem"
+                 >Projects</a>
+                          <a href="./achievements.html"
+                 class="modern-more-item"
+                 role="menuitem"
+                 >Achievements</a>
+                          <a href="./lab.html"
+                 class="modern-more-item"
+                 role="menuitem"
+                 >Studio Lab</a>
+                          <a href="./store.html"
+                 class="modern-more-item"
+                 role="menuitem"
+                 >Store</a>
+                          <a href="./gallery.html"
+                 class="modern-more-item"
+                 role="menuitem"
+                 >Gallery</a>
+                          <a href="./articles.html"
+                 class="modern-more-item"
+                 role="menuitem"
+                 >Writing</a>
+                          <a href="./journey.html"
+                 class="modern-more-item"
+                 role="menuitem"
+                 >Journey</a>
+                          <a href="./about.html"
+                 class="modern-more-item"
+                 role="menuitem"
+                 >About</a>
+                      </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- 3. Right Header Controls -->
+    <div class="modern-controls">
+      
+      <!-- Search Shortcut Trigger -->
+      <button type="button" 
+              id="site-search-trigger" 
+              class="modern-search-btn" 
+              title="Search Platform Content (⌘K)"
+              aria-label="Search Platform Content"
+              aria-haspopup="dialog"
+              aria-expanded="false">
+        <span class="material-symbols-outlined text-[16px]">search</span>
+        <span class="hidden xl:inline">Search</span>
+      </button>
+
+      <!-- Theme Switcher -->
+      <button id="theme-toggle-btn" 
+              type="button" 
+              class="modern-theme-btn"
+              aria-label="Toggle theme"
+              title="Toggle Theme (Light / Dark / Green)">
+        <span class="material-symbols-outlined text-[18px]" id="theme-toggle-icon">dark_mode</span>
+      </button>
+
+      <!-- User / Profile Controls -->
+              <a href="./login.html" 
+           class="modern-signin-btn"
+           title="Sign in to your account">
+          <span class="material-symbols-outlined">login</span>
+          <span class="hidden sm:inline">Sign In</span>
+        </a>
+      
+      <!-- Mobile Hamburger Button (< 768px) -->
+      <button id="mobile-menu-button" 
+              type="button" 
+              class="hdr-burger items-center justify-center w-10 h-10 min-w-[44px] min-h-[44px] rounded-lg bg-surface-container-low text-text-secondary hover:text-text-primary hover:bg-surface-container border border-border transition-colors"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="mobile-navigation-drawer">
+        <span class="material-symbols-outlined text-[22px]" id="mobile-menu-icon">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Backdrop Overlay -->
+  <div id="mobile-menu-backdrop" 
+       class="fixed inset-0 bg-background opacity-90 backdrop-blur-md z-[90] hidden hdr-mobile-only transition-opacity" 
+       aria-hidden="true"></div>
+
+  <!-- Mobile Navigation Drawer -->
+  <div id="mobile-navigation-drawer" 
+       class="fixed top-16 left-0 right-0 z-[100] isolate bg-background border-b border-border px-4 py-4 hidden hdr-mobile-only shadow-2xl transition-all max-h-[calc(100vh-4rem)] overflow-y-auto"
+       role="dialog" 
+       aria-label="Mobile Navigation">
+    <nav class="flex flex-col gap-1" aria-label="Mobile Links">
+      <!-- Quick Search Button in Mobile Drawer -->
+      <button type="button" 
+              id="mobile-drawer-search-trigger" 
+              class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between border border-border/50 mb-2 cursor-pointer"
+              aria-label="Search Platform Content">
+        <span class="text-sm flex items-center gap-2">
+          <span class="material-symbols-outlined text-[18px] text-primary">search</span>
+          Search platform...
+        </span>
+        <kbd class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface-container text-text-muted border border-border">⌘K</kbd>
+      </button>
+
+              <a href="./index.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-primary font-semibold bg-surface-container flex items-center justify-between border border-primary/20"
+           aria-current="page">
+          <span class="text-sm">Home</span>
+                      <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                  </a>
+              <a href="./projects.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between"
+           >
+          <span class="text-sm">Projects</span>
+                  </a>
+              <a href="./achievements.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between"
+           >
+          <span class="text-sm">Achievements</span>
+                  </a>
+              <a href="./lab.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between"
+           >
+          <span class="text-sm">Studio Lab</span>
+                  </a>
+              <a href="./store.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between"
+           >
+          <span class="text-sm">Store</span>
+                  </a>
+              <a href="./gallery.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between"
+           >
+          <span class="text-sm">Gallery</span>
+                  </a>
+              <a href="./articles.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between"
+           >
+          <span class="text-sm">Writing</span>
+                  </a>
+              <a href="./journey.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between"
+           >
+          <span class="text-sm">Journey</span>
+                  </a>
+              <a href="./about.html" 
+           class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center justify-between"
+           >
+          <span class="text-sm">About</span>
+                  </a>
+      
+      <!-- Drawer User Section -->
+      <div class="pt-2 mt-2 border-t border-border/60 flex flex-col gap-1">
+                  <a href="./login.html" class="min-h-[44px] px-3 py-2.5 rounded-lg text-text-secondary hover:text-text-primary hover:bg-surface-container transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-[18px] text-primary">login</span>
+            <span class="text-sm">Sign In</span>
+          </a>
+          <a href="./register.html" class="min-h-[44px] px-3 py-2.5 rounded-lg text-primary hover:bg-surface-container transition-colors flex items-center gap-2 font-medium">
+            <span class="material-symbols-outlined text-[18px]">person_add</span>
+            <span class="text-sm">Create Account</span>
+          </a>
+              </div>
+    </nav>
+  </div>
+</header>
+
+<!-- Global Shell Interaction Script (Theme, Mobile Menu, Keyboard Shortcuts) -->
+<script>
+  (function() {
+    // Mobile Navigation Controller with Keyboard and Scroll Lock
+    var menuBtn = document.getElementById('mobile-menu-button');
+    var drawer = document.getElementById('mobile-navigation-drawer');
+    var backdrop = document.getElementById('mobile-menu-backdrop');
+    var menuIcon = document.getElementById('mobile-menu-icon');
+
+    function closeMobileMenu() {
+      if (!drawer || drawer.classList.contains('hidden')) return;
+      drawer.classList.add('hidden');
+      if (backdrop) backdrop.classList.add('hidden');
+      if (menuBtn) {
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.focus();
+      }
+      if (menuIcon) menuIcon.textContent = 'menu';
+      document.body.style.overflow = '';
+    }
+
+    function openMobileMenu() {
+      if (!drawer) return;
+      drawer.classList.remove('hidden');
+      if (backdrop) backdrop.classList.remove('hidden');
+      if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+      if (menuIcon) menuIcon.textContent = 'close';
+      document.body.style.overflow = 'hidden';
+    }
+
+    if (menuBtn && drawer) {
+      menuBtn.addEventListener('click', function() {
+        var isOpen = menuBtn.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      });
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeMobileMenu);
+    }
+
+    // Site Search Button Triggers
+    var searchTrigger = document.getElementById('site-search-trigger');
+    if (searchTrigger) {
+      searchTrigger.addEventListener('click', function() {
+        if (window.SiteSearch && typeof window.SiteSearch.open === 'function') {
+          window.SiteSearch.open();
+        }
+      });
+    }
+
+    var drawerSearchTrigger = document.getElementById('mobile-drawer-search-trigger');
+    if (drawerSearchTrigger) {
+      drawerSearchTrigger.addEventListener('click', function() {
+        closeMobileMenu();
+        if (window.SiteSearch && typeof window.SiteSearch.open === 'function') {
+          window.SiteSearch.open();
+        }
+      });
+    }
+
+    // User Account Popover Controller
+    var userMenuBtn = document.getElementById('user-menu-button');
+    var userMenuDropdown = document.getElementById('user-menu-dropdown');
+    var userMenuArrow = document.getElementById('user-menu-arrow');
+
+    function closeUserMenu() {
+      if (!userMenuDropdown || userMenuDropdown.classList.contains('hidden')) return;
+      userMenuDropdown.classList.add('hidden');
+      if (userMenuBtn) {
+        userMenuBtn.setAttribute('aria-expanded', 'false');
+      }
+      if (userMenuArrow) {
+        userMenuArrow.style.transform = '';
+      }
+    }
+
+    function openUserMenu() {
+      if (!userMenuDropdown) return;
+      userMenuDropdown.classList.remove('hidden');
+      if (userMenuBtn) {
+        userMenuBtn.setAttribute('aria-expanded', 'true');
+      }
+      if (userMenuArrow) {
+        userMenuArrow.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    if (userMenuBtn && userMenuDropdown) {
+      userMenuBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = userMenuBtn.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeUserMenu();
+        } else {
+          closeMobileMenu();
+          openUserMenu();
+        }
+      });
+
+      // Keyboard navigation within popover menu
+      userMenuDropdown.addEventListener('keydown', function(e) {
+        var items = Array.from(userMenuDropdown.querySelectorAll('[role="menuitem"]'));
+        var currentIndex = items.indexOf(document.activeElement);
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          var nextIndex = (currentIndex + 1) % items.length;
+          items[nextIndex].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          var prevIndex = (currentIndex - 1 + items.length) % items.length;
+          items[prevIndex].focus();
+        } else if (e.key === 'Tab') {
+          closeUserMenu();
+        }
+      });
+
+      // Outside click closes user menu
+      document.addEventListener('click', function(e) {
+        if (!userMenuDropdown.contains(e.target) && e.target !== userMenuBtn && !userMenuBtn.contains(e.target)) {
+          closeUserMenu();
+        }
+      });
+    }
+
+    // Close overlays on Escape Key
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeMobileMenu();
+        closeUserMenu();
+      }
+    });
+
+
+    // Progressive navigation: move links that do not fit into the "More" menu
+    (function() {
+      var wrap = document.getElementById('hdr-nav-wrap');
+      var nav = document.getElementById('hdr-nav');
+      var more = document.getElementById('hdr-more');
+      var moreBtn = document.getElementById('hdr-more-btn');
+      if (!wrap || !nav || !more || !moreBtn) return;
+      var links = Array.prototype.slice.call(nav.querySelectorAll(':scope > a.modern-nav-link'));
+      var items = Array.prototype.slice.call(more.querySelectorAll('.modern-more-item'));
+
+      function closeMore() {
+        more.classList.remove('open');
+        moreBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function layout() {
+        if (getComputedStyle(wrap).display === 'none') return;
+        links.forEach(function(a) { a.style.display = ''; });
+        items.forEach(function(a) { a.style.display = 'none'; });
+        more.style.display = 'none';
+        moreBtn.classList.remove('active');
+        var i = links.length;
+        while (i > 1 && nav.offsetWidth > wrap.clientWidth) {
+          i--;
+          links[i].style.display = 'none';
+          items[i].style.display = 'block';
+          more.style.display = 'flex';
+        }
+        if (more.style.display === 'flex') {
+          var activeHidden = false;
+          for (var k = i; k < links.length; k++) {
+            if (links[k].classList.contains('active')) activeHidden = true;
+          }
+          moreBtn.classList.toggle('active', activeHidden);
+        } else {
+          closeMore();
+        }
+      }
+
+      moreBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var open = more.classList.toggle('open');
+        moreBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.addEventListener('click', function(e) {
+        if (!more.contains(e.target)) closeMore();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeMore();
+      });
+
+      var raf = null;
+      function schedule() {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function() { raf = null; layout(); });
+      }
+      window.addEventListener('resize', schedule);
+      window.addEventListener('load', schedule);
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(schedule);
+      if (window.ResizeObserver) new ResizeObserver(schedule).observe(wrap);
+      layout();
+    })();
+
+    // Close mobile menu on resize past the 768px breakpoint
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 768) {
+        closeMobileMenu();
+      }
+      closeUserMenu();
+    });
+  })();
+</script>
+
+<!-- Search Modal Root Container -->
+<div id="site-search-modal" 
+     class="fixed inset-0 z-[100] hidden items-start justify-center pt-16 sm:pt-24 px-4 pb-6 overflow-y-auto"
+     role="dialog" 
+     aria-modal="true" 
+     aria-labelledby="site-search-title"
+     style="display: none;">
+
+  <!-- Dimmed & Blurred Backdrop -->
+  <div id="site-search-backdrop" 
+       class="fixed inset-0 bg-background opacity-80 backdrop-blur-sm transition-opacity" 
+       aria-hidden="true"></div>
+
+  <!-- Dialog Frame -->
+  <div class="relative w-full max-w-2xl bg-surface border border-border rounded-2xl shadow-2xl overflow-hidden z-10 flex flex-col max-h-[82vh] transition-all">
+    
+    <!-- Hidden Title for Screen Readers -->
+    <h2 id="site-search-title" class="sr-only">Search Platform Technical Content</h2>
+
+    <!-- Search Input Bar -->
+    <div class="flex items-center gap-3 px-4 py-3.5 border-b border-border bg-surface-container-lowest">
+      <span class="material-symbols-outlined text-[20px] text-text-muted shrink-0" aria-hidden="true">search</span>
+      
+      <input id="site-search-input" 
+             type="text" 
+             class="w-full bg-transparent text-on-surface placeholder:text-text-muted text-base sm:text-sm font-sans focus:outline-none" 
+             placeholder="Search essays, projects, benchmarks (⌘K)..." 
+             autocomplete="off" 
+             autocorrect="off" 
+             autocapitalize="off" 
+             spellcheck="false"
+             aria-autocomplete="list"
+             aria-controls="site-search-results"
+             aria-expanded="false" />
+
+      <!-- Loading Spinner -->
+      <span id="site-search-spinner" class="material-symbols-outlined text-[18px] text-primary animate-spin shrink-0 hidden" aria-hidden="true">progress_activity</span>
+
+      <!-- Input Clear Button -->
+      <button type="button" 
+              id="site-search-clear" 
+              class="text-text-muted hover:text-text-primary transition-colors p-1 rounded hover:bg-surface-container hidden" 
+              title="Clear search query"
+              aria-label="Clear query">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+
+      <!-- Dismiss Button / ESC Badge -->
+      <button type="button"
+              id="site-search-close-btn"
+              class="hidden sm:inline-flex items-center px-1.5 py-0.5 rounded bg-surface-container text-[10px] font-mono text-text-muted border border-border hover:text-text-primary hover:border-outline transition-colors"
+              title="Close search modal (Esc)">
+        ESC
+      </button>
+    </div>
+
+    <!-- Scrollable Results / Suggestions Body -->
+    <div id="site-search-body" class="flex-1 overflow-y-auto p-4 max-h-[58vh] space-y-4">
+      
+      <!-- Default Suggested State (rendered when input is empty) -->
+      <div id="site-search-default-state" class="space-y-5 py-2">
+
+        <!-- Quick Platform Navigation -->
+        <div>
+          <span class="font-label-code text-[11px] uppercase tracking-wider text-text-muted font-semibold block mb-2.5">Quick Navigation</span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <a href="./projects.html" class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-text-secondary hover:text-text-primary transition-colors group">
+              <span class="text-xs font-sans font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-primary">terminal</span>
+                Engineering Projects
+              </span>
+              <span class="material-symbols-outlined text-[14px] text-text-muted group-hover:text-primary transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+            </a>
+            <a href="./lab.html" class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-text-secondary hover:text-text-primary transition-colors group">
+              <span class="text-xs font-sans font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-secondary">science</span>
+                Studio Lab Benchmarks
+              </span>
+              <span class="material-symbols-outlined text-[14px] text-text-muted group-hover:text-primary transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+            </a>
+            <a href="./articles.html" class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-text-secondary hover:text-text-primary transition-colors group">
+              <span class="text-xs font-sans font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-tertiary">article</span>
+                Research Writing
+              </span>
+              <span class="material-symbols-outlined text-[14px] text-text-muted group-hover:text-primary transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+            </a>
+            <a href="./journey.html" class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-text-secondary hover:text-text-primary transition-colors group">
+              <span class="text-xs font-sans font-medium flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-outline">timeline</span>
+                Architectural Journey
+              </span>
+              <span class="material-symbols-outlined text-[14px] text-text-muted group-hover:text-primary transition-transform group-hover:translate-x-0.5">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Results Container (dynamically injected) -->
+      <div id="site-search-results" class="space-y-5 hidden" role="listbox"></div>
+
+      <!-- No Results State -->
+      <div id="site-search-empty-state" class="py-12 text-center space-y-2 hidden">
+        <span class="material-symbols-outlined text-[32px] text-text-muted">search_off</span>
+        <p class="font-sans text-sm text-text-primary font-medium">No engineering records found</p>
+        <p class="font-sans text-xs text-text-muted max-w-sm mx-auto" id="site-search-empty-msg">
+          Try searching for broader keywords like &quot;database&quot;, &quot;index&quot;, or &quot;caching&quot;.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Modal Footer / Keyboard Controls Guide -->
+    <div class="px-4 py-2.5 bg-surface-container-low border-t border-border flex items-center justify-between text-[11px] font-mono text-text-muted">
+      <div class="flex items-center gap-3">
+        <span class="hidden sm:inline-flex items-center gap-1">
+          <kbd class="px-1 py-0.5 rounded bg-surface-container border border-border text-[9px]">↑</kbd>
+          <kbd class="px-1 py-0.5 rounded bg-surface-container border border-border text-[9px]">↓</kbd>
+          <span>navigate</span>
+        </span>
+        <span class="inline-flex items-center gap-1">
+          <kbd class="px-1 py-0.5 rounded bg-surface-container border border-border text-[9px]">↵</kbd>
+          <span>select</span>
+        </span>
+        <span class="inline-flex items-center gap-1">
+          <kbd class="px-1 py-0.5 rounded bg-surface-container border border-border text-[9px]">esc</kbd>
+          <span>close</span>
+        </span>
+      </div>
+      <div class="text-[10px] text-text-muted hidden sm:block">
+        Index v1
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal Controller Script -->
+<script>
+(function() {
+  var modal = document.getElementById('site-search-modal');
+  var backdrop = document.getElementById('site-search-backdrop');
+  var input = document.getElementById('site-search-input');
+  var spinner = document.getElementById('site-search-spinner');
+  var clearBtn = document.getElementById('site-search-clear');
+  var closeBtn = document.getElementById('site-search-close-btn');
+  var defaultState = document.getElementById('site-search-default-state');
+  var resultsContainer = document.getElementById('site-search-results');
+  var emptyState = document.getElementById('site-search-empty-state');
+  var emptyMsg = document.getElementById('site-search-empty-msg');
+  
+  var activeResults = [];
+  var activeIndex = -1;
+  var debounceTimer = null;
+  var currentAbortCtrl = null;
+  var lastFocusedElement = null;
+
+  // ------------------------------------------------------------
+  // Safe HTML Escaping (Guarantees zero raw HTML injection)
+  // ------------------------------------------------------------
+  function escapeHtml(str) {
+    if (str === null || str === undefined) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // ------------------------------------------------------------
+  // Open / Close Controllers
+  // ------------------------------------------------------------
+  function openModal() {
+    if (!modal) return;
+    lastFocusedElement = document.activeElement;
+    modal.style.display = 'flex';
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    
+    // Update trigger accessibility
+    var trigger = document.getElementById('site-search-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'true');
+
+    setTimeout(function() {
+      if (input) {
+        input.focus();
+        input.select();
+      }
+    }, 50);
+  }
+
+  function closeModal() {
+    if (!modal || modal.classList.contains('hidden')) return;
+    modal.style.display = 'none';
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+    
+    var trigger = document.getElementById('site-search-trigger');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+
+    if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+      lastFocusedElement.focus();
+    }
+  }
+
+  function clearSearch() {
+    if (!input) return;
+    input.value = '';
+    input.focus();
+    if (clearBtn) clearBtn.classList.add('hidden');
+    if (spinner) spinner.classList.add('hidden');
+    if (currentAbortCtrl) {
+      currentAbortCtrl.abort();
+      currentAbortCtrl = null;
+    }
+    showDefaultState();
+  }
+
+  function showDefaultState() {
+    activeResults = [];
+    activeIndex = -1;
+    if (defaultState) defaultState.classList.remove('hidden');
+    if (resultsContainer) {
+      resultsContainer.classList.add('hidden');
+      resultsContainer.innerHTML = '';
+    }
+    if (emptyState) emptyState.classList.add('hidden');
+    if (input) input.setAttribute('aria-expanded', 'false');
+  }
+
+  // ------------------------------------------------------------
+  // Render Grouped Search Results
+  // Strictly renders titles/snippets as escaped text or textContent
+  // ------------------------------------------------------------
+  function renderResults(query, data) {
+    if (!resultsContainer) return;
+    resultsContainer.innerHTML = '';
+    activeResults = [];
+    activeIndex = -1;
+
+    var projects = (data.results && data.results.projects) ? data.results.projects : [];
+    var articles = (data.results && data.results.articles) ? data.results.articles : [];
+    var lab      = (data.results && data.results.lab)      ? data.results.lab      : [];
+    var history  = (data.results && data.results.history)  ? data.results.history  : [];
+    var bookmarks = (data.results && data.results.bookmarks) ? data.results.bookmarks : [];
+    var total    = projects.length + articles.length + lab.length + history.length + bookmarks.length;
+
+    if (total === 0) {
+      if (defaultState) defaultState.classList.add('hidden');
+      if (resultsContainer) resultsContainer.classList.add('hidden');
+      if (emptyState) {
+        emptyState.classList.remove('hidden');
+        if (emptyMsg) {
+          emptyMsg.textContent = 'No technical records found matching "' + query + '". Try broader keywords like "database", "index", or "systems".';
+        }
+      }
+      if (input) input.setAttribute('aria-expanded', 'false');
+      return;
+    }
+
+    if (emptyState) emptyState.classList.add('hidden');
+    if (defaultState) defaultState.classList.add('hidden');
+    resultsContainer.classList.remove('hidden');
+    if (input) input.setAttribute('aria-expanded', 'true');
+
+    // Section: History
+    if (history.length > 0) {
+      appendSection('Reading History', 'history', history, 'text-primary', 'bg-primary/10 text-primary border-primary/20');
+    }
+
+    // Section: Bookmarks
+    if (bookmarks.length > 0) {
+      appendSection('Bookmarks', 'bookmark', bookmarks, 'text-primary', 'bg-primary/10 text-primary border-primary/20');
+    }
+
+    // Section 1: Lab Benchmarks
+    if (lab.length > 0) {
+      appendSection('Studio Lab', 'science', lab, 'text-secondary', 'bg-secondary/10 text-secondary border-secondary/20');
+    }
+
+    // Section 2: Engineering Projects
+    if (projects.length > 0) {
+      appendSection('Projects & Architecture', 'terminal', projects, 'text-primary', 'bg-primary/10 text-primary border-primary/20');
+    }
+
+    // Section 3: Research Articles
+    if (articles.length > 0) {
+      appendSection('Writing', 'article', articles, 'text-tertiary', 'bg-tertiary/10 text-tertiary border-tertiary/20');
+    }
+
+    // Select first result by default for immediate Enter-key navigation
+    if (activeResults.length > 0) {
+      setActiveIndex(0);
+    }
+  }
+
+  function appendSection(sectionTitle, iconName, items, iconColorClass, badgeClass) {
+    var sectionWrapper = document.createElement('div');
+    sectionWrapper.className = 'space-y-1.5';
+
+    // Section Header
+    var header = document.createElement('div');
+    header.className = 'flex items-center gap-1.5 px-2 pb-1 font-label-code text-[11px] uppercase tracking-wider text-text-muted font-semibold';
+    
+    var icon = document.createElement('span');
+    icon.className = 'material-symbols-outlined text-[14px] ' + iconColorClass;
+    icon.textContent = iconName;
+    header.appendChild(icon);
+
+    var titleSpan = document.createElement('span');
+    titleSpan.textContent = sectionTitle;
+    header.appendChild(titleSpan);
+
+    sectionWrapper.appendChild(header);
+
+    // List of items
+    var list = document.createElement('div');
+    list.className = 'flex flex-col gap-1';
+
+    items.forEach(function(item) {
+      var itemIndex = activeResults.length;
+      activeResults.push(item);
+
+      var a = document.createElement('a');
+      a.href = item.url;
+      a.className = 'site-search-item flex items-start gap-3 p-3 rounded-xl border border-transparent hover:border-border hover:bg-surface-container transition-all group cursor-pointer focus:outline-none focus:bg-surface-container focus:border-primary/30';
+      a.setAttribute('role', 'option');
+      a.setAttribute('id', 'search-result-' + itemIndex);
+      a.setAttribute('data-index', String(itemIndex));
+
+      // Left Icon Container
+      var leftIconWrap = document.createElement('div');
+      leftIconWrap.className = 'w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center shrink-0 border border-border group-hover:border-primary/30 transition-colors mt-0.5';
+      var leftIcon = document.createElement('span');
+      leftIcon.className = 'material-symbols-outlined text-[16px] text-text-muted group-hover:text-primary transition-colors';
+      leftIcon.textContent = iconName;
+      leftIconWrap.appendChild(leftIcon);
+      a.appendChild(leftIconWrap);
+
+      // Content Box
+      var contentBox = document.createElement('div');
+      contentBox.className = 'flex-1 min-w-0 flex flex-col gap-0.5';
+
+      // Title Row
+      var titleRow = document.createElement('div');
+      titleRow.className = 'flex items-center gap-2 justify-between';
+
+      var itemTitle = document.createElement('span');
+      itemTitle.className = 'text-xs sm:text-sm font-sans font-semibold text-text-primary group-hover:text-primary transition-colors truncate';
+      itemTitle.textContent = item.title; // SAFE: textContent avoids raw HTML
+      titleRow.appendChild(itemTitle);
+
+      // Category / Subsystem Badge
+      if (item.category || item.id) {
+        var badge = document.createElement('span');
+        badge.className = 'text-[10px] font-mono px-1.5 py-0.5 rounded border shrink-0 ' + badgeClass;
+        badge.textContent = item.id && item.type === 'lab' ? item.id : item.category;
+        titleRow.appendChild(badge);
+      }
+      contentBox.appendChild(titleRow);
+
+      // Snippet / Excerpt
+      if (item.snippet) {
+        var snippetP = document.createElement('p');
+        snippetP.className = 'text-xs font-sans text-text-muted line-clamp-1 leading-relaxed';
+        snippetP.textContent = item.snippet; // SAFE: textContent avoids raw HTML
+        contentBox.appendChild(snippetP);
+      }
+
+      a.appendChild(contentBox);
+
+      // Navigation Arrow
+      var arrowWrap = document.createElement('div');
+      arrowWrap.className = 'self-center text-text-muted group-hover:text-primary transition-transform group-hover:translate-x-0.5';
+      var arrowIcon = document.createElement('span');
+      arrowIcon.className = 'material-symbols-outlined text-[16px]';
+      arrowIcon.textContent = 'arrow_forward';
+      arrowWrap.appendChild(arrowIcon);
+      a.appendChild(arrowWrap);
+
+      // Hover / focus sync
+      a.addEventListener('mouseenter', function() {
+        setActiveIndex(itemIndex);
+      });
+
+      list.appendChild(a);
+    });
+
+    sectionWrapper.appendChild(list);
+    resultsContainer.appendChild(sectionWrapper);
+  }
+
+  // ------------------------------------------------------------
+  // Keyboard Selection Handling
+  // ------------------------------------------------------------
+  function setActiveIndex(newIndex) {
+    var items = resultsContainer ? resultsContainer.querySelectorAll('.site-search-item') : [];
+    if (!items.length) return;
+
+    if (activeIndex >= 0 && activeIndex < items.length) {
+      items[activeIndex].classList.remove('bg-surface-container', 'border-border', 'ring-1', 'ring-primary/40');
+      items[activeIndex].setAttribute('aria-selected', 'false');
+    }
+
+    activeIndex = newIndex;
+    if (activeIndex >= items.length) activeIndex = 0;
+    if (activeIndex < 0) activeIndex = items.length - 1;
+
+    var activeEl = items[activeIndex];
+    if (activeEl) {
+      activeEl.classList.add('bg-surface-container', 'border-border', 'ring-1', 'ring-primary/40');
+      activeEl.setAttribute('aria-selected', 'true');
+      activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+    }
+  }
+
+  function navigateToActive() {
+    if (activeIndex >= 0 && activeIndex < activeResults.length) {
+      var selected = activeResults[activeIndex];
+      if (selected && selected.url) {
+        window.location.href = selected.url;
+      }
+    }
+  }
+
+  // ------------------------------------------------------------
+  // Debounced API Query Fetcher
+  // ------------------------------------------------------------
+  function performSearch(query) {
+    var trimmed = query.trim();
+    if (trimmed.length < 2) {
+      if (spinner) spinner.classList.add('hidden');
+      showDefaultState();
+      return;
+    }
+
+    if (clearBtn) clearBtn.classList.remove('hidden');
+    if (spinner) spinner.classList.remove('hidden');
+
+    if (currentAbortCtrl) {
+      currentAbortCtrl.abort();
+    }
+    currentAbortCtrl = new AbortController();
+
+    fetch('/api/search.php?q=' + encodeURIComponent(trimmed) + '&limit=5', {
+      signal: currentAbortCtrl.signal,
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Search failed with status ' + res.status);
+      return res.json();
+    })
+    .then(function(data) {
+      if (spinner) spinner.classList.add('hidden');
+      if (data && data.success) {
+        renderResults(trimmed, data);
+      }
+    })
+    .catch(function(err) {
+      if (err.name === 'AbortError') return;
+      if (spinner) spinner.classList.add('hidden');
+      renderResults(trimmed, { results: { projects: [], articles: [], lab: [] } });
+    });
+  }
+
+  // ------------------------------------------------------------
+  // Event Listeners
+  // ------------------------------------------------------------
+  if (input) {
+    input.addEventListener('input', function(e) {
+      var val = e.target.value;
+      if (clearBtn) {
+        if (val.length > 0) clearBtn.classList.remove('hidden');
+        else clearBtn.classList.add('hidden');
+      }
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(function() {
+        performSearch(val);
+      }, 200);
+    });
+
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        setActiveIndex(activeIndex + 1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        setActiveIndex(activeIndex - 1);
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        navigateToActive();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+      }
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', clearSearch);
+  }
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeModal);
+  }
+
+  // Suggested chip button clicks
+  document.querySelectorAll('.site-search-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      var term = this.getAttribute('data-term');
+      if (term && input) {
+        input.value = term;
+        input.focus();
+        performSearch(term);
+      }
+    });
+  });
+
+  // Global Keyboard Trap and Hotkeys
+  window.addEventListener('keydown', function(e) {
+    // ⌘K or Ctrl+K opens modal
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (modal && !modal.classList.contains('hidden')) {
+        closeModal();
+      } else {
+        openModal();
+      }
+      return;
+    }
+
+    // Escape closes modal
+    if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+      e.preventDefault();
+      closeModal();
+    }
+  });
+
+  // Expose global controller
+  window.SiteSearch = {
+    open: openModal,
+    close: closeModal,
+    clear: clearSearch,
+    setQuery: function(q) {
+      openModal();
+      if (input) {
+        input.value = q;
+        performSearch(q);
+      }
+    }
+  };
+})();
+</script>
+
+
+  
+  <main class="page-transition-wrapper relative z-0 w-full pt-16 min-h-[calc(100vh-16rem)]">
+    <div class="page-container py-space-xl editorial-narrative-flow">
+      
+      <!-- ============================================================
+           ACT I: IDENTITY & ENGINEERING THESIS (HERO)
+           Answers: "Who is Mohammed and what does he research/build?"
+           ============================================================ -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg lg:gap-space-xl items-center pt-space-md pb-space-xl border-b border-border-subtle" aria-label="Engineering Identity">
+        
+        <div class="lg:col-span-8 flex flex-col gap-5 w-full">
+          <!-- Monospace Overline -->
+          <div class="flex items-center gap-2">
+            <span id="hero-overline" class="editorial-overline">COMPUTER SCIENCE STUDENT · SOFTWARE BUILDER · LIFELONG LEARNER</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
+          </div>
+
+          <!-- Balanced Typographic Headline -->
+          <h1 id="hero-headline" class="font-display text-[clamp(2.1rem,4.5vw,3.75rem)] text-on-surface font-bold tracking-tight leading-[1.08] transition-opacity duration-300">
+            Mohammed Alrashadi
+          </h1>
+
+          <!-- Personal Engineering Stance -->
+          <div class="hero-thesis-statement flex flex-col gap-4">
+            <p class="font-sans text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl xl:max-w-4xl font-medium">
+              I design and build web applications, learning systems, and technical projects while documenting my journey through university, engineering, and personal growth.
+            </p>
+            <p class="font-sans text-sm sm:text-base text-text-secondary leading-relaxed max-w-2xl xl:max-w-4xl">
+              This site is my public workspace for projects, writing, achievements, experiments, and the path I am building toward a career in software engineering.
+            </p>
+          </div>
+
+                    
+          <!-- Primary Direct Workflow Actions -->
+          <div id="hero-actions" class="flex flex-wrap items-center gap-space-md mt-2 transition-opacity duration-300">
+            <a id="hero-action-primary" href="#systems" class="btn btn-primary px-6 py-3 rounded-lg font-medium text-sm sm:text-base">
+              <span id="hero-action-primary-text">View Projects</span>
+              <span id="hero-action-primary-icon" class="material-symbols-outlined text-[18px]">arrow_downward</span>
+            </a>
+            <a id="hero-action-secondary" href="./journey.html" class="btn btn-secondary px-6 py-3 rounded-lg font-medium text-sm sm:text-base">
+              <span id="hero-action-secondary-text">Explore My Journey</span>
+              <span id="hero-action-secondary-icon" class="material-symbols-outlined text-[18px]">route</span>
+            </a>
+            <a href="./articles.html" class="btn btn-ghost px-5 py-3 rounded-lg font-mono text-xs text-primary border border-border hover:border-primary">
+              <span>READ WRITING</span>
+              <span class="material-symbols-outlined text-[16px]">article</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Personal Identity & Clock of Life Card -->
+        <div class="hidden lg:flex lg:col-span-4 justify-center items-center relative" aria-hidden="true">
+          <div class="w-full max-w-[320px] xl:max-w-[360px] rounded-2xl bg-surface-container border border-border p-6 flex flex-col items-center justify-center relative overflow-hidden backdrop-blur-sm shadow-sm group min-h-[380px]">
+            
+            <!-- Clock of Life Background Motif -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" style="transform: scale(1.6);">
+                <div class="chrono-clock chrono-clock--sm" id="hero-clock-motif" aria-hidden="true">
+                    <svg class="chrono-arc" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="46" class="chrono-ring-outer" />
+                        <circle cx="50" cy="50" r="38" class="chrono-ring-inner" />
+                        <circle cx="50" cy="50" r="46" class="chrono-ring-progress" id="chrono-progress-hero" />
+                    </svg>
+                    <div class="chrono-hands">
+                        <div class="chrono-sec-hand" id="sec-hand-hero"></div>
+                    </div>
+                    <div class="chrono-center"></div>
+                </div>
+            </div>
+
+            <!-- Content Container (Above Clock) -->
+            <div class="relative z-10 flex flex-col items-center gap-5 w-full mt-2">
+              
+              <!-- Avatar Area -->
+              <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-surface-container-highest border border-border shadow-inner overflow-hidden flex items-center justify-center relative">
+                <!-- Instruction for the user -->
+                <span class="text-[10px] font-mono text-text-muted text-center px-2 leading-tight">
+                  Insert Image<br><span class="text-primary opacity-80">/assets/images/me.jpg</span>
+                </span>
+                <!-- To activate, uncomment and add real path:
+                <img src="./assets/images/me.jpg" alt="Mohammed Alrashadi" class="w-full h-full object-cover">
+                -->
+              </div>
+
+              <!-- Identity text -->
+              <div class="flex flex-col items-center gap-1.5 text-center mt-2">
+                <span class="font-display text-xl sm:text-2xl font-bold text-on-surface tracking-tight">Mohammed Alrashadi</span>
+                <span class="font-mono text-[10px] sm:text-xs text-primary uppercase tracking-widest font-semibold">CS Student · Builder</span>
+              </div>
+
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap items-center justify-center gap-1.5 mt-2 w-full max-w-[280px]">
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Computer Science</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Software Engineering</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Web Development</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">AI Tools</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Databases</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Learning Systems</span>
+              </div>
+
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           CONTEXT-AWARE WORKSPACE
+           ============================================================ -->
+      <script>document.body.classList.add("page-home");</script>    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 pb-16" aria-label="Guest Dashboard">
+        <!-- LATEST -->
+        <div class="lg:col-span-8 dash-panel">
+            <header class="dash-panel-header">
+                <span class="dash-overline">LATEST</span>
+            </header>
+                            <div class="dash-empty">
+                    <span class="dash-empty-title">No articles published yet</span>
+                    <span class="dash-empty-text">New writing and projects appear here as soon as they're published.</span>
+                    <a href="./projects.html" class="btn btn-primary text-sm mt-2">Browse projects</a>
+                </div>
+                    </div>
+
+        <!-- STACKED PANELS (NOW & ACCOUNT) -->
+        <div class="lg:col-span-4 flex flex-col gap-6">
+            <!-- NOW -->
+            
+            <!-- ACCOUNT -->
+            <section class="dash-panel bg-surface-container" aria-labelledby="account-heading">
+                <header class="dash-panel-header hidden">
+                    <span id="account-heading" class="dash-overline">ACCOUNT</span>
+                </header>
+                <p class="text-sm text-text-secondary mb-4">
+                    Sign in to continue reading where you stopped, save articles and keep your history.
+                </p>
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="./login.html" class="btn btn-primary text-sm px-4">Sign in</a>
+                    <a href="./register.html" class="text-sm font-mono text-text-muted hover:text-primary transition-colors">Create account</a>
+                </div>
+            </section>
+        </div>
+    </section>
+    
+
+
+
+
+      <!-- ============================================================
+           ACT II: WHAT I BUILD (ARCHITECTURAL SYSTEMS SPOTLIGHT & DOSSIERS)
+           Answers: "What complex engineering systems does Mohammed build?"
+           ============================================================ -->
+      <section class="editorial-section reveal-section" id="systems" aria-label="Engineered Systems">
+        <div class="editorial-section-header with-action">
+          <div>
+            <span class="editorial-overline">PROJECTS</span>
+            <h2 class="editorial-title">Projects</h2>
+            <p class="editorial-subtitle">
+              Systems I have built, with notes on how they work and why I built them.
+            </p>
+          </div>
+          <a href="./projects.html" class="btn btn-ghost text-xs font-mono text-primary gap-1">
+            <span>All Projects</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
+        </div>
+
+                  <div class="staging-state">
+            <span class="staging-state-label">COMING SOON</span>
+            <p class="staging-state-title">Projects are being added</p>
+            <p class="staging-state-desc">Project write-ups will appear here soon.</p>
+            <a href="./lab.html" class="btn btn-secondary mt-3" style="font-size: 0.8125rem;">Visit Studio Lab</a>
+          </div>
+              </section>
+
+
+      <!-- ============================================================
+           ACT III: SELECTED WORK (CURATED SHOWCASE RAIL)
+           Answers: "What are the curated artifacts across all domains?"
+           ============================================================ -->
+      <section class="editorial-section reveal-section" id="showcase" aria-label="Visual Showcase">
+        <div class="editorial-section-header with-action">
+          <div>
+            <span class="editorial-overline">FEATURED</span>
+            <h2 class="editorial-title">Featured Work</h2>
+            <p class="editorial-subtitle">
+              A selection of my tools, systems, and research.
+            </p>
+          </div>
+
+          <!-- Rail Navigation Controls -->
+                  </div>
+
+                  <div class="staging-state">
+            <span class="staging-state-label">COMING SOON</span>
+            <p class="staging-state-title">Nothing featured yet</p>
+            <p class="staging-state-desc">Featured work will appear here soon.</p>
+          </div>
+              </section>
+
+
+      <!-- ============================================================
+           ACT IV: WHAT I WRITE (TECHNICAL PUBLICATIONS JOURNAL)
+           Answers: "What does Mohammed write about?"
+           ============================================================ -->
+      <section class="editorial-section reveal-section" id="writing" aria-label="Technical Writing">
+        <div class="editorial-section-header with-action">
+          <div>
+            <span class="editorial-overline">WRITING</span>
+            <h2 class="editorial-title">Writing</h2>
+            <p class="editorial-subtitle">
+              Articles about databases, distributed systems, and backend design.
+            </p>
+          </div>
+          <a class="btn btn-ghost text-xs font-mono text-primary hover:text-secondary gap-1" href="./articles.html">
+            <span>All Writing</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
+        </div>
+
+                  <div class="staging-state">
+            <span class="staging-state-label">COMING SOON</span>
+            <p class="staging-state-title">No Writing Published Yet</p>
+            <p class="staging-state-desc">Articles will appear here once they are published.</p>
+          </div>
+              </section>
+
+
+      <!-- ============================================================
+           ACT V: WHAT I EXPERIMENT WITH (STUDIO LAB)
+           Answers: "What empirical experiments does Mohammed conduct?"
+           ============================================================ -->
+      <section class="editorial-section reveal-section" id="lab" aria-label="Studio Lab">
+        <div class="editorial-section-header with-action">
+          <div>
+            <span class="editorial-overline">STUDIO LAB</span>
+            <h2 class="editorial-title">Lab</h2>
+            <p class="editorial-subtitle">
+              Tests, benchmarks, and hardware research.
+            </p>
+          </div>
+          <a class="btn btn-ghost text-xs font-mono text-primary hover:text-secondary gap-1" href="./lab.html">
+            <span>Explore Lab</span>
+            <span class="material-symbols-outlined text-[16px]">science</span>
+          </a>
+        </div>
+
+                  <div class="staging-state">
+            <span class="staging-state-label">COMING SOON</span>
+            <p class="staging-state-title">Experiments are being added</p>
+            <p class="staging-state-desc">Lab experiments will appear here soon.</p>
+          </div>
+              </section>
+
+
+      <!-- ============================================================
+           ACT VI: TRAJECTORY & CORE CONVICTIONS
+           Answers: "What are Mohammed's engineering principles & journey?"
+           ============================================================ -->
+      
+
+      <!-- ============================================================
+           ACT VII: DEVELOPER TOOLS & STUDIO RESOURCES (STORE)
+           Answers: "What practical tools does the studio produce?"
+           ============================================================ -->
+      <section class="editorial-section reveal-section" id="store" aria-label="Studio Resources">
+        <div class="editorial-section-header with-action">
+          <div>
+            <span class="editorial-overline">STORE</span>
+            <h2 class="editorial-title">Store &amp; Resources</h2>
+            <p class="editorial-subtitle">
+              Templates, blueprints, and developer tools I made while studying.
+            </p>
+          </div>
+          <a class="btn btn-ghost text-xs font-mono text-primary hover:text-secondary gap-1" href="./store.html">
+            <span>Browse Store</span>
+            <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+          </a>
+        </div>
+
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-space-lg pt-4 pb-2 border-l-[3px] border-primary pl-5">
+          <div class="flex flex-col gap-2 max-w-2xl">
+            <div class="flex items-center gap-2">
+              <span class="badge badge-accent">OPEN STORE</span>
+              <span class="font-mono text-xs text-text-muted">TOOLS &amp; BLUEPRINTS</span>
+            </div>
+            <h3 class="font-headline-sm text-xl font-bold text-on-surface">
+              Blueprints and Developer Tools
+            </h3>
+            <p class="font-sans text-sm text-text-secondary leading-relaxed">
+              Download database schemas, starter projects, and templates. Each item shows whether it is a free file or an external link.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-3 shrink-0">
+            <a href="./store.html" class="btn btn-primary text-xs py-2.5 px-5">
+              <span class="material-symbols-outlined text-[18px]">store</span>
+              <span>Visit Store</span>
+            </a>
+            <a href="./about.html" class="btn btn-secondary text-xs py-2.5 px-5">
+              <span class="material-symbols-outlined text-[18px]">person</span>
+              <span>About Mohammed</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+<footer class="site-footer py-10" aria-label="Site footer">
+
+
+  <div class="page-container site-footer__inner relative z-10">
+
+    <a href="./index.html" class="site-footer__brand text-decoration-none" title="Home">
+      <div class="platform-logo-wrapper" title="Home" aria-label="Logo" style="display: flex; align-items: center; justify-content: center;">
+  <svg viewBox="0 0 40 40" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+    <!-- Simple Stylized M -->
+    <path d="M10 30 V10 L20 20 L30 10 V30" />
+  </svg>
+</div>
+      <span class="site-footer__brand-name">Mohammed Alrashadi</span>
+    </a>
+
+    <!-- Explore links, with social media underneath -->
+    <div class="site-footer__explore">
+      <nav aria-label="Footer navigation">
+        <ul class="site-footer__list">
+          <li><a href="./index.html" class="hover:text-primary transition-colors">Home</a></li>
+                      <li><a href="./lab.html">Studio Lab</a></li>
+                      <li><a href="./store.html">Store</a></li>
+                      <li><a href="./articles.html">Writing</a></li>
+                      <li><a href="./about.html">About</a></li>
+                  </ul>
+      </nav>
+
+              <div class="site-footer__social-section mt-6">
+          <h3 class="sr-only">Connect</h3>
+          <ul class="site-footer__social flex flex-wrap" aria-label="Social media">
+                                  <li>
+                 class="min-h-[44px] p-2 flex items-center justify-center"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 title="X"
+                 aria-label="Mohammed Alrashadi on X (opens in new tab)">
+                <svg class="site-footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>              </a>
+            </li>
+                                  <li>
+                 class="min-h-[44px] p-2 flex items-center justify-center"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 title="LinkedIn"
+                 aria-label="Mohammed Alrashadi on LinkedIn (opens in new tab)">
+                <svg class="site-footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>              </a>
+            </li>
+                                  <li>
+                 class="min-h-[44px] p-2 flex items-center justify-center"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 title="Instagram"
+                 aria-label="Mohammed Alrashadi on Instagram (opens in new tab)">
+                <svg class="site-footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>              </a>
+            </li>
+                            </ul>
+        </div>
+          </div>
+
+    <nav aria-label="Legal and support">
+      <ul class="site-footer__list site-footer__legal">
+                <li><a href="./privacy.html">Privacy</a></li>
+                        <li><a href="./terms.html">Terms</a></li>
+                                <li><a href="./support.html">Support</a></li>
+                <li><a href="./rss.xml">RSS</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <!-- Bottom bar: copyright, under everything -->
+  <div class="page-container site-footer__bottom">
+    <p>&copy; 2026 Mohammed Alrashadi. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Real Visitor Telemetry (Throttled per page load) -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  try {
+    fetch('/api/telemetry/visit.php', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ page: window.location.pathname })
+    }).catch(() => {});
+  } catch (e) {}
+});
+</script>
+<!-- Motion System -->
+<script src="./assets/js/motion.js?v=1790573452" defer></script>
+
+  <!-- Horizontal Showcase Scroll Controller -->
+  <script>
+    (function() {
+      var track = document.getElementById('showcase-track');
+      var prevBtn = document.getElementById('showcase-prev');
+      var nextBtn = document.getElementById('showcase-next');
+
+      if (track && prevBtn && nextBtn) {
+        var getScrollDistance = function() {
+          var firstCard = track.querySelector('.showcase-card');
+          return firstCard ? firstCard.offsetWidth + 24 : 400;
+        };
+
+        var updateButtonState = function() {
+          var maxScroll = track.scrollWidth - track.clientWidth;
+          if (maxScroll <= 0) {
+            prevBtn.style.opacity = '0.35';
+            nextBtn.style.opacity = '0.35';
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+          } else {
+            var atStart = track.scrollLeft <= 5;
+            var atEnd = track.scrollLeft >= maxScroll - 5;
+            prevBtn.style.opacity = atStart ? '0.35' : '1';
+            nextBtn.style.opacity = atEnd ? '0.35' : '1';
+            prevBtn.disabled = atStart;
+            nextBtn.disabled = atEnd;
+          }
+        };
+
+        track.addEventListener('scroll', updateButtonState, { passive: true });
+        window.addEventListener('resize', updateButtonState);
+        setTimeout(updateButtonState, 100);
+
+        prevBtn.addEventListener('click', function() {
+          track.scrollBy({ left: -getScrollDistance(), behavior: 'smooth' });
+        });
+
+        nextBtn.addEventListener('click', function() {
+          track.scrollBy({ left: getScrollDistance(), behavior: 'smooth' });
+        });
+
+        // Keyboard arrow navigation when track is focused
+        track.addEventListener('keydown', function(e) {
+          if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            track.scrollBy({ left: -getScrollDistance(), behavior: 'smooth' });
+          } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            track.scrollBy({ left: getScrollDistance(), behavior: 'smooth' });
+          }
+        });
+      }
+    })();
+  </script>
+
+
+
+</body>
+</html>
