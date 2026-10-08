@@ -96,10 +96,10 @@ if (empty($showcaseItems)) {
             'id'           => (int)$p['id'],
             'item_type'    => 'project',
             'badge'        => 'Project',
-            'category'     => $p['category'] ?: 'Software Engineering',
+            'category'     => (string)($p['category'] ?? ''),
             'title'        => $p['title'],
             'description'  => mb_substr($cleanContent, 0, 150, 'UTF-8') . (mb_strlen($cleanContent, 'UTF-8') > 150 ? '...' : ''),
-            'image'        => !empty($p['image_url']) ? $p['image_url'] : '/assets/diagram_distributed_systems.png',
+            'image'        => !empty($p['image_url']) ? $p['image_url'] : '',
             'url'          => '/project.php?id=' . (int)$p['id'],
             'action_label' => 'Inspect System'
         ];
@@ -110,10 +110,10 @@ if (empty($showcaseItems)) {
             'id'           => 0,
             'item_type'    => 'experiment',
             'badge'        => 'Lab',
-            'category'     => $primaryExperiment['categoryLabel'] ?? 'Database Internals',
+            'category'     => (string)($primaryExperiment['categoryLabel'] ?? ''),
             'title'        => $primaryExperiment['title'],
-            'description'  => $primaryExperiment['outcomeHeadline'] ?? $primaryExperiment['question'] ?? 'Empirical benchmark evaluating database performance boundaries.',
-            'image'        => !empty($primaryExperiment['image']) ? $primaryExperiment['image'] : '/assets/benchmark_btree_hash.png',
+            'description'  => (string)($primaryExperiment['outcomeHeadline'] ?? $primaryExperiment['question'] ?? ''),
+            'image'        => !empty($primaryExperiment['image']) ? $primaryExperiment['image'] : '',
             'url'          => '/lab-detail.php?id=' . urlencode($primaryExperiment['id']),
             'action_label' => 'Inspect Benchmark'
         ];
@@ -126,10 +126,10 @@ if (empty($showcaseItems)) {
             'id'           => (int)$a['id'],
             'item_type'    => 'article',
             'badge'        => 'Writing',
-            'category'     => $a['category'] ?: 'Systems',
+            'category'     => (string)($a['category'] ?? ''),
             'title'        => $a['title'],
             'description'  => mb_substr($cleanArt, 0, 150, 'UTF-8') . (mb_strlen($cleanArt, 'UTF-8') > 150 ? '...' : ''),
-            'image'        => !empty($a['image_url']) ? $a['image_url'] : '/assets/code_ide_architecture.png',
+            'image'        => !empty($a['image_url']) ? $a['image_url'] : '',
             'url'          => '/post.php?id=' . (int)$a['id'],
             'action_label' => 'Read Essay'
         ];
@@ -147,6 +147,31 @@ if ($dbConnected && isset($pdo)) {
         $sameAsUrls = array_values(array_filter($sStmt->fetchAll(PDO::FETCH_COLUMN)));
     } catch (Throwable $e) {
         $sameAsUrls = [];
+    }
+}
+
+// Principles and journey shown on Home come from the admin-managed tables
+// (About Content / Journey). Missing table or empty data -> section is hidden.
+$homePrinciples = [];
+$homeMilestones = [];
+if ($dbConnected && isset($pdo)) {
+    try {
+        $homePrinciples = $pdo->query(
+            "SELECT title, description FROM about_content_blocks
+              WHERE deleted_at IS NULL AND block_type = 'principle'
+              ORDER BY sort_order ASC, id ASC LIMIT 3"
+        )->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Throwable $e) {
+        $homePrinciples = [];
+    }
+    try {
+        $homeMilestones = $pdo->query(
+            "SELECT title, period_label, description FROM journey_milestones
+              WHERE deleted_at IS NULL AND status = 'published'
+              ORDER BY sort_order ASC, id ASC LIMIT 3"
+        )->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Throwable $e) {
+        $homeMilestones = [];
     }
 }
 
@@ -181,7 +206,7 @@ $personSchema = [
   <?= json_encode($personSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_HEX_TAG | JSON_HEX_AMP) ?>
   </script>
 </head>
-<body class="bg-background text-on-surface font-sans antialiased min-h-screen selection:bg-primary-container selection:text-on-primary">
+<body class="page-home bg-background text-on-surface font-sans antialiased min-h-screen selection:bg-primary-container selection:text-on-primary">
   
   <?php require_once __DIR__ . '/includes/header.php'; ?>
   <?php $isLoggedInIndex = currentUserId() > 0; ?>
@@ -190,49 +215,43 @@ $personSchema = [
     <div class="page-container py-space-xl editorial-narrative-flow">
       
       <!-- ============================================================
-           ACT I: IDENTITY & ENGINEERING THESIS (HERO) - GUEST ONLY
+           ACT I: IDENTITY & ENGINEERING THESIS (HERO)
            Answers: "Who is Mohammed and what does he research/build?"
            ============================================================ -->
-      <?php if (!$isLoggedInIndex): ?>
       <section class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg lg:gap-space-xl items-center pt-space-md pb-space-xl border-b border-border-subtle" aria-label="Engineering Identity">
         
         <div class="lg:col-span-8 flex flex-col gap-5 w-full">
           <!-- Monospace Overline -->
           <div class="flex items-center gap-2">
-            <span id="hero-overline" class="editorial-overline">MOHAMMED ALRASHADI · SOFTWARE ENGINEERING STUDENT</span>
+            <span id="hero-overline" class="editorial-overline">COMPUTER SCIENCE STUDENT · SOFTWARE BUILDER · LIFELONG LEARNER</span>
             <span class="w-1.5 h-1.5 rounded-full bg-primary inline-block"></span>
           </div>
 
           <!-- Balanced Typographic Headline -->
           <h1 id="hero-headline" class="font-display text-[clamp(2.1rem,4.5vw,3.75rem)] text-on-surface font-bold tracking-tight leading-[1.08] transition-opacity duration-300">
-            Database Systems, Storage &amp; Concurrency.
+            Mohammed Alrashadi
           </h1>
 
           <!-- Personal Engineering Stance -->
-          <div class="hero-thesis-statement">
-            <h2 class="font-mono text-xs sm:text-sm text-primary uppercase tracking-widest font-semibold">
-              BUILD. LEARN. EXPERIMENT. EVOLVE.
-            </h2>
-            <p class="font-sans text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl xl:max-w-4xl">
-              I am a software engineering student. I study how databases store data, how they handle many users at the same time (MVCC), and how distributed systems agree with each other. This website is where I share my projects, lab experiments, and writing.
+          <div class="hero-thesis-statement flex flex-col gap-4">
+            <p class="font-sans text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl xl:max-w-4xl font-medium">
+              I design and build web applications, learning systems, and technical projects while documenting my journey through university, engineering, and personal growth.
+            </p>
+            <p class="font-sans text-sm sm:text-base text-text-secondary leading-relaxed max-w-2xl xl:max-w-4xl">
+              This site is my public workspace for projects, writing, achievements, experiments, and the path I am building toward a career in software engineering.
             </p>
           </div>
 
-          <!-- Studio Research Posture Ledger -->
-          <div class="hero-research-strip" aria-label="Studio Research Status">
+          <?php $heroFocus = trim((string)($profile['current_focus'] ?? '')); ?>
+          <?php if ($heroFocus !== ''): ?>
+          <!-- Current focus (admin: Settings > profile.current_focus) -->
+          <div class="hero-research-strip" aria-label="Current focus">
             <div class="hero-research-item">
               <span class="hero-research-label">CURRENTLY STUDYING</span>
-              <span class="hero-research-val">MVCC and B-Tree Indexes</span>
-            </div>
-            <div class="hero-research-item">
-              <span class="hero-research-label">MAIN FOCUS</span>
-              <span class="hero-research-val">Databases and Concurrency</span>
-            </div>
-            <div class="hero-research-item">
-              <span class="hero-research-label">STATUS</span>
-              <span class="hero-research-val" style="color: var(--color-primary); font-family: var(--font-mono); font-size: 11.5px;">ACTIVELY LEARNING</span>
+              <span class="hero-research-val"><?= htmlspecialchars($heroFocus) ?></span>
             </div>
           </div>
+          <?php endif; ?>
 
           <!-- Primary Direct Workflow Actions -->
           <div id="hero-actions" class="flex flex-wrap items-center gap-space-md mt-2 transition-opacity duration-300">
@@ -240,71 +259,71 @@ $personSchema = [
               <span id="hero-action-primary-text">View Projects</span>
               <span id="hero-action-primary-icon" class="material-symbols-outlined text-[18px]">arrow_downward</span>
             </a>
-            <a id="hero-action-secondary" href="/articles.php" class="btn btn-secondary px-6 py-3 rounded-lg font-medium text-sm sm:text-base">
-              <span id="hero-action-secondary-text">Read Writing</span>
-              <span id="hero-action-secondary-icon" class="material-symbols-outlined text-[18px]">article</span>
+            <a id="hero-action-secondary" href="/journey.php" class="btn btn-secondary px-6 py-3 rounded-lg font-medium text-sm sm:text-base">
+              <span id="hero-action-secondary-text">Explore My Journey</span>
+              <span id="hero-action-secondary-icon" class="material-symbols-outlined text-[18px]">route</span>
             </a>
-            <a href="/lab.php" class="btn btn-ghost px-5 py-3 rounded-lg font-mono text-xs text-primary border border-border hover:border-primary">
-              <span>STUDIO LAB</span>
-              <span class="material-symbols-outlined text-[16px]">science</span>
+            <a href="/articles.php" class="btn btn-ghost px-5 py-3 rounded-lg font-mono text-xs text-primary border border-border hover:border-primary">
+              <span>READ WRITING</span>
+              <span class="material-symbols-outlined text-[16px]">article</span>
             </a>
           </div>
         </div>
 
-        <!-- Restrained 3D Architectural Consensus Topology (Zero external dependencies) -->
+        <!-- Personal Identity & Clock of Life Card -->
         <div class="hidden lg:flex lg:col-span-4 justify-center items-center relative" aria-hidden="true">
-          <div class="w-full max-w-[320px] xl:max-w-[420px] rounded-xl bg-surface-container-low/70 border border-border p-4 flex flex-col items-center justify-between relative overflow-hidden backdrop-blur-sm shadow-sm group">
-            <div class="w-full flex items-center justify-between font-mono text-[10px] text-text-muted tracking-widest uppercase mb-4">
-              <span>INDEX STRUCTURE</span>
-              <span class="text-primary font-bold">B-TREE</span>
+          <div class="w-full max-w-[320px] xl:max-w-[360px] rounded-2xl bg-surface-container border border-border p-6 flex flex-col items-center justify-center relative overflow-hidden backdrop-blur-sm shadow-sm group min-h-[380px]">
+            
+            <!-- Clock of Life Background Motif -->
+            <div class="absolute inset-0 flex items-center justify-center opacity-10 group-hover:opacity-20 transition-opacity duration-700 pointer-events-none" style="transform: scale(1.6);">
+                <div class="chrono-clock chrono-clock--sm" id="hero-clock-motif" aria-hidden="true">
+                    <svg class="chrono-arc" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="46" class="chrono-ring-outer" />
+                        <circle cx="50" cy="50" r="38" class="chrono-ring-inner" />
+                        <circle cx="50" cy="50" r="46" class="chrono-ring-progress" id="chrono-progress-hero" />
+                    </svg>
+                    <div class="chrono-hands">
+                        <div class="chrono-sec-hand" id="sec-hand-hero"></div>
+                    </div>
+                    <div class="chrono-center"></div>
+                </div>
+            </div>
+
+            <!-- Content Container (Above Clock) -->
+            <div class="relative z-10 flex flex-col items-center gap-5 w-full mt-2">
+              
+              <!-- Avatar Area -->
+              <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-surface-container-highest border border-border shadow-inner overflow-hidden flex items-center justify-center relative">
+                <!-- Instruction for the user -->
+                <span class="text-[10px] font-mono text-text-muted text-center px-2 leading-tight">
+                  Insert Image<br><span class="text-primary opacity-80">/assets/images/me.jpg</span>
+                </span>
+                <!-- To activate, uncomment and add real path:
+                <img src="/assets/images/me.jpg" alt="Mohammed Alrashadi" class="w-full h-full object-cover">
+                -->
+              </div>
+
+              <!-- Identity text -->
+              <div class="flex flex-col items-center gap-1.5 text-center mt-2">
+                <span class="font-display text-xl sm:text-2xl font-bold text-on-surface tracking-tight">Mohammed Alrashadi</span>
+                <span class="font-mono text-[10px] sm:text-xs text-primary uppercase tracking-widest font-semibold">CS Student · Builder</span>
+              </div>
+
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap items-center justify-center gap-1.5 mt-2 w-full max-w-[280px]">
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Computer Science</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Software Engineering</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Web Development</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">AI Tools</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Databases</span>
+                <span class="px-2 py-1 rounded-md border border-border bg-surface-container-lowest font-mono text-[9px] text-text-secondary uppercase tracking-wider">Learning Systems</span>
+              </div>
+
             </div>
             
-            <svg viewBox="0 0 280 180" role="img" aria-label="B-Tree Diagram with root keys 30 and 60, and leaf nodes 10, 20, 40, 50, 70, 80" class="w-full h-auto py-2">
-              <!-- Root Node (30, 60) -->
-              <rect x="100" y="10" width="80" height="32" rx="4" stroke="var(--color-border)" fill="var(--color-surface-container)" stroke-width="1.5" />
-              <line x1="140" y1="10" x2="140" y2="42" stroke="var(--color-border)" stroke-width="1.5" />
-              <text x="120" y="30" fill="var(--color-text-primary)" stroke="none" font-size="14" font-family="monospace" text-anchor="middle">30</text>
-              <text x="160" y="30" fill="var(--color-text-primary)" stroke="none" font-size="14" font-family="monospace" text-anchor="middle">60</text>
-
-              <!-- Left Leaf Node (10, 20) -->
-              <rect x="10" y="100" width="80" height="32" rx="4" stroke="var(--color-border)" fill="var(--color-surface-container)" stroke-width="1.5" />
-              <line x1="50" y1="100" x2="50" y2="132" stroke="var(--color-border)" stroke-width="1.5" />
-              <text x="30" y="120" fill="var(--color-text-primary)" stroke="none" font-size="14" font-family="monospace" text-anchor="middle">10</text>
-              <text x="70" y="120" fill="var(--color-text-primary)" stroke="none" font-size="14" font-family="monospace" text-anchor="middle">20</text>
-
-              <!-- Middle Leaf Node (40, 50) -->
-              <rect x="100" y="100" width="80" height="32" rx="4" stroke="var(--color-border)" fill="var(--color-surface-container)" stroke-width="1.5" />
-              <line x1="140" y1="100" x2="140" y2="132" stroke="var(--color-border)" stroke-width="1.5" />
-              <text x="120" y="120" fill="var(--color-text-primary)" stroke="none" font-size="14" font-family="monospace" text-anchor="middle">40</text>
-              <text x="160" y="120" fill="var(--color-text-primary)" stroke="none" font-size="14" font-family="monospace" text-anchor="middle">50</text>
-
-              <!-- Right Leaf Node (70, 80) -->
-              <rect x="190" y="100" width="80" height="32" rx="4" stroke="var(--color-border)" fill="var(--color-surface-container)" stroke-width="1.5" />
-              <line x1="230" y1="100" x2="230" y2="132" stroke="var(--color-border)" stroke-width="1.5" />
-              <text x="210" y="120" fill="var(--color-text-primary)" stroke="none" font-size="14" font-family="monospace" text-anchor="middle">70</text>
-              <text x="250" y="120" fill="var(--color-text-primary)" stroke="none" font-size="14" font-family="monospace" text-anchor="middle">80</text>
-
-              <!-- Edges -->
-              <line x1="120" y1="42" x2="50" y2="100" stroke="var(--color-border)" stroke-width="1.5" />
-              <line x1="140" y1="42" x2="140" y2="100" stroke="var(--color-border)" stroke-width="1.5" />
-              <line x1="160" y1="42" x2="230" y2="100" stroke="var(--color-border)" stroke-width="1.5" />
-            </svg>
-
-            <div class="w-full flex items-center justify-between font-mono text-[10px] text-text-muted mt-4">
-              <span>ORDER 3</span>
-              <span class="text-text-muted">ROOT &rarr; LEAF</span>
-            </div>
-            
-            <?php if (!empty($primaryExperiment)): ?>
-            <a href="/lab-detail.php?id=<?= urlencode($primaryExperiment['id']) ?>" class="mt-4 pt-3 border-t border-border w-full text-center text-[10px] font-mono text-text-secondary hover:text-primary transition-colors">
-              VIEW RELATED BENCHMARK
-            </a>
-            <?php endif; ?>
           </div>
         </div>
       </section>
-      <?php endif; ?>
-
 
       <!-- ============================================================
            CONTEXT-AWARE WORKSPACE
@@ -339,24 +358,26 @@ $personSchema = [
             <div class="flex flex-col gap-space-md">
               <div class="flex items-center gap-2">
                 <span class="badge badge-accent">FLAGSHIP SYSTEM</span>
-                <span class="font-mono text-xs text-text-muted"><?= htmlspecialchars(strtoupper($spotlight['category'] ?: 'SYSTEMS ARCHITECTURE')) ?></span>
+                <?php if (!empty($spotlight['category'])): ?>
+                <span class="font-mono text-xs text-text-muted"><?= htmlspecialchars(strtoupper($spotlight['category'])) ?></span>
+                <?php endif; ?>
               </div>
 
               <div class="flex flex-col gap-2">
                 <h3 class="font-headline-lg text-2xl sm:text-3xl text-on-surface font-bold leading-snug">
                   <?= htmlspecialchars($spotlight['title']) ?>
                 </h3>
+                <?php
+                  $spotText = trim(strip_tags((string)($spotlight['content'] ?? '')));
+                  $spotShort = mb_substr($spotText, 0, 320, 'UTF-8') . (mb_strlen($spotText, 'UTF-8') > 320 ? '...' : '');
+                ?>
+                <?php if ($spotText !== ''): ?>
                 <p class="font-sans text-sm sm:text-base text-text-secondary leading-relaxed">
-                  <?= htmlspecialchars(mb_substr(strip_tags((string)($spotlight['content'] ?? '')), 0, 320, 'UTF-8')) ?>...
+                  <?= htmlspecialchars($spotShort) ?>
                 </p>
+                <?php endif; ?>
               </div>
 
-              <!-- Technical Invariants Strip -->
-              <div class="flex flex-wrap items-center gap-2 pt-1 font-mono text-[11px] text-text-muted">
-                <span class="px-2.5 py-1 rounded bg-surface-container border border-border">ACID Storage</span>
-                <span class="px-2.5 py-1 rounded bg-surface-container border border-border">Lock-Free Concurrency</span>
-                <span class="px-2.5 py-1 rounded bg-surface-container border border-border">Zero-Copy IO</span>
-              </div>
 
               <div class="pt-3">
                 <a class="btn btn-primary" href="/project.php?id=<?= (int)$spotlight['id'] ?>">
@@ -366,12 +387,13 @@ $personSchema = [
               </div>
             </div>
 
-            <!-- Architectural Visual Schematics Frame -->
+            <?php if (!empty($spotlight['image_url'])): ?>
+            <!-- Project image (only when one was uploaded) -->
             <div class="flex flex-col gap-2">
               <div class="image-frame w-full aspect-video bg-surface-container-lowest rounded-lg border border-border overflow-hidden">
                 <?= responsiveImage(
-                    !empty($spotlight['image_url']) ? $spotlight['image_url'] : '/assets/diagram_distributed_systems.png',
-                    htmlspecialchars($spotlight['title']) . ' Architecture Schematic',
+                    $spotlight['image_url'],
+                    htmlspecialchars($spotlight['title']),
                     [
                         'class' => 'w-full h-full object-cover',
                         'priority' => true,
@@ -379,8 +401,8 @@ $personSchema = [
                     ]
                 ) ?>
               </div>
-              <span class="font-mono text-[10.5px] text-text-muted text-center">SCHEMATIC // CORE TOPOLOGY &amp; DATA PIPELINE</span>
             </div>
+            <?php endif; ?>
           </article>
 
           <!-- Secondary Systems Grid (Dossiers) -->
@@ -467,6 +489,7 @@ $personSchema = [
                 <div class="flex flex-col gap-space-sm">
                   <!-- Thumbnail Frame -->
                   <div class="image-frame w-full aspect-[16/10] bg-surface-container-lowest relative overflow-hidden rounded-lg border border-border/80">
+                    <?php if (!empty($item['image'])): ?>
                     <?= responsiveImage(
                         $item['image'],
                         !empty($item['alt']) ? $item['alt'] : $item['title'],
@@ -475,6 +498,7 @@ $personSchema = [
                             'sizes' => '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 360px'
                         ]
                     ) ?>
+                    <?php endif; ?>
                     <div class="absolute top-2.5 left-2.5">
                       <span class="badge badge-neutral bg-surface-container-lowest/90 backdrop-blur-sm shadow-sm">
                         <?= $itemBadge ?>
@@ -484,15 +508,19 @@ $personSchema = [
 
                   <!-- Content -->
                   <div class="flex flex-col gap-1">
+                    <?php if (!empty($item['category'])): ?>
                     <div class="metadata-row">
                       <span class="uppercase"><?= htmlspecialchars($item['category']) ?></span>
                     </div>
+                    <?php endif; ?>
                     <h3 class="font-headline-sm text-on-surface group-hover:text-primary transition-colors font-semibold leading-snug">
                       <?= htmlspecialchars($item['title']) ?>
                     </h3>
+                    <?php if (!empty($item['description'])): ?>
                     <p class="font-sans text-xs text-text-secondary line-clamp-2 leading-relaxed">
                       <?= htmlspecialchars($item['description']) ?>
                     </p>
+                    <?php endif; ?>
                   </div>
                 </div>
 
@@ -604,27 +632,33 @@ $personSchema = [
             <div class="flex flex-col gap-space-md">
               <div class="flex items-center gap-2">
                 <span class="badge badge-accent">ACTIVE BENCHMARK</span>
-                <span class="font-mono text-xs text-text-muted"><?= htmlspecialchars($primaryExperiment['id'] ?? 'EXP-001') ?></span>
+                <span class="font-mono text-xs text-text-muted"><?= htmlspecialchars((string)($primaryExperiment['id'] ?? '')) ?></span>
+                <?php if (!empty($primaryExperiment['categoryLabel'])): ?>
                 <span class="font-mono text-xs text-text-muted">·</span>
-                <span class="font-mono text-xs text-text-secondary"><?= htmlspecialchars($primaryExperiment['categoryLabel'] ?? 'Database Engines') ?></span>
+                <span class="font-mono text-xs text-text-secondary"><?= htmlspecialchars($primaryExperiment['categoryLabel']) ?></span>
+                <?php endif; ?>
               </div>
 
               <div class="flex flex-col gap-2">
                 <h3 class="font-headline-md text-2xl font-bold text-on-surface leading-snug">
                   <?= htmlspecialchars($primaryExperiment['title']) ?>
                 </h3>
+                <?php if (!empty($primaryExperiment['question'])): ?>
                 <p class="font-sans text-sm text-text-secondary leading-relaxed">
-                  <strong>Question:</strong> <?= htmlspecialchars($primaryExperiment['question'] ?? 'Evaluating storage engine performance boundaries.') ?>
+                  <strong>Question:</strong> <?= htmlspecialchars($primaryExperiment['question']) ?>
                 </p>
+                <?php endif; ?>
               </div>
 
               <!-- Methodology Breakdown -->
+              <?php if (!empty($primaryExperiment['methodologyHeadline'])): ?>
               <div class="flex flex-col gap-1.5 p-3 rounded-lg bg-surface-container-low border border-border">
                 <span class="font-mono text-[10.5px] uppercase tracking-wider text-text-muted font-semibold">METHODOLOGY &amp; WORKLOAD</span>
                 <p class="font-sans text-xs text-text-secondary m-0">
-                  <?= htmlspecialchars($primaryExperiment['methodologyHeadline'] ?? 'Synthetic multi-threaded key-value benchmark measuring lookup latencies.') ?>
+                  <?= htmlspecialchars($primaryExperiment['methodologyHeadline']) ?>
                 </p>
               </div>
+              <?php endif; ?>
 
               <div class="pt-2">
                 <a href="/lab-detail.php?id=<?= urlencode($primaryExperiment['id']) ?>" class="btn btn-primary text-xs">
@@ -634,30 +668,41 @@ $personSchema = [
               </div>
             </div>
 
-            <!-- Empirical Outcome & Metrics Column -->
+            <?php
+              $labEnv = trim((string)($primaryExperiment['environment'] ?? ''));
+              $labStatus = trim((string)($primaryExperiment['status'] ?? ''));
+              $labOutcome = trim((string)($primaryExperiment['outcomeHeadline'] ?? ''));
+            ?>
+            <?php if ($labOutcome !== '' || $labEnv !== '' || $labStatus !== ''): ?>
+            <!-- Empirical Outcome & Metrics Column (only fields entered in the admin) -->
             <div class="flex flex-col justify-between gap-space-md p-space-md rounded-lg bg-surface-container-low border border-border">
+              <?php if ($labOutcome !== ''): ?>
               <div class="flex flex-col gap-2">
                 <span class="font-mono text-[10.5px] uppercase tracking-wider text-primary font-bold">EMPIRICAL OUTCOME</span>
                 <p class="font-sans text-sm font-semibold text-on-surface leading-snug">
-                  "<?= htmlspecialchars($primaryExperiment['outcomeHeadline'] ?? 'Empirical observation reveals decisive trade-offs between point lookups and range scans.') ?>"
+                  "<?= htmlspecialchars($labOutcome) ?>"
                 </p>
               </div>
+              <?php endif; ?>
 
+              <?php if ($labEnv !== '' || $labStatus !== ''): ?>
               <div class="flex flex-col gap-2 pt-3 border-t border-border font-mono text-xs text-text-muted">
-                <div class="flex items-center justify-between">
+                <?php if ($labEnv !== ''): ?>
+                <div class="flex items-center justify-between gap-3">
                   <span>ENVIRONMENT</span>
-                  <span class="text-text-primary">POSIX x86_64 Linux</span>
+                  <span class="text-text-primary text-right"><?= htmlspecialchars(mb_substr($labEnv, 0, 80, 'UTF-8')) ?></span>
                 </div>
-                <div class="flex items-center justify-between">
-                  <span>METRIC</span>
-                  <span class="text-primary font-bold">P99 Latency &amp; Throughput</span>
-                </div>
-                <div class="flex items-center justify-between">
+                <?php endif; ?>
+                <?php if ($labStatus !== ''): ?>
+                <div class="flex items-center justify-between gap-3">
                   <span>STATUS</span>
-                  <span class="text-success">Reproducible</span>
+                  <span class="text-text-primary text-right"><?= htmlspecialchars($labStatus) ?></span>
                 </div>
+                <?php endif; ?>
               </div>
+              <?php endif; ?>
             </div>
+            <?php endif; ?>
           </article>
         <?php else: ?>
           <div class="staging-state">
@@ -673,6 +718,7 @@ $personSchema = [
            ACT VI: TRAJECTORY & CORE CONVICTIONS
            Answers: "What are Mohammed's engineering principles & journey?"
            ============================================================ -->
+      <?php if (!empty($homePrinciples) || !empty($homeMilestones)): ?>
       <section class="editorial-section reveal-section" id="journey" aria-label="Journey and Convictions">
         <div class="editorial-section-header with-action">
           <div>
@@ -689,53 +735,43 @@ $personSchema = [
         </div>
 
         <div class="convictions-trajectory-grid">
-          <!-- Column 1: Core Operating Convictions -->
+          <?php if (!empty($homePrinciples)): ?>
+          <!-- Column 1: Principles (admin: About Content) -->
           <div class="conviction-dossier-card">
             <div class="flex items-center justify-between pb-2 border-b border-border">
               <span class="font-mono text-xs uppercase tracking-wider text-text-muted font-semibold">MY PRINCIPLES</span>
-              <span class="font-mono text-xs text-primary font-bold">3 PRINCIPLES</span>
             </div>
-
+            <?php foreach ($homePrinciples as $pi => $pr): ?>
             <div class="conviction-item">
-              <span class="conviction-title">01. KNOW THE HARDWARE</span>
-              <p class="conviction-body">Software runs faster and more predictably when it is designed around how the CPU, memory, and operating system really work.</p>
+              <span class="conviction-title"><?= sprintf('%02d', $pi + 1) ?>. <?= htmlspecialchars(mb_strtoupper((string)$pr['title'], 'UTF-8')) ?></span>
+              <?php if (trim((string)($pr['description'] ?? '')) !== ''): ?>
+              <p class="conviction-body"><?= htmlspecialchars((string)$pr['description']) ?></p>
+              <?php endif; ?>
             </div>
-
-            <div class="conviction-item">
-              <span class="conviction-title">02. MEASURE, DON'T GUESS</span>
-              <p class="conviction-body">Do not guess where the slowness is. Use real benchmarks and measurements to decide what to improve.</p>
-            </div>
-
-            <div class="conviction-item">
-              <span class="conviction-title">03. DESIGN BEFORE CODE</span>
-              <p class="conviction-body">Decide how data stays correct and how the system recovers from failure before writing the code.</p>
-            </div>
+            <?php endforeach; ?>
           </div>
+          <?php endif; ?>
 
-          <!-- Column 2: Chronological Trajectory Highlights -->
+          <?php if (!empty($homeMilestones)): ?>
+          <!-- Column 2: Journey (admin: Journey) -->
           <div class="conviction-dossier-card">
             <div class="flex items-center justify-between pb-2 border-b border-border">
               <span class="font-mono text-xs uppercase tracking-wider text-text-muted font-semibold">MY JOURNEY</span>
               <a href="/journey.php" class="font-mono text-xs text-primary hover:underline">View Journey</a>
             </div>
-
+            <?php foreach ($homeMilestones as $ms): ?>
             <div class="conviction-item">
-              <span class="conviction-title">STAGE 3 — HOW SYSTEMS WORK INSIDE</span>
-              <p class="conviction-body">Studying concurrency control (MVCC), LSM-tree storage, write-ahead logs, and the Raft consensus protocol.</p>
+              <span class="conviction-title"><?= htmlspecialchars(mb_strtoupper((string)$ms['title'], 'UTF-8')) ?><?= trim((string)($ms['period_label'] ?? '')) !== '' ? ' — ' . htmlspecialchars((string)$ms['period_label']) : '' ?></span>
+              <?php if (trim((string)($ms['description'] ?? '')) !== ''): ?>
+              <p class="conviction-body"><?= htmlspecialchars((string)$ms['description']) ?></p>
+              <?php endif; ?>
             </div>
-
-            <div class="conviction-item">
-              <span class="conviction-title">STAGE 2 — BACKEND DEVELOPMENT</span>
-              <p class="conviction-body">Building reliable APIs, database schemas, and production security.</p>
-            </div>
-
-            <div class="conviction-item">
-              <span class="conviction-title">STAGE 1 — COMPUTER SCIENCE BASICS</span>
-              <p class="conviction-body">Algorithms, data structures, memory management, and how operating systems work.</p>
-            </div>
+            <?php endforeach; ?>
           </div>
+          <?php endif; ?>
         </div>
       </section>
+      <?php endif; ?>
 
 
       <!-- ============================================================

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Workspace - Design Exploration</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/workspace.css">
+</head>
+<body>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="pw-sidebar">
+        <!-- Mode Switcher -->
+        <div class="pw-mode-switcher">
+            <button class="pw-mode-btn" onclick="toggleMode()">
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <div style="width:20px; height:20px; background:#fff; border-radius:4px; display:flex; align-items:center; justify-content:center;">
+                        <span style="color:#000; font-weight:800; font-size:12px;">M</span>
+                    </div>
+                    <span>Personal Workspace</span>
+                </div>
+                <i class="fas fa-chevron-down" style="font-size: 10px; color: var(--pw-sidebar-text);"></i>
+            </button>
+        </div>
+
+        <nav class="pw-nav">
+            <div class="pw-nav-group">
+                <div class="pw-nav-title">Overview</div>
+                <a href="#" class="pw-nav-item active"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#" class="pw-nav-item"><i class="fas fa-sun"></i> Today</a>
+                <a href="#" class="pw-nav-item"><i class="far fa-calendar-alt"></i> Calendar</a>
+            </div>
+
+            <div class="pw-nav-group">
+                <div class="pw-nav-title">Study</div>
+                <a href="#" class="pw-nav-item"><i class="fas fa-graduation-cap"></i> Courses</a>
+                <a href="#" class="pw-nav-item"><i class="fas fa-check-square"></i> Tasks</a>
+                <a href="#" class="pw-nav-item"><i class="far fa-file-alt"></i> Notes</a>
+            </div>
+
+            <div class="pw-nav-group">
+                <div class="pw-nav-title">Build</div>
+                <a href="#" class="pw-nav-item"><i class="fas fa-code-branch"></i> Projects</a>
+                <a href="#" class="pw-nav-item"><i class="fas fa-layer-group"></i> Skills</a>
+            </div>
+
+            <div class="pw-nav-group">
+                <div class="pw-nav-title">Knowledge</div>
+                <a href="#" class="pw-nav-item"><i class="fas fa-book"></i> Reading</a>
+                <a href="#" class="pw-nav-item"><i class="fas fa-link"></i> Resources</a>
+            </div>
+            
+            <div class="pw-nav-group">
+                <div class="pw-nav-title">Life</div>
+                <a href="#" class="pw-nav-item"><i class="fas fa-bullseye"></i> Goals</a>
+                <a href="#" class="pw-nav-item"><i class="fas fa-sync-alt"></i> Habits</a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="pw-main">
+        
+        <!-- HEADER -->
+        <header class="pw-header">
+            <div class="pw-header-breadcrumbs">
+                <i class="fas fa-home"></i>
+                <span style="margin: 0 4px;">/</span>
+                <span class="current">Dashboard</span>
+            </div>
+            <div class="pw-header-actions">
+                <button class="pw-btn"><i class="fas fa-search"></i> Search...</button>
+                <button class="pw-btn pw-btn-primary"><i class="fas fa-plus"></i> New Task</button>
+            </div>
+        </header>
+
+        <!-- DASHBOARD SCROLL AREA -->
+        <div class="pw-content">
+            
+            <h1 class="pw-page-title">Good Morning, Mohammed</h1>
+            <p class="pw-page-subtitle">Wednesday, October 7th</p>
+
+            <div class="pw-grid">
+                
+                <!-- LEFT COLUMN (Priority & Context) -->
+                <div class="pw-col-8" style="display: flex; flex-direction: column; gap: 24px;">
+                    
+                    <!-- TODAY'S PRIORITY -->
+                    <div class="pw-card" style="border-top: 3px solid var(--pw-accent);">
+                        <div class="pw-card-header">
+                            <h2 class="pw-card-title"><i class="fas fa-sun" style="color:var(--pw-accent);"></i> Priority Tasks</h2>
+                            <button class="pw-btn" style="padding: 4px 8px; font-size: 11px;"><i class="fas fa-ellipsis-h"></i></button>
+                        </div>
+                        
+                        <div class="pw-task-item">
+                            <div class="pw-checkbox"></div>
+                            <div class="pw-task-content">
+                                <div class="pw-task-title">Complete Database Engineering Assignment 3</div>
+                                <div class="pw-task-meta">
+                                    <span><i class="fas fa-graduation-cap"></i> CS-320</span>
+                                    <span><i class="far fa-clock"></i> Due 11:59 PM</span>
+                                </div>
+                            </div>
+                            <span class="pw-badge pw-badge-urgent">Urgent</span>
+                        </div>
+                        
+                        <div class="pw-task-item">
+                            <div class="pw-checkbox"></div>
+                            <div class="pw-task-content">
+                                <div class="pw-task-title">Review Pull Request for Studio Website</div>
+                                <div class="pw-task-meta">
+                                    <span><i class="fas fa-code-branch"></i> Personal Portfolio</span>
+                                </div>
+                            </div>
+                            <span class="pw-badge pw-badge-active">High</span>
+                        </div>
+                    </div>
+
+                    <!-- CONTINUE CONTEXT -->
+                    <div class="pw-card">
+                        <div class="pw-card-header">
+                            <h2 class="pw-card-title"><i class="fas fa-arrow-right" style="color:var(--pw-text-muted);"></i> Continue</h2>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <a href="#" class="pw-context-block">
+                                <div class="pw-context-type">Course</div>
+                                <div class="pw-context-title">Software Architecture</div>
+                                <div style="margin-top: 12px; width: 100%; height: 4px; background: var(--pw-border); border-radius: 2px;">
+                                    <div style="width: 60%; height: 100%; background: var(--pw-success); border-radius: 2px;"></div>
+                                </div>
+                            </a>
+                            <a href="#" class="pw-context-block">
+                                <div class="pw-context-type">Active Project</div>
+                                <div class="pw-context-title">Personal Workspace API</div>
+                                <div style="margin-top: 12px; font-size: 11px; color: var(--pw-text-muted);">Last edited 2h ago</div>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT COLUMN (Schedule & Tracking) -->
+                <div class="pw-col-4" style="display: flex; flex-direction: column; gap: 24px;">
+                    
+                    <!-- TODAY'S SCHEDULE -->
+                    <div class="pw-card">
+                        <div class="pw-card-header">
+                            <h2 class="pw-card-title"><i class="far fa-clock" style="color:var(--pw-text-muted);"></i> Today's Schedule</h2>
+                        </div>
+                        
+                        <div style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--pw-border);">
+                            <div style="font-family: var(--pw-font-mono); font-size: 11px; font-weight: 600; color: var(--pw-accent); width: 45px;">09:00</div>
+                            <div style="font-size: 13px; font-weight: 500;">CS-320 Lecture</div>
+                        </div>
+                        <div style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--pw-border);">
+                            <div style="font-family: var(--pw-font-mono); font-size: 11px; font-weight: 600; color: var(--pw-accent); width: 45px;">14:30</div>
+                            <div style="font-size: 13px; font-weight: 500;">Study Group (Library)</div>
+                        </div>
+                        <div style="display: flex; gap: 12px; padding: 12px 0;">
+                            <div style="font-family: var(--pw-font-mono); font-size: 11px; font-weight: 600; color: var(--pw-accent); width: 45px;">18:00</div>
+                            <div style="font-size: 13px; font-weight: 500;">Gym / Workout</div>
+                        </div>
+                    </div>
+
+                    <!-- PROGRESS -->
+                    <div class="pw-card">
+                        <div class="pw-card-header">
+                            <h2 class="pw-card-title"><i class="fas fa-chart-pie" style="color:var(--pw-text-muted);"></i> Tracking</h2>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed var(--pw-border);">
+                            <span style="font-size: 13px; color: var(--pw-text-muted);">Active Goals</span>
+                            <span style="font-family: var(--pw-font-mono); font-size: 13px; font-weight: 600;">3</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed var(--pw-border);">
+                            <span style="font-size: 13px; color: var(--pw-text-muted);">Skills in Progress</span>
+                            <span style="font-family: var(--pw-font-mono); font-size: 13px; font-weight: 600;">5</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+                            <span style="font-size: 13px; color: var(--pw-text-muted);">Books Reading</span>
+                            <span style="font-family: var(--pw-font-mono); font-size: 13px; font-weight: 600;">1</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function toggleMode() {
+            alert('Mode Switcher Modal: [Website Admin] | [Personal Workspace]');
+        }
+    </script>
+</body>
+</html>

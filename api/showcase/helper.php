@@ -209,7 +209,7 @@ function resolveShowcaseItem(PDO $pdo, array $rawItem, bool $forAdmin = false): 
                     $resolved['title'] = $titleOverride !== '' ? $titleOverride : '[Unassigned Project]';
                     $resolved['description'] = 'No project reference ID assigned.';
                     $resolved['category'] = 'Project';
-                    $resolved['image'] = $imageOverride !== '' ? $imageOverride : '/assets/diagram_distributed_systems.png';
+                    $resolved['image'] = $imageOverride !== '' ? $imageOverride : '';
                     $resolved['alt'] = $altText !== '' ? $altText : $resolved['title'];
                     $resolved['url'] = $linkOverride !== '' ? $linkOverride : '/projects.php';
                     $resolved['action_label'] = 'Configure Project';
@@ -238,7 +238,7 @@ function resolveShowcaseItem(PDO $pdo, array $rawItem, bool $forAdmin = false): 
                     $resolved['title'] = $titleOverride !== '' ? $titleOverride : ('[Missing / Draft Project #' . $refId . ']');
                     $resolved['description'] = 'Referenced project was deleted or unpublished.';
                     $resolved['category'] = 'Software Engineering';
-                    $resolved['image'] = $imageOverride !== '' ? $imageOverride : '/assets/diagram_distributed_systems.png';
+                    $resolved['image'] = $imageOverride !== '' ? $imageOverride : '';
                     $resolved['alt'] = $altText !== '' ? $altText : $resolved['title'];
                     $resolved['url'] = $linkOverride !== '' ? $linkOverride : '/admin/projects.php';
                     $resolved['action_label'] = 'View in Admin';
@@ -254,7 +254,7 @@ function resolveShowcaseItem(PDO $pdo, array $rawItem, bool $forAdmin = false): 
                 $cleanContent = trim(strip_tags((string)($project['content'] ?? '')));
                 $resolved['description'] = mb_substr($cleanContent, 0, 150, 'UTF-8') . (mb_strlen($cleanContent, 'UTF-8') > 150 ? '...' : '');
             }
-            $resolved['image'] = $imageOverride !== '' ? $imageOverride : (!empty($project['image_url']) ? $project['image_url'] : '/assets/diagram_distributed_systems.png');
+            $resolved['image'] = $imageOverride !== '' ? $imageOverride : (!empty($project['image_url']) ? $project['image_url'] : '');
             $resolved['alt'] = $altText !== '' ? $altText : $resolved['title'];
             $resolved['url'] = $linkOverride !== '' ? $linkOverride : ('/project.php?id=' . (int)$project['id']);
             $resolved['category'] = !empty($project['category']) ? $project['category'] : 'Software Engineering';
@@ -274,7 +274,7 @@ function resolveShowcaseItem(PDO $pdo, array $rawItem, bool $forAdmin = false): 
                     $resolved['title'] = $titleOverride !== '' ? $titleOverride : '[Unassigned Writing]';
                     $resolved['description'] = 'No writing reference ID assigned.';
                     $resolved['category'] = 'Writing';
-                    $resolved['image'] = $imageOverride !== '' ? $imageOverride : '/assets/code_ide_architecture.png';
+                    $resolved['image'] = $imageOverride !== '' ? $imageOverride : '';
                     $resolved['alt'] = $altText !== '' ? $altText : $resolved['title'];
                     $resolved['url'] = $linkOverride !== '' ? $linkOverride : '/blog.php';
                     $resolved['action_label'] = 'Configure Writing';
@@ -303,7 +303,7 @@ function resolveShowcaseItem(PDO $pdo, array $rawItem, bool $forAdmin = false): 
                     $resolved['title'] = $titleOverride !== '' ? $titleOverride : ('[Missing / Draft Writing #' . $refId . ']');
                     $resolved['description'] = 'Referenced writing essay was deleted or unpublished.';
                     $resolved['category'] = 'Writing';
-                    $resolved['image'] = $imageOverride !== '' ? $imageOverride : '/assets/code_ide_architecture.png';
+                    $resolved['image'] = $imageOverride !== '' ? $imageOverride : '';
                     $resolved['alt'] = $altText !== '' ? $altText : $resolved['title'];
                     $resolved['url'] = $linkOverride !== '' ? $linkOverride : '/admin/articles.php';
                     $resolved['action_label'] = 'View in Admin';
@@ -319,7 +319,7 @@ function resolveShowcaseItem(PDO $pdo, array $rawItem, bool $forAdmin = false): 
                 $cleanContent = trim(strip_tags((string)($post['content'] ?? '')));
                 $resolved['description'] = mb_substr($cleanContent, 0, 150, 'UTF-8') . (mb_strlen($cleanContent, 'UTF-8') > 150 ? '...' : '');
             }
-            $resolved['image'] = $imageOverride !== '' ? $imageOverride : (!empty($post['image_url']) ? $post['image_url'] : '/assets/code_ide_architecture.png');
+            $resolved['image'] = $imageOverride !== '' ? $imageOverride : (!empty($post['image_url']) ? $post['image_url'] : '');
             $resolved['alt'] = $altText !== '' ? $altText : $resolved['title'];
             $resolved['url'] = $linkOverride !== '' ? $linkOverride : ('/post.php?id=' . (int)$post['id']);
             $resolved['category'] = !empty($post['category']) ? $post['category'] : 'Technical Writing';
@@ -335,7 +335,7 @@ function resolveShowcaseItem(PDO $pdo, array $rawItem, bool $forAdmin = false): 
         case 'image':
             $resolved['title'] = $titleOverride !== '' ? $titleOverride : 'Visual Artifact';
             $resolved['description'] = $descOverride !== '' ? $descOverride : '';
-            $resolved['image'] = $imageOverride !== '' ? $imageOverride : '/assets/diagram_distributed_systems.png';
+            $resolved['image'] = $imageOverride !== '' ? $imageOverride : '';
             $resolved['alt'] = $altText !== '' ? $altText : $resolved['title'];
             $resolved['url'] = $linkOverride !== '' ? $linkOverride : $resolved['image'];
             $resolved['category'] = 'Visual Architecture';

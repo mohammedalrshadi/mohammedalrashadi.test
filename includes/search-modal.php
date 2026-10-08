@@ -39,7 +39,7 @@
       
       <input id="site-search-input" 
              type="text" 
-             class="w-full bg-transparent text-on-surface placeholder:text-text-muted text-sm font-sans focus:outline-none" 
+             class="w-full bg-transparent text-on-surface placeholder:text-text-muted text-base sm:text-sm font-sans focus:outline-none" 
              placeholder="Search essays, projects, benchmarks (⌘K)..." 
              autocomplete="off" 
              autocorrect="off" 
@@ -75,17 +75,6 @@
       
       <!-- Default Suggested State (rendered when input is empty) -->
       <div id="site-search-default-state" class="space-y-5 py-2">
-        <!-- Suggested Keywords -->
-        <div>
-          <span class="font-label-code text-[11px] uppercase tracking-wider text-text-muted font-semibold block mb-2.5">Suggested Topics</span>
-          <div class="flex flex-wrap gap-2">
-            <button type="button" class="site-search-chip px-3 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-xs font-mono text-text-secondary hover:text-primary transition-colors" data-term="B-Tree">B-Tree</button>
-            <button type="button" class="site-search-chip px-3 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-xs font-mono text-text-secondary hover:text-primary transition-colors" data-term="Redis">Redis MsgPack</button>
-            <button type="button" class="site-search-chip px-3 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-xs font-mono text-text-secondary hover:text-primary transition-colors" data-term="Concurrency">Concurrency</button>
-            <button type="button" class="site-search-chip px-3 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-xs font-mono text-text-secondary hover:text-primary transition-colors" data-term="Storage">Storage Engines</button>
-            <button type="button" class="site-search-chip px-3 py-1 rounded-lg bg-surface-container-low hover:bg-surface-container border border-border text-xs font-mono text-text-secondary hover:text-primary transition-colors" data-term="MySQL">MySQL InnoDB</button>
-          </div>
-        </div>
 
         <!-- Quick Platform Navigation -->
         <div>

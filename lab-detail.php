@@ -71,7 +71,7 @@ if (!$experiment) {
           <div class="p-space-lg rounded-full bg-surface-container-low border border-outline-variant/10 text-outline">
             <span class="material-symbols-outlined text-[3rem]">science</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Investigation Not Found</h1>
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Investigation Not Found</h1>
           <p class="font-body-md text-body-md text-on-surface-variant max-w-lg leading-relaxed">
             The requested benchmark investigation (<?= htmlspecialchars($expId ?: 'unknown') ?>) was not found or is no longer available in the active studio lab.
           </p>
@@ -119,7 +119,7 @@ if (!$experiment) {
             </span>
           </div>
 
-          <h1 class="font-headline-lg lg:text-[2.25rem] text-on-surface tracking-tight font-bold leading-tight">
+          <h1 class="text-headline-lg-mobile font-headline-lg lg:text-[2.25rem] text-on-surface tracking-tight font-bold leading-tight">
             <?= htmlspecialchars($experiment['title']) ?>
           </h1>
 

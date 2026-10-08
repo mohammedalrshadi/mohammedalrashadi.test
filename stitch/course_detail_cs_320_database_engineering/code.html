@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary": "#ffffff", "outline-variant": "#c7c4d8", "surface-container-high": "#dce9ff", "tertiary-fixed-dim": "#4cd7f6", "outline": "#777587", "tertiary-container": "#006a7c", "primary-fixed-dim": "#c3c0ff", "on-secondary": "#ffffff", "on-primary-fixed": "#0f0069", "on-secondary-fixed": "#131b2e", "on-secondary-fixed-variant": "#3f465c", "inverse-on-surface": "#eaf1ff", "tertiary": "#00505f", "primary-fixed": "#e2dfff", "tertiary-fixed": "#acedff", "on-background": "#0b1c30", "error-container": "#ffdad6", "inverse-primary": "#c3c0ff", "primary": "#3525cd", "surface-container-low": "#eff4ff", "on-secondary-container": "#5c647a", "on-error-container": "#93000a", "inverse-surface": "#213145", "on-tertiary-fixed-variant": "#004e5c", "on-surface": "#0b1c30", "surface-variant": "#d3e4fe", "secondary": "#565e74", "error": "#ba1a1a", "on-error": "#ffffff", "surface-bright": "#f8f9ff", "surface-container": "#e5eeff", "secondary-fixed-dim": "#bec6e0", "surface-container-highest": "#d3e4fe", "surface-tint": "#4d44e3", "on-primary-container": "#dad7ff", "surface-dim": "#cbdbf5", "on-primary-fixed-variant": "#3323cc", "surface": "#f8f9ff", "secondary-fixed": "#dae2fd", "on-tertiary-fixed": "#001f26", "secondary-container": "#dae2fd", "background": "#f8f9ff", "surface-container-lowest": "#ffffff", "on-surface-variant": "#464555", "on-tertiary-container": "#93e8ff", "primary-container": "#4f46e5", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1rem", "gutter-compact": "1rem", "gutter": "1.5rem", "space-xs": "0.25rem", "space-xl": "2rem", "space-lg": "1.5rem", "margin": "2rem", "space-md": "1rem", "space-2xl": "3rem" }, "fontFamily": { "headline-sm": [ "Manrope" ], "body-lg": [ "Hanken Grotesk" ], "headline-md": [ "Manrope" ], "body-md": [ "Hanken Grotesk" ], "headline-xl": [ "Manrope" ], "label-md": [ "Hanken Grotesk" ], "body-sm": [ "Hanken Grotesk" ], "code-sm": [ "JetBrains Mono" ], "display-lg": [ "Manrope" ], "headline-lg": [ "Manrope" ], "label-sm": [ "Hanken Grotesk" ] }, "fontSize": { "headline-sm": [ "1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" } ], "headline-md": [ "1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" } ], "headline-xl": [ "2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" } ], "code-sm": [ "0.75rem", { "lineHeight": "1rem", "fontWeight": "400" } ], "display-lg": [ "2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "headline-lg": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-[260px]"><img alt="Student Ecosystem Brand Mark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlRmqHXliftoz-zvjXmNei53JfNf56OGpU-2GMse_PZuJnIja-3EuD6r4ygXoVT8MWaU5JUGBrt0av2u_QfsZ8Xi7tUwZ8oS4fQE7DA2nQzmLpcuLA96GHtuDyLF7NhxrfT9IwH6OZFMHWMb_G0SQlmPriYtYkdxqup3Kljz8IYJ8KTjB-3jMm21jn5KgnxwJ7sjK-gOLnP33S3qx7I_Gm1vg2nH0YHGB4pYgtQYI"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Student Ecosystem</span><span class="font-code-sm text-code-sm text-on-surface-variant tracking-wider uppercase leading-none">Personal Operating System</span></div></div><div class="flex-1 max-w-xl mx-space-md hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3 text-secondary text-lg pointer-events-none">search</span><input class="w-full pl-9 pr-16 py-1.5 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(79,70,229,0.18)] transition-all placeholder:text-on-surface-variant/70" placeholder="Search courses, skills, projects, opportunities..." type="text"/><div class="absolute right-2.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-on-secondary-container pointer-events-none"><span class="text-[10px]">⌘</span><span>K</span></div></div></div><div class="flex items-center gap-space-sm"><div class="hidden xl:flex items-center p-1 bg-surface-container-low rounded-lg gap-1"><button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-[0_1px_3px_rgba(15,23,42,0.06)] font-semibold" type="button">Standard</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Easy</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Hard</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Go</button></div><div class="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-secondary-container/40"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface font-medium">Active Goal: <span class="font-semibold text-primary">Backend Engineer</span></span><div class="w-12 h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-3/4 h-full bg-primary rounded-full"></div></div></div><button aria-label="Contextual AI Assistant" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button"><span class="material-symbols-outlined text-base">arrow_back_ios_new</span><span class="font-medium">Intelligence</span></button><button aria-label="Notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error font-code-sm text-[10px] font-bold text-on-error">3</span></button><div class="flex items-center gap-2 pl-space-xs"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHwtCW7XZkTWN83XkdzOlbydjUsTTnazWHiYdmay4QfB6Mt6q3V6aa6yk-n_i62KKCmxbbRgeegA99khpJrWZFpE2GMu6l0ts-urMo6d1446UDiXRFZ1FlSA2PSKmXA_hz7IPltJwGCA3SGliP-wV6fGdwsOMs_rsju3qW8nS4GGYxM4cT1wIIYq710ivS96nYpiNARXwPLIT1hfaVhiTRpnSDCiP9TTdWSIDmXOc"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-surface-container-lowest"></span></div><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Alex Johnson</span><span class="font-code-sm text-[10px] text-emerald-700 leading-none">Online</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 z-40 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col justify-between overflow-y-auto"><div class="p-space-sm"><div class="px-space-sm pt-space-xs pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Student Loop</span></div><nav class="space-y-0.5 flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-lg">grid_view</span><span>Home</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="my-path" href="#"><span class="material-symbols-outlined text-lg">route</span><span>My Path</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="academic" href="#"><span class="material-symbols-outlined text-lg">school</span><span>Academic</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="learning" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Learning</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="skills" href="#"><span class="material-symbols-outlined text-lg">verified</span><span>Skills</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="projects" href="#"><span class="material-symbols-outlined text-lg">folder_special</span><span>Projects</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="career-and-opportunities" href="#"><span class="material-symbols-outlined text-lg">work</span><span>Career &amp; Opportunities</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="community" href="#"><span class="material-symbols-outlined text-lg">groups</span><span>Community</span></a></nav><div class="px-space-sm pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Ecosystem &amp; Operations</span></div><nav class="space-y-0.5 flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="calendar-and-tasks" href="#"><span class="material-symbols-outlined text-lg">calendar_month</span><span>Calendar &amp; Tasks</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="future-ecosystem" href="#"><span class="material-symbols-outlined text-lg">hub</span><span>Future Ecosystem</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="settings-and-privacy" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Settings &amp; Privacy</span></a></nav></div><div class="p-space-sm m-space-sm rounded-lg bg-surface-container-low"><div class="flex items-center justify-between mb-1"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Semester Progress</span><span class="font-code-sm text-code-sm text-primary font-bold">64%</span></div><div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-[64%] h-full bg-primary rounded-full"></div></div><span class="block font-body-sm text-[11px] text-on-surface-variant mt-2">Week 10 of 16 • 3 Finals Pending</span></div></aside><div class="pl-64"><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Interactive Course Detail Content -->
+<div class="w-full max-w-[1560px] mx-auto px-gutter py-space-lg flex flex-col gap-space-lg">
+<!-- 1. BREADCRUMBS & TOP HEADER BANNER -->
+<div class="flex flex-col gap-space-md">
+<!-- Nav Breadcrumbs & System Status -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm text-label-sm font-label-sm">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<a class="hover:text-primary transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">school</span>
+            Academic
+          </a>
+<span class="text-outline-variant">/</span>
+<a class="hover:text-primary transition-colors" href="#">Courses</a>
+<span class="text-outline-variant">/</span>
+<span class="text-on-surface font-semibold">CS 320: Database Engineering</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high text-primary font-code-sm text-code-sm">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+            SYS-SYNC: ACTIVE (AUTONOMOUS VERIFIER v4.2)
+          </span>
+<span class="hidden sm:inline-block px-2.5 py-1 rounded bg-surface-container-low text-on-surface-variant font-code-sm text-code-sm">
+            TERM 2024.F // 4.0 CREDITS
+          </span>
+</div>
+</div>
+<!-- Main Course Header Canvas -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm p-space-lg md:p-space-xl flex flex-col gap-space-lg">
+<div class="absolute -right-24 -top-24 w-96 h-96 bg-primary-fixed/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute right-12 bottom-0 w-64 h-64 bg-tertiary-fixed/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative flex flex-col lg:flex-row lg:items-start justify-between gap-space-lg">
+<!-- Course Identity -->
+<div class="flex-1 max-w-3xl flex flex-col gap-space-sm">
+<div class="flex flex-wrap items-center gap-2">
+<span class="px-2.5 py-0.5 rounded bg-primary-container text-on-primary font-label-sm text-label-sm tracking-wide uppercase font-semibold">
+                Core Requirement
+              </span>
+<span class="px-2.5 py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm">
+                Backend Track Foundation Level III
+              </span>
+<span class="flex items-center gap-1 text-on-surface-variant font-code-sm text-code-sm">
+<span class="material-symbols-outlined text-xs text-primary">chevron_forward</span>
+                Synced to 140+ Industry Postings
+              </span>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+                CS 320: Database Engineering
+              </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1 leading-relaxed">
+                Relational algebra, storage engines, indexing (B+ Trees), transaction isolation (ACID), and query cost optimization across distributed environments.
+              </p>
+</div>
+<!-- Metadata Row -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm pt-space-xs text-on-surface">
+<div class="flex flex-col p-2.5 rounded bg-surface-container-low">
+<span class="font-code-sm text-[11px] text-on-surface-variant uppercase">Academic Staff</span>
+<span class="font-label-md text-label-md font-semibold truncate">Prof. Marcus Vance</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">OH: Tue/Thu 3 PM</span>
+</div>
+<div class="flex flex-col p-2.5 rounded bg-surface-container-low">
+<span class="font-code-sm text-[11px] text-on-surface-variant uppercase">Current Status</span>
+<span class="font-label-md text-label-md font-semibold text-primary">Week 10 of 16</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Today 10:00 AM (Hall B)</span>
+</div>
+<div class="flex flex-col p-2.5 rounded bg-surface-container-low">
+<span class="font-code-sm text-[11px] text-on-surface-variant uppercase">Grade Projection</span>
+<span class="font-label-md text-label-md font-bold text-on-surface">94.2% (Grade A)</span>
+<span class="font-body-sm text-[11px] text-emerald-700 font-medium">Top 8th Percentile</span>
+</div>
+<div class="flex flex-col p-2.5 rounded bg-surface-container-low">
+<span class="font-code-sm text-[11px] text-on-surface-variant uppercase">Target Milestone</span>
+<span class="font-label-md text-label-md font-semibold text-error">Midterm in 5 Days</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Comprehensive Unit 1-4</span>
+</div>
+</div>
+</div>
+<!-- Academic Metric Widget (Right Box) -->
+<div class="w-full lg:w-80 flex flex-col p-space-md rounded-xl bg-surface-container-low gap-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-on-surface-variant">Course Engine Velocity</span>
+<span class="font-code-sm text-code-sm font-bold text-primary">68% Overall</span>
+</div>
+<!-- Radial / Bar Gauge -->
+<div class="flex items-center gap-space-md">
+<div class="relative w-16 h-16 flex items-center justify-center shrink-0">
+<svg class="w-16 h-16 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="68, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-code-sm text-code-sm font-bold text-on-surface">68%</div>
+</div>
+<div class="flex flex-col text-on-surface gap-0.5">
+<div class="font-label-sm text-label-sm font-semibold">3 of 5 Units Mastered</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">1 Deficit Unit flagged for immediate remediation.</div>
+</div>
+</div>
+<!-- Quick Action Links -->
+<div class="flex flex-col gap-1.5 pt-1">
+<button class="w-full py-2 px-3 rounded bg-primary text-on-primary font-label-sm text-label-sm font-medium hover:bg-primary-container transition-all flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-base">play_lesson</span>
+                Resume Active Drill (BCNF)
+              </button>
+<div class="grid grid-cols-2 gap-1.5">
+<button class="py-1.5 px-2 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-medium transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary">description</span>
+                  Syllabus PDF
+                </button>
+<button class="py-1.5 px-2 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-medium transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary">forum</span>
+                  ACM Channel
+                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- 2. CORE ECOSYSTEM NARRATIVE BAR (Traceability Pipeline) -->
+<div class="w-full rounded-xl bg-surface-container-lowest shadow-sm p-space-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between flex-wrap gap-2">
+<div class="flex items-center gap-2">
+<span class="flex h-2.5 w-2.5 rounded-full bg-primary animate-ping"></span>
+<span class="font-label-sm text-label-sm font-bold tracking-wider uppercase text-on-surface">
+            Autonomous Student Ecosystem Loop Traceability
+          </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-sm text-[11px] font-semibold">
+            Status: Fully Linked &amp; Reactive
+          </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+          Course theory systematically propagates into Alex's live repository &amp; employment matches.
+        </span>
+</div>
+<!-- Linear Process Track -->
+<div class="relative overflow-x-auto py-2">
+<div class="flex items-center justify-between min-w-[900px] gap-2">
+<!-- Step 1 -->
+<div class="flex-1 flex flex-col p-2.5 rounded-lg bg-surface-container-low transition-transform hover:-translate-y-0.5 shadow-sm">
+<span class="font-code-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Step 01 • Academic</span>
+<div class="font-label-sm text-label-sm font-bold text-on-surface mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-primary">school</span>
+              CS 320 Lecture
+            </div>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1 mt-1">Normal Forms &amp; Schema Integrity</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-base">arrow_forward</span>
+<!-- Step 2 -->
+<div class="flex-1 flex flex-col p-2.5 rounded-lg bg-surface-container-low transition-transform hover:-translate-y-0.5 shadow-sm">
+<span class="font-code-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Step 02 • Topic</span>
+<div class="font-label-sm text-label-sm font-bold text-on-surface mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-secondary">hub</span>
+              3NF vs BCNF
+            </div>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1 mt-1">Lossless-join decomposition</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-base">arrow_forward</span>
+<!-- Step 3 (Deficit Alert) -->
+<div class="flex-1 flex flex-col p-2.5 rounded-lg bg-error-container text-on-error-container transition-transform hover:-translate-y-0.5 shadow-sm">
+<span class="font-code-sm text-[10px] uppercase font-bold tracking-wider">Step 03 • Adaptive Test</span>
+<div class="font-label-sm text-label-sm font-bold mt-0.5 flex items-center gap-1 text-error">
+<span class="material-symbols-outlined text-base">crisis_alert</span>
+              58% Quiz Score
+            </div>
+<p class="font-body-sm text-[11px] font-medium line-clamp-1 mt-1">Identified BCNF closure deficit</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-base">arrow_forward</span>
+<!-- Step 4 -->
+<div class="flex-1 flex flex-col p-2.5 rounded-lg bg-surface-container-low transition-transform hover:-translate-y-0.5 shadow-sm">
+<span class="font-code-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Step 04 • Remediation</span>
+<div class="font-label-sm text-label-sm font-bold text-on-surface mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-tertiary-container">extension</span>
+              5 Micro Drills
+            </div>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1 mt-1">Sandbox decomposition</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-base">arrow_forward</span>
+<!-- Step 5 -->
+<div class="flex-1 flex flex-col p-2.5 rounded-lg bg-surface-container-low transition-transform hover:-translate-y-0.5 shadow-sm">
+<span class="font-code-sm text-[10px] text-on-surface-variant uppercase tracking-wider">Step 05 • Applied Git</span>
+<div class="font-label-sm text-label-sm font-bold text-on-surface mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-base text-primary">commit</span>
+              E-Commerce API
+            </div>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1 mt-1">Pending PR #14 validation</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant text-base">arrow_forward</span>
+<!-- Step 6 -->
+<div class="flex-1 flex flex-col p-2.5 rounded-lg bg-surface-container-high transition-transform hover:-translate-y-0.5 shadow-sm">
+<span class="font-code-sm text-[10px] text-primary uppercase font-bold tracking-wider">Step 06 • Career Target</span>
+<div class="font-label-sm text-label-sm font-bold text-primary mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-base">trending_up</span>
+              Stripe Match +18%
+            </div>
+<p class="font-body-sm text-[11px] text-on-surface-variant line-clamp-1 mt-1">Database benchmark evidence</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 3. MAIN SPLIT LAYOUT -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- ================= LEFT COLUMN (65% / 8 Cols) ================= -->
+<div class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- SECTION A: INTERACTIVE CURRICULUM & ACTIVE UNIT -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-xs">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Curriculum &amp; Skill Progression</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Modules align to university criteria and production enterprise engineering.</p>
+</div>
+<!-- Segmented Pill Filters -->
+<div class="flex items-center p-1 bg-surface-container-low rounded-lg gap-1 self-start sm:self-auto">
+<button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm text-label-sm font-semibold shadow-sm">All (6)</button>
+<button class="px-2 py-1 rounded text-primary font-label-sm text-label-sm font-semibold hover:text-on-surface transition-colors flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span> Unit 4 (Active)
+              </button>
+<button class="px-2 py-1 rounded text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface transition-colors">Completed (3)</button>
+<button class="px-2 py-1 rounded text-on-surface-variant font-label-sm text-label-sm hover:text-on-surface transition-colors">Upcoming (2)</button>
+</div>
+</div>
+<!-- UNIT 4 HIGHLIGHT CARD (CURRENT FOCUS / DEFICIT) -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-md shadow-sm">
+<div class="flex flex-wrap items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-error text-on-error font-code-sm text-[10px] font-bold uppercase tracking-wider">
+                    Needs Reinforcement
+                  </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Scope: Midterm in 5 Days</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1">
+                  Unit 4: Relational Normalization &amp; Functional Dependencies
+                </h3>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">
+                  Unit Mastery: <strong class="text-error font-bold">58%</strong>
+</span>
+</div>
+</div>
+<!-- System Explainability Box -->
+<div class="rounded-lg bg-surface-container-lowest p-space-sm flex items-start gap-space-sm shadow-sm">
+<span class="material-symbols-outlined text-primary text-xl shrink-0 mt-0.5">psychology_alt</span>
+<div class="flex flex-col text-on-surface">
+<span class="font-label-sm text-label-sm font-bold text-primary">Contextual System Diagnostic</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                  Your recent diagnostic quiz logged only <strong>33% accuracy on Boyce-Codd Normal Form (BCNF) lossless decomposition</strong>. 
+                  Because this directly governs relational integrity, your applied project milestone (<em>E-Commerce Schema Migrations</em>) is currently flagged as blocked. 
+                  Remediating this 20-minute gap will unblock your project commit and increase midterm readiness by +14%.
+                </p>
+</div>
+</div>
+<!-- Modules inside Unit 4 -->
+<div class="flex flex-col gap-space-sm">
+<!-- Module 4.1 Completed -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between gap-space-md transition-colors hover:bg-surface-container-high/40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-emerald-600 text-xl">check_circle</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">
+                      Module 4.1: First Normal Form (1NF) &amp; Second Normal Form (2NF)
+                    </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Primary keys, atomicity, and partial dependency elimination.</span>
+</div>
+</div>
+<div class="flex items-center gap-3 shrink-0">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-emerald-800 font-code-sm text-code-sm font-semibold">96% Passed</span>
+<span class="material-symbols-outlined text-secondary text-base">lock</span>
+</div>
+</div>
+<!-- Module 4.2 ACTIVE DEFICIT -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-space-sm">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error text-xl shrink-0 mt-0.5">report_problem</span>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-label-md text-label-md font-bold text-on-surface">
+                          Module 4.2: Third Normal Form (3NF) vs. BCNF Lossless Decomposition
+                        </span>
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-code-sm text-[10px] font-bold">
+                          Critical Deficit
+                        </span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                        Transitive dependencies, superkey evaluation, and preserving functional dependencies without anomalies.
+                      </span>
+</div>
+</div>
+<span class="font-code-sm text-code-sm text-error font-bold px-2 py-0.5 rounded bg-error-container">
+                    58% Score
+                  </span>
+</div>
+<!-- Remediation Action Strip -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-2 pt-space-xs">
+<a class="flex items-center gap-2 p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-primary text-base group-hover:scale-110 transition-transform">play_circle</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[11px] font-semibold text-on-surface truncate">8-min MIT Video</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Lossless-Join BCNF</span>
+</div>
+</a>
+<a class="flex items-center gap-2 p-2 rounded bg-surface-container-low hover:bg-surface-container transition-colors group" href="#">
+<span class="material-symbols-outlined text-tertiary-container text-base group-hover:scale-110 transition-transform">terminal</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[11px] font-semibold text-on-surface truncate">Decomposition Sandbox</span>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Decompose 4 Schemas</span>
+</div>
+</a>
+<a class="flex items-center gap-2 p-2 rounded bg-primary text-on-primary hover:bg-primary-container transition-colors group shadow-sm" href="#">
+<span class="material-symbols-outlined text-on-primary text-base group-hover:scale-110 transition-transform">quiz</span>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-[11px] font-semibold text-on-primary truncate">Adaptive Retake</span>
+<span class="font-body-sm text-[10px] text-on-primary-container">5 questions to 80%+</span>
+</div>
+</a>
+</div>
+</div>
+<!-- Module 4.3 Upcoming -->
+<div class="p-space-sm rounded-lg bg-surface-container-lowest flex items-center justify-between gap-space-md opacity-75">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-outline-variant text-xl">radio_button_unchecked</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-medium text-on-surface">
+                      Module 4.3: Multivalued Dependencies &amp; 4NF
+                    </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Independent multivalued facts and non-trivial multivalued constraints.</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">
+                  Unlocks in 2 Days
+                </span>
+</div>
+</div>
+</div>
+<!-- OTHER UNITS (ACCORDION / PREVIEW LIST) -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<!-- Unit 5 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center font-code-sm font-bold text-on-surface">
+                  05
+                </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">
+                    Unit 5: Indexing Structures (B+ Trees &amp; Hash Indices)
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                    Lecture Today 10:00 AM • Hall B • Cross-linked to CS 301 Data Structures
+                  </span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container-highest text-on-surface font-label-sm text-label-sm">
+                  Next Up Today
+                </span>
+<span class="material-symbols-outlined text-secondary">chevron_right</span>
+</div>
+</div>
+<!-- Unit 6 -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex items-center justify-between hover:bg-surface-container transition-colors cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-container-highest flex items-center justify-center font-code-sm font-bold text-on-surface">
+                  06
+                </div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">
+                    Unit 6: Transaction Isolation, ACID &amp; Concurrency (2PL)
+                  </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                    Weeks 12–14 • Directly powers Spring Boot row-level lock assignments
+                  </span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+                  Locked
+                </span>
+<span class="material-symbols-outlined text-secondary">lock</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION B: CONNECTED PROJECT MILESTONE HUB -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-0.5 rounded bg-surface-container-high text-primary font-code-sm text-code-sm font-bold uppercase tracking-wider">
+                  Live Project Artifact
+                </span>
+<span class="font-code-sm text-code-sm text-emerald-700 font-semibold flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Git Sync Active
+                </span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mt-1">
+                Connected Project Milestone: E-Commerce Distributed API
+              </h2>
+</div>
+<a class="px-3 py-1.5 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-medium transition-colors flex items-center gap-1.5" href="#">
+<span class="material-symbols-outlined text-base">folder_open</span>
+              View in Project Builder
+            </a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            CS 320 theories are directly verified through programmatic pull requests in your flagship repository. Academic credit is paired with production portfolio evidence.
+          </p>
+<!-- Repository Mapping Panel -->
+<div class="rounded-xl bg-surface-container-low p-space-md flex flex-col gap-space-md shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pb-space-xs">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-2xl">account_tree</span>
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm font-bold text-on-surface">alexj-dev / distributed-ecommerce-core</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Branch: <code class="font-code-sm text-primary">feat/database-sprint2-migration</code></span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container-highest text-on-surface font-code-sm text-[11px] font-semibold">
+                PR #14: Pending Student Re-verification
+              </span>
+</div>
+<!-- Code & Deliverable Breakdown -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<div class="flex flex-col p-3 rounded-lg bg-surface-container-lowest gap-2 shadow-sm">
+<span class="font-label-sm text-label-sm font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-primary">rule</span>
+                  Academic Requirement
+                </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Deconstruct raw <code class="font-code-sm text-on-surface">orders</code> and <code class="font-code-sm text-on-surface">billing_addresses</code> tables into pure 3NF/BCNF relations with Liquibase changelogs.
+                </p>
+<div class="flex items-center justify-between text-code-sm font-code-sm pt-2 text-on-surface-variant">
+<span>Target Engine: PostgreSQL 16</span>
+<span class="text-error font-semibold">1 Anomaly Unresolved</span>
+</div>
+</div>
+<div class="flex flex-col p-3 rounded-lg bg-surface-container-lowest gap-2 shadow-sm">
+<span class="font-label-sm text-label-sm font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-tertiary-container">rocket_launch</span>
+                  Career Verification Lift
+                </span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Demonstrating lossless decomposition &amp; foreign key indexing elevates candidate fit for Stripe's Junior Core Infrastructure tier.
+                </p>
+<div class="flex items-center justify-between text-code-sm font-code-sm pt-2">
+<span class="text-on-surface-variant">Estimated Score Lift:</span>
+<span class="text-emerald-700 font-bold">+25% Match Index</span>
+</div>
+</div>
+</div>
+<!-- Commit Snippet Box -->
+<div class="p-3 rounded-lg bg-inverse-surface text-inverse-on-surface font-code-sm text-code-sm flex flex-col gap-1 shadow-inner">
+<div class="flex items-center justify-between text-outline-variant text-[11px]">
+<span>LATEST REPOSITORY COMMIT</span>
+<span>SHA: 4a9f81e • 2 hours ago</span>
+</div>
+<div class="text-surface-bright font-mono text-[12px] truncate">
+                $ git commit -m "feat(db): initial 3NF migration script pending BCNF resolution"
+              </div>
+<div class="text-error-container text-[11px] flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">info</span>
+                Auto-Grader Warning: Candidate key constraint violated in user_address_mapping table.
+              </div>
+</div>
+<!-- Action buttons -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm pt-1">
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded bg-primary text-on-primary font-label-sm text-label-sm font-medium hover:bg-primary-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">terminal</span>
+                  Open Schema in Sandbox
+                </button>
+<button class="px-3 py-1.5 rounded bg-surface-container-lowest hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-medium transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">checklist</span>
+                  Assignment Rubric
+                </button>
+</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Automated tests run on every push.</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ================= RIGHT COLUMN (35% / 4 Cols) ================= -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- SECTION C: ADAPTIVE LEARNING & DIAGNOSTIC QUIZ ENGINE -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">analytics</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Unit 4 Diagnostic Quiz</h2>
+</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Yesterday 4:15 PM</span>
+</div>
+<!-- Overall Quiz Score Card -->
+<div class="p-space-md rounded-xl bg-error-container/40 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-code-sm text-[10px] uppercase font-bold text-on-surface-variant">Attempt #1 Result</span>
+<span class="font-display-lg text-display-lg font-bold text-error leading-none mt-1">58%</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant mt-1">Passing Threshold: 80%</span>
+</div>
+<div class="text-right flex flex-col items-end">
+<span class="px-2 py-1 rounded bg-error text-on-error font-code-sm text-[11px] font-bold">Deficit Flagged</span>
+<span class="font-body-sm text-[11px] text-on-surface-variant mt-1">3 of 7 Objectives Unmet</span>
+</div>
+</div>
+<!-- Topic Granular Breakdown -->
+<div class="flex flex-col gap-2.5">
+<span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Concept Mastery Breakdown</span>
+<!-- Item 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface">1NF / 2NF Identification</span>
+<span class="font-bold text-emerald-700">100%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-full h-full bg-emerald-600 rounded-full"></div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface">FD Closure Calculation</span>
+<span class="font-bold text-on-surface">75%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-3/4 h-full bg-primary rounded-full"></div>
+</div>
+</div>
+<!-- Item 3 - Critical Gap -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface font-semibold flex items-center gap-1">
+                  BCNF Lossless Join Tests
+                  <span class="material-symbols-outlined text-xs text-error">priority_high</span>
+</span>
+<span class="font-bold text-error">33%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[33%] h-full bg-error rounded-full"></div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface">3NF Dependency Preservation</span>
+<span class="font-bold text-error">40%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[40%] h-full bg-error rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- AI Prescriptive Insight -->
+<div class="p-3 rounded-lg bg-surface-container-low flex flex-col gap-1.5 text-on-surface">
+<div class="flex items-center gap-1.5 font-label-sm text-label-sm font-bold text-primary">
+<span class="material-symbols-outlined text-sm">smart_toy</span>
+              AI Strategy
+            </div>
+<p class="font-body-sm text-[12px] text-on-surface-variant leading-relaxed">
+              Skip re-reading the 60-page chapter. Instead, focus strictly on identifying the extraneous attributes on relation determinants.
+            </p>
+</div>
+<!-- Buttons -->
+<div class="flex flex-col gap-2 pt-1">
+<button class="w-full py-2.5 px-3 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:bg-primary-container transition-all flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-base">bolt</span>
+              Launch 10-Min Remediation Drill
+            </button>
+<button class="w-full py-2 px-3 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm font-medium transition-colors flex items-center justify-center gap-1">
+              Audit Missed Answers (4 Questions)
+            </button>
+</div>
+</div>
+<!-- SECTION D: ACADEMIC CALENDAR & DEADLINES -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">event_upcoming</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Deliverables &amp; Milestones</h2>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant">CS 320 Only</span>
+</div>
+<!-- Deliverables List -->
+<div class="flex flex-col gap-3">
+<!-- Item 1 -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Problem Set 3: Normalization</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Schema Decomposition Proofs</span>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-[10px]">
+                    85% Completed
+                  </span>
+<span class="text-error font-code-sm text-[11px] font-bold">Due in 28 Hours</span>
+</div>
+</div>
+<button class="p-1 rounded hover:bg-surface-container text-primary">
+<span class="material-symbols-outlined text-base">open_in_new</span>
+</button>
+</div>
+<!-- Item 2 -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Midterm Examination 1</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Units 1–4 • 30% of Total Grade</span>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-[10px]">
+                    In-Person • Hall B
+                  </span>
+<span class="text-on-surface font-code-sm text-[11px] font-semibold">In 5 Days</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-base mt-1">calendar_month</span>
+</div>
+<!-- Item 3 -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start justify-between gap-2">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Lab 4: EXPLAIN ANALYZE</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">PostgreSQL Query Optimizer Benchmarks</span>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-code-sm text-[10px]">
+                    Terminal Lab
+                  </span>
+<span class="text-on-surface-variant font-code-sm text-[11px]">In 8 Days</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary text-base mt-1">terminal</span>
+</div>
+</div>
+</div>
+<!-- SECTION E: CAREER IMPACT & SKILL VERIFICATION NODE -->
+<div class="rounded-xl bg-surface-container-lowest shadow-sm p-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-xl">verified_user</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">Skill Verification Graph</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-primary font-code-sm text-[10px] font-bold">
+              Target: Backend Eng
+            </span>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Skill Node 1 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="font-semibold text-on-surface">SQL Relational Modeling</span>
+<span class="font-code-sm text-code-sm text-emerald-700 font-bold">84% Strong</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[84%] h-full bg-emerald-600 rounded-full"></div>
+</div>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Verified by Assignments 1 &amp; 2</span>
+</div>
+<!-- Skill Node 2 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="font-semibold text-on-surface">Index Query Optimization</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">40% Developing</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[40%] h-full bg-primary rounded-full"></div>
+</div>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Pending Lab 4 EXPLAIN execution</span>
+</div>
+<!-- Skill Node 3 -->
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between text-label-sm font-label-sm">
+<span class="font-semibold text-on-surface">Transaction Isolation (ACID)</span>
+<span class="font-code-sm text-code-sm text-secondary font-bold">15% Scheduled</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[15%] h-full bg-secondary rounded-full"></div>
+</div>
+<span class="font-body-sm text-[10px] text-on-surface-variant">Scheduled for Finals week</span>
+</div>
+</div>
+<!-- Target Employers Badge Strip -->
+<div class="pt-space-xs flex flex-col gap-2">
+<span class="font-code-sm text-[10px] text-on-surface-variant uppercase tracking-wider font-semibold">
+              Live Industry Alignment
+            </span>
+<div class="flex flex-wrap gap-1.5">
+<span class="px-2.5 py-1 rounded bg-surface-container-low text-on-surface font-label-sm text-[11px] font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Stripe (Data Platform)
+              </span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low text-on-surface font-label-sm text-[11px] font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Datadog (Storage Engine)
+              </span>
+<span class="px-2.5 py-1 rounded bg-surface-container-low text-on-surface font-label-sm text-[11px] font-medium flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Affirm (Core Ledger)
+              </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></main></div></body></html>

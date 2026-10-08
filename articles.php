@@ -50,7 +50,7 @@ $totalCount = count($articles);
           </div>
 
           <div class="flex flex-col gap-space-xs max-w-4xl">
-            <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+            <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight font-bold">
               Writing
             </h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
@@ -67,10 +67,6 @@ $totalCount = count($articles);
               </span>
               <span class="text-outline">•</span>
               <span>Systems &amp; Architecture</span>
-            </div>
-            <div class="flex items-center gap-space-xs font-label-micro text-label-micro text-outline">
-              <span class="material-symbols-outlined text-[0.875rem]">history</span>
-              <span>Regularly Updated</span>
             </div>
           </div>
         </section>

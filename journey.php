@@ -48,10 +48,10 @@ $currentPage = 'journey';
           <div class="flex items-center gap-space-xs">
             <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
             <span class="font-label-micro text-label-micro uppercase tracking-widest text-primary font-semibold">
-              ENGINEERING TIMELINE &amp; MILESTONES — 2021 TO PRESENT
+              ENGINEERING TIMELINE &amp; MILESTONES
             </span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight font-bold">
             Journey &amp; Architectural Evolution
           </h1>
           <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">

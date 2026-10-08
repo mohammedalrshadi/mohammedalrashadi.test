@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary": "#ffffff", "outline-variant": "#c7c4d8", "surface-container-high": "#dce9ff", "tertiary-fixed-dim": "#4cd7f6", "outline": "#777587", "tertiary-container": "#006a7c", "primary-fixed-dim": "#c3c0ff", "on-secondary": "#ffffff", "on-primary-fixed": "#0f0069", "on-secondary-fixed": "#131b2e", "on-secondary-fixed-variant": "#3f465c", "inverse-on-surface": "#eaf1ff", "tertiary": "#00505f", "primary-fixed": "#e2dfff", "tertiary-fixed": "#acedff", "on-background": "#0b1c30", "error-container": "#ffdad6", "inverse-primary": "#c3c0ff", "primary": "#3525cd", "surface-container-low": "#eff4ff", "on-secondary-container": "#5c647a", "on-error-container": "#93000a", "inverse-surface": "#213145", "on-tertiary-fixed-variant": "#004e5c", "on-surface": "#0b1c30", "surface-variant": "#d3e4fe", "secondary": "#565e74", "error": "#ba1a1a", "on-error": "#ffffff", "surface-bright": "#f8f9ff", "surface-container": "#e5eeff", "secondary-fixed-dim": "#bec6e0", "surface-container-highest": "#d3e4fe", "surface-tint": "#4d44e3", "on-primary-container": "#dad7ff", "surface-dim": "#cbdbf5", "on-primary-fixed-variant": "#3323cc", "surface": "#f8f9ff", "secondary-fixed": "#dae2fd", "on-tertiary-fixed": "#001f26", "secondary-container": "#dae2fd", "background": "#f8f9ff", "surface-container-lowest": "#ffffff", "on-surface-variant": "#464555", "on-tertiary-container": "#93e8ff", "primary-container": "#4f46e5", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1rem", "gutter-compact": "1rem", "gutter": "1.5rem", "space-xs": "0.25rem", "space-xl": "2rem", "space-lg": "1.5rem", "margin": "2rem", "space-md": "1rem", "space-2xl": "3rem" }, "fontFamily": { "headline-sm": [ "Manrope" ], "body-lg": [ "Hanken Grotesk" ], "headline-md": [ "Manrope" ], "body-md": [ "Hanken Grotesk" ], "headline-xl": [ "Manrope" ], "label-md": [ "Hanken Grotesk" ], "body-sm": [ "Hanken Grotesk" ], "code-sm": [ "JetBrains Mono" ], "display-lg": [ "Manrope" ], "headline-lg": [ "Manrope" ], "label-sm": [ "Hanken Grotesk" ] }, "fontSize": { "headline-sm": [ "1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" } ], "headline-md": [ "1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" } ], "headline-xl": [ "2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" } ], "code-sm": [ "0.75rem", { "lineHeight": "1rem", "fontWeight": "400" } ], "display-lg": [ "2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "headline-lg": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-[260px]"><img alt="Student Ecosystem Brand Mark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlRmqHXliftoz-zvjXmNei53JfNf56OGpU-2GMse_PZuJnIja-3EuD6r4ygXoVT8MWaU5JUGBrt0av2u_QfsZ8Xi7tUwZ8oS4fQE7DA2nQzmLpcuLA96GHtuDyLF7NhxrfT9IwH6OZFMHWMb_G0SQlmPriYtYkdxqup3Kljz8IYJ8KTjB-3jMm21jn5KgnxwJ7sjK-gOLnP33S3qx7I_Gm1vg2nH0YHGB4pYgtQYI"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Student Ecosystem</span><span class="font-code-sm text-code-sm text-on-surface-variant tracking-wider uppercase leading-none">Personal Operating System</span></div></div><div class="flex-1 max-w-xl mx-space-md hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3 text-secondary text-lg pointer-events-none">search</span><input class="w-full pl-9 pr-16 py-1.5 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(79,70,229,0.18)] transition-all placeholder:text-on-surface-variant/70" placeholder="Search courses, skills, projects, opportunities..." type="text"/><div class="absolute right-2.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-on-secondary-container pointer-events-none"><span class="text-[10px]">⌘</span><span>K</span></div></div></div><div class="flex items-center gap-space-sm"><div class="hidden xl:flex items-center p-1 bg-surface-container-low rounded-lg gap-1"><button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-[0_1px_3px_rgba(15,23,42,0.06)] font-semibold" type="button">Standard</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Easy</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Hard</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Go</button></div><div class="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-secondary-container/40"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface font-medium">Active Goal: <span class="font-semibold text-primary">Backend Engineer</span></span><div class="w-12 h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-3/4 h-full bg-primary rounded-full"></div></div></div><button aria-label="Contextual AI Assistant" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button"><span class="material-symbols-outlined text-base">arrow_back_ios_new</span><span class="font-medium">Intelligence</span></button><button aria-label="Notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error font-code-sm text-[10px] font-bold text-on-error">3</span></button><div class="flex items-center gap-2 pl-space-xs"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHwtCW7XZkTWN83XkdzOlbydjUsTTnazWHiYdmay4QfB6Mt6q3V6aa6yk-n_i62KKCmxbbRgeegA99khpJrWZFpE2GMu6l0ts-urMo6d1446UDiXRFZ1FlSA2PSKmXA_hz7IPltJwGCA3SGliP-wV6fGdwsOMs_rsju3qW8nS4GGYxM4cT1wIIYq710ivS96nYpiNARXwPLIT1hfaVhiTRpnSDCiP9TTdWSIDmXOc"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-surface-container-lowest"></span></div><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Alex Johnson</span><span class="font-code-sm text-[10px] text-emerald-700 leading-none">Online</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 z-40 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col justify-between overflow-y-auto"><div class="p-space-sm"><div class="px-space-sm pt-space-xs pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Student Loop</span></div><nav class="space-y-0.5 flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-lg">grid_view</span><span>Home</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="my-path" href="#"><span class="material-symbols-outlined text-lg">route</span><span>My Path</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="academic" href="#"><span class="material-symbols-outlined text-lg">school</span><span>Academic</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="learning" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Learning</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="skills" href="#"><span class="material-symbols-outlined text-lg">verified</span><span>Skills</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="projects" href="#"><span class="material-symbols-outlined text-lg">folder_special</span><span>Projects</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="career-and-opportunities" href="#"><span class="material-symbols-outlined text-lg">work</span><span>Career &amp; Opportunities</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="community" href="#"><span class="material-symbols-outlined text-lg">groups</span><span>Community</span></a></nav><div class="px-space-sm pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Ecosystem &amp; Operations</span></div><nav class="space-y-0.5 flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="calendar-and-tasks" href="#"><span class="material-symbols-outlined text-lg">calendar_month</span><span>Calendar &amp; Tasks</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="future-ecosystem" href="#"><span class="material-symbols-outlined text-lg">hub</span><span>Future Ecosystem</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="settings-and-privacy" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Settings &amp; Privacy</span></a></nav></div><div class="p-space-sm m-space-sm rounded-lg bg-surface-container-low"><div class="flex items-center justify-between mb-1"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Semester Progress</span><span class="font-code-sm text-code-sm text-primary font-bold">64%</span></div><div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-[64%] h-full bg-primary rounded-full"></div></div><span class="block font-body-sm text-[11px] text-on-surface-variant mt-2">Week 10 of 16 • 3 Finals Pending</span></div></aside><div class="pl-64"><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="w-full max-w-[1600px] mx-auto px-margin space-y-space-lg pb-space-2xl">
+<!-- CONTEXT & NAVIGATION BREADCRUMB -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pt-space-md">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Academic</span>
+<span class="material-symbols-outlined text-outline text-xs">chevron_right</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">CS 320: Database Engineering</span>
+<span class="material-symbols-outlined text-outline text-xs">chevron_right</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Unit 4: Normalization</span>
+<span class="material-symbols-outlined text-outline text-xs">chevron_right</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium">Drill BCNF-DECOMP-302</span>
+<span class="material-symbols-outlined text-outline text-xs">chevron_right</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Schema Workbench</span>
+</div>
+<div class="flex items-center gap-2 self-start md:self-auto">
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-container-high text-primary font-code-sm text-code-sm font-semibold tracking-wide">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span>PG-16 SANDBOX // PR #14 WORKBENCH // AUTONOMOUS VERIFIER</span>
+</div>
+</div>
+</div>
+<!-- HEADER TITLE & HIGH-LEVEL ACTIONS -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md pb-space-sm">
+<div class="space-y-1">
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight font-bold">
+          Remediation Code Sandbox: Schema Migration &amp; Lossless Diff
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-4xl">
+          Simulate concurrent anomalies, run Chase Lossless Join tests, and synthesize production PostgreSQL DDL for E-Commerce Distributed API (PR #14: BCNF Normalization &amp; Liquibase Patch).
+        </p>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<button class="flex items-center gap-1.5 px-3 py-2 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-base">arrow_back</span>
+<span>Back to Drill</span>
+</button>
+<button class="flex items-center gap-1.5 px-3 py-2 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-base text-primary">fork_left</span>
+<span class="font-code-sm text-code-sm font-semibold">feat/database-sprint2-migration</span>
+</button>
+<button class="flex items-center gap-2 px-4 py-2 rounded bg-primary-container hover:bg-primary text-on-primary font-label-md text-label-md font-semibold transition-all shadow-md" id="runAllBtn" type="button">
+<span class="material-symbols-outlined text-lg">play_arrow</span>
+<span>Run All Verification Checks</span>
+</button>
+</div>
+</div>
+<!-- TOP TRACEABILITY & IMPACT STRIP (Explainability) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card 1 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-surface-container rounded-full opacity-40 group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-code-sm text-code-sm font-semibold text-primary uppercase tracking-wider">ACADEMIC STANDING</span>
+<span class="material-symbols-outlined text-primary text-lg">school</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Resolves Questions 2 &amp; 5</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Covers non-trivial functional dependencies where determinants fail Superkey criteria. Projected impact: <span class="font-semibold text-primary">+14% Midterm Readiness</span>.
+          </p>
+</div>
+<div class="mt-3 pt-2 flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>Module: Relational Theory CS 320</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-surface-container rounded-full opacity-40 group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-code-sm text-code-sm font-semibold text-secondary uppercase tracking-wider">REPOSITORY PR #14 IMPACT</span>
+<span class="material-symbols-outlined text-secondary text-lg">merge_type</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">Removes 3 Critical Anomalies</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Eliminates redundant <code class="bg-surface-container px-1 py-0.5 rounded font-code-sm">customer_email</code> and price duplication, clearing insertion deadlocks across microservice checkout.
+          </p>
+</div>
+<div class="mt-3 pt-2 flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>E-Commerce Distributed API (Production)</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="p-space-md bg-surface-container-lowest rounded-lg shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-surface-container rounded-full opacity-40 group-hover:scale-125 transition-transform duration-500 pointer-events-none"></div>
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-code-sm text-code-sm font-semibold text-tertiary uppercase tracking-wider">CAREER SIGNAL // STRIPE BENCHMARK</span>
+<span class="material-symbols-outlined text-tertiary text-lg">verified</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-1">ACID &amp; Formal Decomposition</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Signals production-grade database schema modeling, idempotency, and lossless joins for Alex's Backend Systems trajectory.
+          </p>
+</div>
+<div class="mt-3 pt-2 flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+<span>Verified Skill: Relational Database Architecture</span>
+</div>
+</div>
+</div>
+<!-- MAIN WORKBENCH SECTION -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden">
+<!-- TAB NAVIGATION -->
+<div class="bg-surface-container-low px-space-md pt-2 flex items-center justify-between gap-2 overflow-x-auto">
+<div class="flex items-center gap-1">
+<button class="px-4 py-2.5 rounded-t-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md font-semibold shadow-sm flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-base text-primary">difference</span>
+<span>Side-by-Side Schema Diff (SQL DDL)</span>
+</button>
+<button class="px-4 py-2.5 rounded-t-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-base">table_view</span>
+<span>Chase Lossless Join Matrix</span>
+</button>
+<button class="px-4 py-2.5 rounded-t-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-base">bug_report</span>
+<span>Anomaly Playground &amp; Live Harness</span>
+</button>
+<button class="px-4 py-2.5 rounded-t-lg text-on-surface-variant hover:text-on-surface font-label-md text-label-md font-medium transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-base">receipt_long</span>
+<span>Liquibase / Flyway Patch DDL</span>
+</button>
+</div>
+<div class="hidden xl:flex items-center gap-3 pb-2 text-on-surface-variant">
+<span class="font-code-sm text-code-sm flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            Host: <strong class="text-on-surface">postgres:16.2-alpine</strong>
+</span>
+<span class="font-code-sm text-code-sm">Isolation: <strong>READ COMMITTED</strong></span>
+</div>
+</div>
+<!-- WORKBENCH SPLIT-PANE -->
+<div class="grid grid-cols-1 lg:grid-cols-2">
+<!-- LEFT PANE: PRE-REMEDIATION -->
+<div class="p-space-md flex flex-col bg-surface-container-low/30">
+<!-- Pane Header -->
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-lg">warning</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">PRE-REMEDIATION (Denormalized)</span>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-[11px]">schema_v3_denorm.sql</span>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-error bg-error-container/40 text-on-error-container px-2 py-0.5 rounded">
+              3 BCNF VIOLATIONS
+            </span>
+</div>
+<!-- Alert / Diagnostics -->
+<div class="p-3 mb-3 rounded-lg bg-error-container/30 text-on-error-container font-body-sm text-body-sm flex items-start gap-2.5">
+<span class="material-symbols-outlined text-error text-base mt-0.5 shrink-0">error</span>
+<div>
+<p class="font-semibold">Functional Dependency Violation Report:</p>
+<p class="font-code-sm text-[12px] mt-0.5">FD2: customer_id → customer_email (Determinant is not superkey)</p>
+<p class="font-code-sm text-[12px]">FD4: product_id → unit_price (Determinant is not superkey)</p>
+</div>
+</div>
+<!-- Editor Window (Left) -->
+<div class="rounded-lg bg-inverse-surface text-inverse-on-surface font-code-sm text-code-sm p-4 overflow-x-auto flex-1 flex flex-col">
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-white/10 text-inverse-on-surface/60 font-code-sm text-[11px]">
+<span>PostgreSQL 16 Dialect // Current Master PR Branch</span>
+<span>Lines: 1-17</span>
+</div>
+<pre class="font-code-sm text-[12px] leading-relaxed select-text flex-1"><code><span class="text-white/40 select-none inline-block w-6">01</span> <span class="text-indigo-300">CREATE TABLE</span> <span class="text-yellow-300">customer_orders_denorm</span> (
+<span class="text-white/40 select-none inline-block w-6">02</span>   order_id <span class="text-cyan-300">UUID</span>,
+<span class="text-white/40 select-none inline-block w-6">03</span>   customer_id <span class="text-cyan-300">UUID</span>,
+<span class="bg-red-500/20 text-red-200 block -mx-4 px-4 py-0.5"><span class="text-white/40 select-none inline-block w-6">04</span>   customer_email <span class="text-cyan-300">VARCHAR</span>(255), <span class="text-amber-400">-- ⚠️ ANOMALY: Redundant across duplicate orders</span></span>
+<span class="text-white/40 select-none inline-block w-6">05</span>   product_id <span class="text-cyan-300">UUID</span>,
+<span class="bg-red-500/20 text-red-200 block -mx-4 px-4 py-0.5"><span class="text-white/40 select-none inline-block w-6">06</span>   unit_price <span class="text-cyan-300">NUMERIC</span>(10,2),    <span class="text-amber-400">-- ⚠️ ANOMALY: Update anomaly if price adjusts</span></span>
+<span class="text-white/40 select-none inline-block w-6">07</span>   quantity <span class="text-cyan-300">INTEGER</span>,
+<span class="text-white/40 select-none inline-block w-6">08</span>   <span class="text-indigo-300">PRIMARY KEY</span> (order_id, product_id)
+<span class="text-white/40 select-none inline-block w-6">09</span> );
+<span class="text-white/40 select-none inline-block w-6">10</span> 
+<span class="text-white/40 select-none inline-block w-6">11</span> <span class="text-white/40">-- Live Demonstration Sandbox Invariants:</span>
+<span class="text-white/40 select-none inline-block w-6">12</span> <span class="text-white/40">-- Insertion Anomaly: Cannot register customer without mock order_id!</span>
+<span class="text-white/40 select-none inline-block w-6">13</span> <span class="text-indigo-300">INSERT INTO</span> customer_orders_denorm (customer_id, customer_email)
+<span class="text-white/40 select-none inline-block w-6">14</span> <span class="text-indigo-300">VALUES</span> (<span class="text-emerald-300">'c7a2...'</span>, <span class="text-emerald-300">'alex@mit.edu'</span>);
+<span class="text-white/40 select-none inline-block w-6">15</span> <span class="text-red-400">-- ERROR: null value in column "order_id" violates not-null constraint</span></code></pre>
+</div>
+<!-- Anomaly Status & Runner Controls -->
+<div class="mt-4 pt-3 flex flex-col gap-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface uppercase tracking-wider">Active Concurrency &amp; Anomaly Status</span>
+<div class="flex items-center justify-between p-2.5 rounded bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-base">cancel</span>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Insertion Anomaly</div>
+<div class="font-body-sm text-[12px] text-on-surface-variant">Cannot insert prospective customer profile prior to first order creation</div>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-sm text-code-sm font-semibold transition-colors" type="button">
+                Run Test
+              </button>
+</div>
+<div class="flex items-center justify-between p-2.5 rounded bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-error text-base">cancel</span>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Update / Consistency Anomaly</div>
+<div class="font-body-sm text-[12px] text-on-surface-variant">Catalog price adjustments force multi-row table lockup across historical orders</div>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-sm text-code-sm font-semibold transition-colors" type="button">
+                Run Test
+              </button>
+</div>
+</div>
+</div>
+<!-- RIGHT PANE: BCNF NORMALIZED -->
+<div class="p-space-md flex flex-col bg-surface-container-lowest">
+<!-- Pane Header -->
+<div class="flex items-center justify-between pb-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-lg">check_circle</span>
+<span class="font-label-md text-label-md font-semibold text-on-surface">BCNF NORMALIZED (Lossless Decomposition)</span>
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-code-sm text-[11px]">schema_v4_bcnf_patch.sql</span>
+</div>
+<span class="font-code-sm text-code-sm font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+              VERIFIED LOSSLESS JOIN
+            </span>
+</div>
+<!-- Alert / Diagnostics -->
+<div class="p-3 mb-3 rounded-lg bg-emerald-50 text-emerald-900 font-body-sm text-body-sm flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-600 text-base mt-0.5 shrink-0">verified_user</span>
+<div>
+<p class="font-semibold">BCNF Proof Status: Satisfied (R1, R2, R3, R4)</p>
+<p class="font-code-sm text-[12px] mt-0.5">Every non-trivial FD X → Y holds where X is a verified Superkey.</p>
+<p class="font-code-sm text-[12px]">Preserves 100% of candidate key foreign referential constraints.</p>
+</div>
+</div>
+<!-- Editor Window (Right) -->
+<div class="rounded-lg bg-inverse-surface text-inverse-on-surface font-code-sm text-code-sm p-4 overflow-x-auto flex-1 flex flex-col">
+<div class="flex items-center justify-between pb-2 mb-2 border-b border-white/10 text-inverse-on-surface/60 font-code-sm text-[11px]">
+<span>Generated Liquibase Target // Feat Branch</span>
+<span>Lines: 1-25</span>
+</div>
+<pre class="font-code-sm text-[12px] leading-relaxed select-text flex-1"><code><span class="text-white/40 select-none inline-block w-6">01</span> <span class="text-emerald-400">-- R1: Customer Entity (Key: customer_id)</span>
+<span class="text-white/40 select-none inline-block w-6">02</span> <span class="text-indigo-300">CREATE TABLE</span> <span class="text-yellow-300">customers</span> (
+<span class="text-white/40 select-none inline-block w-6">03</span>   customer_id <span class="text-cyan-300">UUID</span> <span class="text-indigo-300">PRIMARY KEY</span>,
+<span class="text-white/40 select-none inline-block w-6">04</span>   customer_email <span class="text-cyan-300">VARCHAR</span>(255) <span class="text-indigo-300">UNIQUE NOT NULL</span>
+<span class="text-white/40 select-none inline-block w-6">05</span> );
+<span class="text-white/40 select-none inline-block w-6">06</span> 
+<span class="text-white/40 select-none inline-block w-6">07</span> <span class="text-emerald-400">-- R2: Catalog Product Entity (Key: product_id)</span>
+<span class="text-white/40 select-none inline-block w-6">08</span> <span class="text-indigo-300">CREATE TABLE</span> <span class="text-yellow-300">products</span> (
+<span class="text-white/40 select-none inline-block w-6">09</span>   product_id <span class="text-cyan-300">UUID</span> <span class="text-indigo-300">PRIMARY KEY</span>,
+<span class="text-white/40 select-none inline-block w-6">10</span>   unit_price <span class="text-cyan-300">NUMERIC</span>(10,2) <span class="text-indigo-300">NOT NULL CHECK</span> (unit_price &gt;= 0)
+<span class="text-white/40 select-none inline-block w-6">11</span> );
+<span class="text-white/40 select-none inline-block w-6">12</span> 
+<span class="text-white/40 select-none inline-block w-6">13</span> <span class="text-emerald-400">-- R3: Transactional Order Header (Key: order_id)</span>
+<span class="text-white/40 select-none inline-block w-6">14</span> <span class="text-indigo-300">CREATE TABLE</span> <span class="text-yellow-300">orders</span> (
+<span class="text-white/40 select-none inline-block w-6">15</span>   order_id <span class="text-cyan-300">UUID</span> <span class="text-indigo-300">PRIMARY KEY</span>,
+<span class="text-white/40 select-none inline-block w-6">16</span>   customer_id <span class="text-cyan-300">UUID</span> <span class="text-indigo-300">REFERENCES</span> customers(customer_id) <span class="text-indigo-300">ON DELETE RESTRICT</span>,
+<span class="text-white/40 select-none inline-block w-6">17</span>   created_at <span class="text-cyan-300">TIMESTAMPTZ</span> <span class="text-indigo-300">DEFAULT</span> NOW()
+<span class="text-white/40 select-none inline-block w-6">18</span> );
+<span class="text-white/40 select-none inline-block w-6">19</span> 
+<span class="text-white/40 select-none inline-block w-6">20</span> <span class="text-emerald-400">-- R4: Line Items Junction (Composite Key: order_id, product_id)</span>
+<span class="text-white/40 select-none inline-block w-6">21</span> <span class="text-indigo-300">CREATE TABLE</span> <span class="text-yellow-300">order_line_items</span> (
+<span class="text-white/40 select-none inline-block w-6">22</span>   order_id <span class="text-cyan-300">UUID</span> <span class="text-indigo-300">REFERENCES</span> orders(order_id) <span class="text-indigo-300">ON DELETE CASCADE</span>,
+<span class="text-white/40 select-none inline-block w-6">23</span>   product_id <span class="text-cyan-300">UUID</span> <span class="text-indigo-300">REFERENCES</span> products(product_id) <span class="text-indigo-300">ON DELETE RESTRICT</span>,
+<span class="text-white/40 select-none inline-block w-6">24</span>   quantity <span class="text-cyan-300">INTEGER CHECK</span> (quantity &gt; 0),
+<span class="text-white/40 select-none inline-block w-6">25</span>   <span class="text-indigo-300">PRIMARY KEY</span> (order_id, product_id)
+<span class="text-white/40 select-none inline-block w-6">26</span> );</code></pre>
+</div>
+<!-- Quick Diff Stats -->
+<div class="mt-4 pt-3 grid grid-cols-3 gap-2">
+<div class="p-2 rounded bg-surface-container-low text-center">
+<span class="font-code-sm text-[11px] text-on-surface-variant block uppercase">Relations</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">4 Clean</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low text-center">
+<span class="font-code-sm text-[11px] text-on-surface-variant block uppercase">Redundancy</span>
+<span class="font-headline-sm text-headline-sm font-bold text-emerald-700">0.00%</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low text-center">
+<span class="font-code-sm text-[11px] text-on-surface-variant block uppercase">Foreign Constraints</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary">3 Enforced</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- VERIFICATION RUNNER & CHASE TABLEAU (Bottom Section) -->
+<div class="space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+            Automated Formal Verification &amp; Sandbox Execution Results
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Empirical runtime tests verifying algorithm correctness against relational database theorems.
+          </p>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-code-sm text-code-sm text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded font-semibold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">check</span>
+<span>All Theorems Satisfied</span>
+</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md">
+<!-- CARD A: CHASE ALGORITHM LOSSLESS JOIN PROOF TABLEAU -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-md text-label-md font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">functions</span>
+                Chase Algorithm Lossless Proof
+              </span>
+<span class="font-code-sm text-[11px] text-primary bg-primary-fixed/40 px-2 py-0.5 rounded">Iter 3 (Converged)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+              Row tableau demonstrates convergence to <span class="font-code-sm font-bold text-on-surface">(a₁, a₂, a₃, a₄, a₅, a₆)</span>, guaranteeing zero spurious tuples upon natural join.
+            </p>
+<!-- Table of Tableau -->
+<div class="overflow-x-auto rounded bg-surface-container-low p-2">
+<table class="w-full text-left font-code-sm text-[11px]">
+<thead>
+<tr class="text-on-surface-variant border-b border-surface-container-high">
+<th class="py-1 px-1.5">Rel</th>
+<th class="py-1 px-1.5 font-bold text-primary">order_id</th>
+<th class="py-1 px-1.5">cust_id</th>
+<th class="py-1 px-1.5">email</th>
+<th class="py-1 px-1.5">prod_id</th>
+<th class="py-1 px-1.5">price</th>
+<th class="py-1 px-1.5">qty</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-high/60 text-on-surface">
+<tr class="bg-surface-container-lowest">
+<td class="py-1 px-1.5 font-bold">R1</td>
+<td class="py-1 px-1.5 text-secondary">b₁₁</td>
+<td class="py-1 px-1.5 font-bold text-emerald-600">a₂</td>
+<td class="py-1 px-1.5 font-bold text-emerald-600">a₃</td>
+<td class="py-1 px-1.5 text-secondary">b₁₄</td>
+<td class="py-1 px-1.5 text-secondary">b₁₅</td>
+<td class="py-1 px-1.5 text-secondary">b₁₆</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="py-1 px-1.5 font-bold">R2</td>
+<td class="py-1 px-1.5 text-secondary">b₂₁</td>
+<td class="py-1 px-1.5 text-secondary">b₂₂</td>
+<td class="py-1 px-1.5 text-secondary">b₂₃</td>
+<td class="py-1 px-1.5 font-bold text-emerald-600">a₄</td>
+<td class="py-1 px-1.5 font-bold text-emerald-600">a₅</td>
+<td class="py-1 px-1.5 text-secondary">b₂₆</td>
+</tr>
+<tr class="bg-surface-container-lowest">
+<td class="py-1 px-1.5 font-bold">R3</td>
+<td class="py-1 px-1.5 font-bold text-emerald-600">a₁</td>
+<td class="py-1 px-1.5 font-bold text-emerald-600">a₂</td>
+<td class="py-1 px-1.5 text-secondary">b₃₃</td>
+<td class="py-1 px-1.5 text-secondary">b₃₄</td>
+<td class="py-1 px-1.5 text-secondary">b₃₅</td>
+<td class="py-1 px-1.5 text-secondary">b₃₆</td>
+</tr>
+<tr class="bg-emerald-50 text-emerald-950 font-bold">
+<td class="py-1 px-1.5">R4*</td>
+<td class="py-1 px-1.5 text-emerald-600">a₁</td>
+<td class="py-1 px-1.5 text-emerald-600">a₂</td>
+<td class="py-1 px-1.5 text-emerald-600">a₃</td>
+<td class="py-1 px-1.5 text-emerald-600">a₄</td>
+<td class="py-1 px-1.5 text-emerald-600">a₅</td>
+<td class="py-1 px-1.5 text-emerald-600">a₆</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-3 pt-2 text-on-surface-variant font-body-sm text-[11px] flex items-center justify-between">
+<span>Result: Lossless Join Property Guaranteed</span>
+<span class="font-code-sm text-primary font-bold">Π R1⋈R2⋈R3⋈R4 = R</span>
+</div>
+</div>
+<!-- CARD B: DEPENDENCY PRESERVATION CHECK -->
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-md text-label-md font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-base">rule</span>
+                Dependency Preservation Map
+              </span>
+<span class="font-code-sm text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-semibold">100% PRESERVED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+              All functional dependencies in F⁺ can be tested on a single relation without computing cross-table joins:
+            </p>
+<div class="space-y-2">
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<div>
+<div class="font-code-sm text-code-sm font-semibold text-on-surface">FD1: (order_id, product_id) → quantity</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant">Preserved in <code class="font-code-sm font-semibold text-primary">order_line_items</code> PK</div>
+</div>
+<span class="material-symbols-outlined text-emerald-600 text-lg">check</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<div>
+<div class="font-code-sm text-code-sm font-semibold text-on-surface">FD2: customer_id → customer_email</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant">Preserved in <code class="font-code-sm font-semibold text-primary">customers</code> PK</div>
+</div>
+<span class="material-symbols-outlined text-emerald-600 text-lg">check</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<div>
+<div class="font-code-sm text-code-sm font-semibold text-on-surface">FD3: order_id → customer_id</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant">Preserved in <code class="font-code-sm font-semibold text-primary">orders</code> PK / FK</div>
+</div>
+<span class="material-symbols-outlined text-emerald-600 text-lg">check</span>
+</div>
+<div class="p-2 rounded bg-surface-container-low flex items-center justify-between">
+<div>
+<div class="font-code-sm text-code-sm font-semibold text-on-surface">FD4: product_id → unit_price</div>
+<div class="font-body-sm text-[11px] text-on-surface-variant">Preserved in <code class="font-code-sm font-semibold text-primary">products</code> PK</div>
+</div>
+<span class="material-symbols-outlined text-emerald-600 text-lg">check</span>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-2 text-on-surface-variant font-body-sm text-[11px] flex items-center justify-between">
+<span>Enforcement Cost: Minimal (O(1) index lookups)</span>
+</div>
+</div>
+<!-- CARD C: POSTGRESQL SANDBOX TEST OUTPUT (CONSOLE) -->
+<div class="p-space-md bg-inverse-surface text-inverse-on-surface rounded-xl shadow-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+<span class="font-code-sm text-code-sm font-bold flex items-center gap-2 text-emerald-400">
+<span class="material-symbols-outlined text-base">terminal</span>
+                pg_prove Console Runner
+              </span>
+<span class="font-code-sm text-[11px] text-inverse-on-surface/60">sandbox_cs320_dev</span>
+</div>
+<div class="font-code-sm text-[12px] leading-relaxed space-y-1.5">
+<div class="text-inverse-on-surface/50">$ pg_prove -d sandbox_cs320 tests/bcnf_decomposition_test.sql</div>
+<div class="text-white">Connecting to PostgreSQL 16.2 on port 5432... [OK]</div>
+<div class="text-emerald-400 flex items-center gap-1.5">
+<span>✓</span>
+<span>Candidate key uniqueness validated [0.012s]</span>
+</div>
+<div class="text-emerald-400 flex items-center gap-1.5">
+<span>✓</span>
+<span>Foreign key cascading constraints validated [0.019s]</span>
+</div>
+<div class="text-emerald-400 flex items-center gap-1.5">
+<span>✓</span>
+<span>Lossless join query plan: Index Scan (Cost: 0.12..8.44) [0.008s]</span>
+</div>
+<div class="text-emerald-400 flex items-center gap-1.5">
+<span>✓</span>
+<span>Zero insertion anomalies on isolated customer registration [0.004s]</span>
+</div>
+<div class="text-emerald-400 flex items-center gap-1.5">
+<span>✓</span>
+<span>Product price update isolated to 1 row [0.003s]</span>
+</div>
+<div class="text-inverse-on-surface/70 pt-2 border-t border-white/10">
+                Tests: 8 passed, 0 failed, 0 skipped. Total time: 0.046s.
+              </div>
+<div class="text-emerald-300 font-bold bg-emerald-500/10 px-2 py-1 rounded">
+                STATUS: READY TO COMMIT TO PR #14
+              </div>
+</div>
+</div>
+<div class="mt-4 pt-2 flex items-center justify-between border-t border-white/10 text-inverse-on-surface/60 font-code-sm text-[11px]">
+<span>Build Hash: git-sha 9f82d1c</span>
+<span class="text-emerald-400 font-bold">100% PASS RATE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- STICKY BOTTOM ACTIONS FOOTER -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest shadow-lg flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">cloud_sync</span>
+</div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Auto-synced with CS 320 Grading Server &amp; GitHub Workspace</div>
+<div class="font-body-sm text-[12px] text-on-surface-variant">Last verified execution: 42 seconds ago • All checks passing cleanly</div>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-wrap">
+<button class="px-3.5 py-2 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-medium transition-colors shadow-sm" type="button">
+          Reset Sandbox State
+        </button>
+<button class="px-3.5 py-2 rounded bg-surface-container-low hover:bg-surface-container text-on-surface font-label-md text-label-md font-medium transition-colors shadow-sm flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-base">download</span>
+<span>Download .sql Script</span>
+</button>
+<button class="relative group px-4 py-2 rounded bg-primary text-on-primary font-label-md text-label-md font-semibold hover:bg-primary-container transition-all shadow-md flex items-center gap-2 overflow-hidden" type="button">
+<span class="absolute inset-0 w-1/2 h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-[300%] transition-transform duration-1000"></span>
+<span class="material-symbols-outlined text-base">publish</span>
+<span>Apply Patch to PR #14 &amp; Return to Drill (Score: +22%)</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Simple micro-interaction for running all checks
+  const runBtn = document.getElementById('runAllBtn');
+  if (runBtn) {
+    runBtn.addEventListener('click', () => {
+      const originalHTML = runBtn.innerHTML;
+      runBtn.innerHTML = '<span class="material-symbols-outlined text-lg animate-spin">refresh</span><span>Running SQL Suite...</span>';
+      setTimeout(() => {
+        runBtn.innerHTML = '<span class="material-symbols-outlined text-lg">check</span><span>All 8 Checks Passed!</span>';
+        setTimeout(() => {
+          runBtn.innerHTML = originalHTML;
+        }, 2500);
+      }, 900);
+    });
+  }
+</script></main></div></body></html>

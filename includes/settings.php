@@ -13,7 +13,9 @@
 // ============================================================
 
 /**
- * Master fallback dictionary reflecting current live authentic values.
+ * Master fallback dictionary. Personal facts (location, current focus, bios) are
+ * intentionally empty: they must come from what the owner saved in the admin
+ * settings, never from text invented in code.
  */
 function _getDefaultSiteSettings(): array {
     return [
@@ -21,11 +23,11 @@ function _getDefaultSiteSettings(): array {
         'profile.short_name' => 'MA',
         'profile.role' => 'Software Engineering Student',
         'profile.motto' => 'Build. Learn. Experiment. Evolve.',
-        'profile.location' => 'Riyadh, Saudi Arabia',
-        'profile.current_focus' => 'Systems, Databases & Backend',
+        'profile.location' => '',
+        'profile.current_focus' => '',
         'profile.avatar_url' => '/assets/profile_headshot.png',
-        'profile.bio_short' => 'A personal engineering platform and research notebook focused on systems, databases, computing fundamentals, and backend architecture.',
-        'profile.bio_full' => "I am a software engineering student driven by curiosity for how computer systems and software architectures behave under real-world conditions. Rather than treating software merely as a collection of third-party frameworks, I focus on understanding fundamentals, storage internals, backend mechanics, and concurrency.\n\nMy approach is grounded in the principle that great software is simple at the surface, but deeply engineered underneath. I build practical systems, conduct controlled benchmarks, and write technical notes to document architectural trade-offs.",
+        'profile.bio_short' => '',
+        'profile.bio_full' => '',
         'profile.education_stage' => 'Software Engineering Student',
         'profile.public_email' => '',
         'profile.show_email' => '0',

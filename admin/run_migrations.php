@@ -1028,6 +1028,20 @@ $MIGRATIONS = [
             $pdo->exec("ALTER TABLE `user_profiles` ADD COLUMN `save_reading_history` TINYINT(1) NOT NULL DEFAULT 1 AFTER `activity_visibility`");
         },
     ],
+
+    // ── Phase 8: Personal Workspace Core Tables ───────────────────────────
+    [
+        'id'    => 'workspace_core_tables',
+        'label' => 'Phase 8 — Personal Workspace Core Tables (ws_*)',
+        'check' => fn(PDO $pdo) => tableExists($pdo, 'ws_courses'),
+        'apply' => function (PDO $pdo) {
+            $sql = file_get_contents(dirname(__DIR__) . '/database/migration_workspace_core.sql');
+            if ($sql === false) {
+                throw new RuntimeException('Cannot read database/migration_workspace_core.sql');
+            }
+            $pdo->exec($sql);
+        },
+    ],
 ];
 
 // Test hook: lets tests load the REAL $MIGRATIONS closures without running the

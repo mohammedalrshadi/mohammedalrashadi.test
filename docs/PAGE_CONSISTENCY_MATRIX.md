@@ -1,3 +1,5 @@
+> **Outdated (2026-09-15):** written before the World Tree redesign; several statements no longer match the code. See docs/audit/PROGRESS.md (Session 3) for verified status.
+
 # Design Consistency Matrix
 
 **Platform:** Mohammed Alrashadi — Personal Engineering Platform  

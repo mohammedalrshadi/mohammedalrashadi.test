@@ -47,7 +47,7 @@ $flagship = !empty($experiments) ? $experiments[0] : null;
           </div>
           <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-md">
             <div class="flex flex-col gap-space-xs max-w-2xl">
-              <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">Studio Lab</h1>
+              <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight font-bold">Studio Lab</h1>
               <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
                 Controlled benchmarks, concurrency profiling, and reproducible investigations into database internals, memory hierarchies, and runtime invariants.
               </p>
@@ -56,7 +56,6 @@ $flagship = !empty($experiments) ? $experiments[0] : null;
               <div class="flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container rounded">
                 <span class="font-label-code text-label-code text-on-surface font-semibold"><?= count($experiments) ?> Investigations Logged</span>
               </div>
-              <span class="font-label-micro text-label-micro text-on-surface-variant px-space-xs hidden sm:inline">Deterministic Harnesses</span>
             </div>
           </div>
         </div>

@@ -14,6 +14,12 @@ if (!isset($pageScripts) || !is_array($pageScripts)) {
 
 array_unshift($pageScripts, 'js/common.js');
 ?>
+<?php
+$isWorkspace = (isset($activeNav) && (str_starts_with($activeNav, 'ws-') || $activeNav === 'workspace'));
+if ($isWorkspace):
+?>
+    </div> <!-- /.pw-content-scroll -->
+<?php endif; ?>
 
     </main>
 

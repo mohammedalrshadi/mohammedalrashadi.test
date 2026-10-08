@@ -93,6 +93,8 @@ if (isUserLoggedIn()) {
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
 <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=block" rel="stylesheet"/></noscript>
 
+<noscript><style>html.is-animating .page-transition-wrapper{opacity:1;transform:none}.reveal-section{opacity:1;transform:none}</style></noscript>
+
 <!-- Instant Theme Initialization Script (Zero Flash, 3-Theme System) -->
 <script>
   (function() {
@@ -113,8 +115,18 @@ if (isUserLoggedIn()) {
 <link rel="stylesheet" href="/css/tailwind.css?v=<?= file_exists(__DIR__ . '/../css/tailwind.css') ? filemtime(__DIR__ . '/../css/tailwind.css') : '1.0' ?>"/>
 <link rel="stylesheet" href="/css/styles.css?v=<?= file_exists(__DIR__ . '/../css/styles.css') ? filemtime(__DIR__ . '/../css/styles.css') : '1.0' ?>"/>
 <?php if (isset($currentPage) && $currentPage === 'home'): ?>
-<link rel="stylesheet" href="/css/world-tree.css?v=1.0"/>
-<script src="/js/world-clock.js?v=1.0" defer></script>
-<script src="/js/world-tree.js?v=1.0" defer></script>
+<link rel="stylesheet" href="/css/world-tree.css?v=<?= file_exists(__DIR__ . '/../css/world-tree.css') ? filemtime(__DIR__ . '/../css/world-tree.css') : '3.0' ?>"/>
+<link rel="stylesheet" href="/css/new-design.css?v=<?= file_exists(__DIR__ . '/../css/new-design.css') ? filemtime(__DIR__ . '/../css/new-design.css') : '3.0' ?>"/>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.body.classList.add('page-home');
+  });
+  // Clean up if the site uses an SPA router
+  window.addEventListener('beforeunload', function() {
+    document.body.classList.remove('page-home');
+  });
+</script>
+<script src="/js/world-clock.js?v=<?= file_exists(__DIR__ . '/../js/world-clock.js') ? filemtime(__DIR__ . '/../js/world-clock.js') : '3.0' ?>" defer></script>
+
 <?php endif; ?>
 <script src="/js/theme-toggle.js?v=<?= file_exists(__DIR__ . '/../js/theme-toggle.js') ? filemtime(__DIR__ . '/../js/theme-toggle.js') : '1.0' ?>" defer></script>

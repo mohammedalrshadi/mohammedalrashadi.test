@@ -47,7 +47,7 @@ $totalCount = count($projects);
           <div class="flex items-center gap-space-xs text-primary font-label-micro uppercase tracking-widest font-semibold">
             <span>Engineering Archive — Systems &amp; Projects</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">Projects</h1>
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight font-bold">Projects</h1>
           <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
             Practical systems, architectural prototypes, distributed pipelines, and computing tools built to explore resilience, concurrency, and real-world scale.
           </p>

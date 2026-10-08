@@ -2070,6 +2070,8 @@ main pre { overflow-x: auto; }
 .text-on-surface-variant\/80{color:color-mix(in srgb, var(--color-on-surface-variant) 80%, transparent)}
 .text-primary\/60{color:color-mix(in srgb, var(--color-primary) 60%, transparent)}
 .text-primary\/70{color:color-mix(in srgb, var(--color-primary) 70%, transparent)}
+.text-primary\/80{color:color-mix(in srgb, var(--color-primary) 80%, transparent)}
+.hover\:border-primary\/50:hover{border-color:color-mix(in srgb, var(--color-primary) 50%, transparent)}
 .via-primary\/40{--tw-gradient-via:color-mix(in srgb, var(--color-primary) 40%, transparent);--tw-gradient-stops:var(--tw-gradient-from),var(--tw-gradient-via),var(--tw-gradient-to,transparent)}
 
 /* non-colour utilities used in templates but missing from the compiled build */
@@ -2367,3 +2369,12 @@ html[data-theme="green"] { color-scheme: dark; }
     grid-template-columns: 1fr;
   }
 }
+
+/* Search modal: vh does not shrink when the mobile keyboard / URL bar shows,
+   which pushed the results off-screen. dvh follows the visible viewport; the
+   vh values in the markup stay as the fallback for older browsers. */
+@supports (height: 100dvh) {
+  .max-h-\[82vh\] { max-height: 82dvh; }
+  .max-h-\[58vh\] { max-height: 58dvh; }
+}
+

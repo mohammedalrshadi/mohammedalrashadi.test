@@ -180,7 +180,7 @@ if ($post) {
           <div class="p-space-lg rounded-full bg-surface-container-low border border-outline-variant/10 text-outline">
             <span class="material-symbols-outlined text-[3rem]">article</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Article Not Found</h1>
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Article Not Found</h1>
           <p class="font-body-md text-body-md text-on-surface-variant max-w-lg leading-relaxed">
             The requested technical essay was not found or is no longer available in the published engineering archive.
           </p>
@@ -226,7 +226,7 @@ if ($post) {
             <span><?= htmlspecialchars($dateFormatted) ?></span>
           </div>
 
-          <h1 class="font-headline-lg md:text-[2.5rem] md:leading-[1.15] text-on-surface tracking-tight font-bold">
+          <h1 class="text-headline-lg-mobile font-headline-lg md:text-[2.5rem] md:leading-[1.15] text-on-surface tracking-tight font-bold">
             <?= htmlspecialchars($post['title']) ?>
           </h1>
 

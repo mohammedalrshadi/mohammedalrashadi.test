@@ -91,3 +91,78 @@ Owner SQL (read-only) to find already-broken production images: SELECT id, file_
 - NOT applied (waiting for owner GO): the 4 patches in docs/audit/pending-patches/ (image_optimizer, upload_demo, forgot, register).
 - Deliberately excluded from the package: .git history, *.sql files (rule: no dumps; they are unchanged, keep the ones already on the server), api/data/*.json runtime state (contains IPs), .DS_Store, config.local.php/.env (never shipped).
 - Deploy by copying OVER the existing site; do not delete api/config.local.php, uploads/, api/data/ or database/ on the server.
+
+## Session 3 — design-only pass (2026-10-06)
+Scope: only design claims of docs/DESIGN_INTEGRATION_AUDIT.md, DESIGN_MIGRATION_FINAL.md, PAGE_CONSISTENCY_MATRIX.md (dated 2026-09-15, written before the World Tree work). No redesign, no URL changes. Note: this zip has no root .htaccess, so DirectoryIndex / stitch/ exposure could not be checked.
+Verdicts (code evidence):
+- index.html/articles.html/achievements.html/post.html, css/stitch.css, css/post.css, hello.md, api/hi.md: REFUTED (files do not exist).
+- Tailwind CDN: REFUTED (includes/head.php:113 loads /css/tailwind.css). `w<?php` in journey.php: REFUTED (line 1 is `<?php`).
+- Fake telemetry strings (SYS-REF, CORE_API, UHD SCHEMA, ...): REFUTED (0 matches in *.php outside stitch/).
+- Admin still gold/Cairo: REFUTED (admin.css tokens are slate; Cairo only in a font fallback stack, admin.css:43). Font Awesome CDN still loaded: VERIFIED (admin/partials/layout_top.php:95, admin/login.php:53) — not changed (no visual defect).
+- "stitch/ deleted": REFUTED (stitch/ exists, 11 tracked files, 0 runtime references). Left untouched; owner decision.
+- DESIGN_MIGRATION_FINAL says single dark/light theme: outdated, code has light/dark/green (head.php:100, theme-toggle.js).
+- docs/WORLD_TREE.md refers to js/world-tree.js, which is deleted in the working tree and not loaded by any page: doc is stale (not edited).
+New findings:
+- DSG-1 VERIFIED, FIXED: css/tailwind.css (built 2026-09-27) was stale. 63 utility classes used in PHP/JS were missing, incl. md:grid-cols-12, md:col-span-4/8, lg:col-span-6/12, md:flex, md:hidden, md:block, mt-8, items-end, xl:max-w-4xl (home_workspace.php, index.php, achievements.php, product.php, footer.php). Rebuilt with tailwindcss 3.4.17 and the project's tailwind.config.js, minified. Diff vs old file: every shared rule identical except grouping of selectors and `.ring-2` (old file lacked its box-shadow); 13 classes dropped, each grep-verified unused repo-wide. 0 missing classes after rebuild. Owner: if you rebuild Tailwind locally, keep using the same command so the file stays in sync.
+- DSG-2 VERIFIED, FIXED: home styles in css/new-design.css are scoped to `body.page-home`, but the class was added by JS on DOMContentLoaded (head.php:118-125) -> unstyled/default-token flash. index.php:184 now has `page-home` in the server-rendered body class (JS left as is, idempotent).
+Tests: php -l index.php clean; no tests/ directory in upload. Class coverage re-check (postcss) = 0 missing.
+Not tested: real browser render/visual diff (no browser in container); LiteSpeed.
+
+## Session 3b — cleanup (owner gave full access)
+- DSG-3 FIXED: deleted includes/home_workspace_old_clock_backup.php (0 references anywhere).
+- DSG-4 FIXED: deleted stitch/ (12 files; 0 runtime references; recoverable from git history). Supersedes "left untouched" above.
+- DSG-5 FIXED: docs/WORLD_TREE.md rewritten to match the code (canvas engine and world-tree.js no longer exist). Added an "Outdated" banner to DESIGN_INTEGRATION_AUDIT.md, DESIGN_MIGRATION_FINAL.md, PAGE_CONSISTENCY_MATRIX.md.
+- Note: css/world-tree.css section 0 already contained a gap-fill for the md:/lg: utilities missing from the old tailwind.css (same root cause as DSG-1). Now redundant after the rebuild; left in place (harmless, avoids risk). Can be removed later after a visual check.
+- Kept on purpose: Font Awesome CDN in admin (icons depend on it).
+Tests: php -l on index.php and includes/*.php clean.
+Server: delete these on the server too: stitch/ and includes/home_workspace_old_clock_backup.php (see docs/audit/DELETED_FILES.txt).
+
+## Session 3c — more design verification
+- REFUTED: "no reduced-motion support" for Home (global rule in css/styles.css:1152 covers all transitions/animations).
+- REFUTED: duplicate <h1> in product.php/post.php (second h1 is in the "not found" branch only: product.php:228, post.php:183).
+- REFUTED: light theme selector on Home never matches (css/new-design.css:33 uses html[data-theme="light"] body.page-home).
+- DSG-6 VERIFIED, FIXED: green theme was ignored on Home. body.page-home (css/new-design.css:19) redefines colour tokens on <body>, shadowing html[data-theme="green"] from css/styles.css:213. Added `html[data-theme="green"] body.page-home` block with the exact green token values (css/new-design.css, after the light block). Dark and light unchanged.
+- Observation (not changed, new feature): no skip-to-content link and <main> has no id on any page.
+Tests: new-design.css parsed with postcss OK. No browser available for visual check.
+
+## Session 3d — whole-site design verification
+Method: scripted checks (postcss) of CSS vars, class coverage per stylesheet, asset refs, hardcoded colours.
+- DSG-7 VERIFIED, FIXED: admin used legacy CSS variables that no stylesheet defined (--accent-red, --bg-hover, --bg-alt, --bg-body, --border-color): delete buttons/error text had no colour, dropzone borders and hover backgrounds were missing (admin/achievements-edit.php:84,106, admin/showcase*.php, admin/js/{labs,journey,about-content,lab-edit,store,showcase,achievements*,projects-edit}.js, admin/partials/layout_top.php). Added an alias block in admin/css/admin.css mapping them to current tokens (--danger, --bg-surface-hover, --bg-surface-elevated, --bg-canvas, --border-medium), so all three admin themes follow. --bg-surface-container (support.js) left alone: it already has an inline fallback.
+- DSG-8 VERIFIED, FIXED: `text-primary/80` and `hover:border-primary/50` (includes/home_workspace.php:272,352) existed in no stylesheet (var()-based colours cannot use Tailwind opacity modifiers). Added both rules to css/styles.css next to the other color-mix opacity rules.
+- DSG-9 VERIFIED, FIXED: product.php:495 wrapped sanitized description HTML in `prose prose-on-surface` (neither defined) so headings/lists/links/code were unstyled by Tailwind preflight. Now uses existing `.prose-editorial` (same as post.php). Side effect: description text uses on-surface colour/1.125rem like articles.
+- REFUTED: privacy.php/terms.php `prose` (headings carry explicit classes); missing /assets/profile_headshot.png (about.php:110 file_exists guard, admin/settings.php:137 onerror fallback); hardcoded white/black in public pages (only image scrims and an admin banner, achievements.php:176, gallery.php:178,255, product.php:272).
+- Remaining undefined class names are JS/BEM hooks or email-template classes (no CSS needed).
+Tests: php -l product.php, index.php clean; admin.css and styles.css parse OK. No browser available.
+
+## Session 3e — animation + typography
+- DSG-10 VERIFIED, FIXED: no no-JS/failed-JS fallback. `html.is-animating` (opacity 0) and `.reveal-section` (opacity 0) are only cleared by assets/js/motion.js, so with JS disabled or blocked the page stayed invisible. Added `<noscript><style>` fallback in includes/head.php (after the font noscript). Normal behaviour unchanged. (bfcache restore: REFUTED, motion.js:71 already handles `pageshow`.)
+- DSG-11 VERIFIED, FIXED: page titles had no base font size below their breakpoint. Tailwind preflight sets h1 to `font-size: inherit`, so these h1 rendered at 16px on mobile/tablet: project.php:194, achievement.php:115 (only `lg:text-display`), post.php:229 (only `md:text-[2.5rem]`), lab-detail.php (only `lg:text-[2.25rem]`). Added `text-headline-lg-mobile` as base (+ `md:text-headline-lg` where the next size was lg).
+- DSG-12 VERIFIED, FIXED: the design tokens `text-headline-lg-mobile` (28px) and `text-display-mobile` (36px) existed in tailwind.config.js but were never used, so every page title was 36px (gallery.php 56px) on phones. h1 now `text-headline-lg-mobile md:text-headline-lg` (gallery: `text-display-mobile lg:text-display`) in gallery, journey, achievements, achievement, project, product, store, projects, lab, lab-detail, post, support, terms, privacy, articles. Home h1 untouched (sized in css/new-design.css). Desktop sizes unchanged (>=768px).
+- css/tailwind.css rebuilt again (tailwindcss 3.4.17, project config); 0 missing classes. Classes only used by the deleted backup file were dropped by the rebuild.
+- Observation, not changed: 55 uses of text-[10px]/[11px] micro labels (search-modal, index, store, header); 4 kbd hints at 9px. Design intent; the token label-micro is 12px if you want them standardised.
+Tests: php -l clean on all 15 edited pages and includes/head.php. No browser available.
+
+## Session 3f — responsive sizing (clock, search, footer)
+- DSG-13 VERIFIED, FIXED: Home clock did not scale. `.chrono-clock` was a fixed 130px (desktop) and an inline 80px (mobile, includes/home_workspace.php:136); its text used fixed tiny sizes (0.35rem = 5.6px, 0.45rem = 7px, inline font-size on the mobile time/tz). Now `--clock-size: clamp(120px, 11vw, 170px)` (mobile `.chrono-clock--sm`: clamp(72px, 22vw, 96px)), text in `em` relative to the dial, label/tz floor 0.55rem (css/world-tree.css). Inline width/height/font-size styles removed from the mobile clock markup.
+- DSG-14 VERIFIED, FIXED: clock had no light-theme styling (white rings, pale-gold text, dark translucent card on a light page). Added `html[data-theme="light"]` overrides at the end of css/world-tree.css.
+- DSG-15 VERIFIED, FIXED: Home footer reserved `padding-top: 470px` (mobile) / `700px` (>=768px) as a stage for the canvas tree that no longer exists (no element renders there; no world-tree refs in PHP/JS) -> huge empty block above the footer. Now 3.5rem / 4.5rem (css/new-design.css:243,260).
+- DSG-16 VERIFIED, FIXED: search input was `text-sm` (14px) -> iOS Safari zooms the page on focus when a field is <16px. Now `text-base sm:text-sm` (includes/search-modal.php:42). Modal heights `max-h-[82vh]`/`[58vh]` do not shrink with the mobile keyboard/URL bar; added `@supports (height:100dvh)` overrides (82dvh/58dvh) at the end of css/styles.css (vh stays as fallback).
+- REFUTED: header not responsive (includes/header.php:28-186 has breakpoints at 768/1439/480/340, More menu, 44px targets); fixed multi-column grids at mobile (0 found: no `grid-cols-N` without grid-cols-1 base); fixed-height clipping sections (0); iOS text-size-adjust (styles.css:342,1977).
+- css/tailwind.css rebuilt (sm:text-sm / text-base present).
+- Observation, not changed: header uses px font sizes (14px/15px) so it ignores browser font-size settings; micro labels 10-11px.
+Tests: php -l home_workspace.php and search-modal.php clean; world-tree.css, new-design.css, styles.css parse OK. No browser available.
+
+## Session 3g — real content only (no invented data)
+Goal (owner): the site must show only what the owner entered (admin: settings, projects, posts, labs, about content, journey, showcase). Everything below was hardcoded in code and presented as the owner's facts.
+- DSG-17 FIXED includes/home_workspace.php: removed fake telemetry (P99.9 LATENCY 0.08ms, TICK OSCILLATOR 1,000 Hz, MULTI-RAFT QUORUM 3/3 SYNC, RING OVERRUN 0 DROPS, STABLE LOCK-FREE EPOCH, label SUB-MS // CHRONO). "Currently studying MVCC and B-Tree Indexes" (3 places: workspace header, NOW panel, index hero) now comes from setting profile.current_focus and is hidden when empty.
+- DSG-18 FIXED index.php: hero strip had hardcoded CURRENTLY STUDYING / MAIN FOCUS / STATUS "ACTIVELY LEARNING"; now only the real current focus. Flagship project: removed hardcoded tags (ACID Storage, Lock-Free Concurrency, Zero-Copy IO), fallback category "SYSTEMS ARCHITECTURE", stock diagram + caption "SCHEMATIC // CORE TOPOLOGY & DATA PIPELINE" (image shown only if the project has one), always-appended "...". Lab block: removed fallback texts (EXP-001, Database Engines, "Evaluating storage engine...", "Synthetic multi-threaded key-value benchmark...", "Empirical observation reveals...") and hardcoded ENVIRONMENT "POSIX x86_64 Linux", METRIC "P99 Latency & Throughput", STATUS "Reproducible"; now shows only question/methodology/outcome/environment/status fields that exist in the experiment record. Showcase fallbacks: no invented categories ("Software Engineering", "Systems", "Database Internals"), descriptions or stock images.
+- DSG-19 FIXED index.php: principles and journey on Home were hardcoded text (3 principles, STAGE 1-3). Now read from about_content_blocks (block_type principle) and journey_milestones (published), try/catch per query (missing table = hidden); whole section hidden when both are empty.
+- DSG-20 FIXED about.php: removed hardcoded default principles (Resilience First, Empirical Rigor, Deep Clarity) and default focus-area tags (MySQL / InnoDB, B-Tree Indexing, ...); sections hidden when the admin has not added any. Rows Current Focus/Location/Motto/Platform Purpose hidden when empty; badge now shows the real role instead of fixed "Software Engineering".
+- DSG-21 FIXED includes/settings.php: default values for profile.location ("Riyadh, Saudi Arabia"), profile.current_focus, profile.bio_short, profile.bio_full are now empty. If the admin already saved them in the DB nothing changes. about.php meta description falls back to seo.default_description. NOTE: profile.name, short_name, role, motto, platform_purpose and seo defaults are still in code: confirm they are correct.
+- DSG-22 FIXED: removed stock images ('/assets/diagram_distributed_systems.png', 'code_ide_architecture.png'; the files do not exist in the upload anyway) from api/showcase/helper.php and api/user/content_resolver.php; consumers guard empty images (dashboard/history.php, index.php, likes.php, bookmarks.php, project.php). project.php: removed fake caption "System Architecture & Data Flow / Structural Diagram"; image section only if image_url exists.
+- DSG-23 FIXED small claims: journey.php "2021 TO PRESENT" removed; gallery.php "UHD Vector & 4K" removed, hover text "Inspect High-Res Geometric Render" -> "View larger"; articles.php "Regularly Updated" removed; lab.php "Deterministic Harnesses" removed; includes/search-modal.php "Suggested Topics" chips (B-Tree, Redis MsgPack, ...) removed.
+- Deleted js/clock_of_life.js (old tree engine, 0 references).
+- REFUTED/kept: post.php "Reader Reviews" are real moderated reviews; JSON-LD jobTitle uses profile.role; about.php/lab data pages already DB/JSON-driven with honest empty states.
+- NOT changed, owner to confirm: index.php hero identity copy (overline, headline "Database Systems, Storage & Concurrency.", thesis paragraph, B-tree decorative diagram labelled INDEX STRUCTURE / B-TREE / ORDER 3), lab.php/projects.php/articles.php/gallery.php intro paragraphs, support.php FAQ statements (60-minute recovery link, code-sample licence sentence), store.php intro.
+Tests: php -l clean on all 16 edited PHP files; tailwind rebuilt, 0 missing classes. Not tested in a browser or against a live database.
+Server: delete js/clock_of_life.js too (see docs/audit/DELETED_FILES.txt).

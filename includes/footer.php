@@ -39,13 +39,20 @@ $footerShowContact = !empty($footerProfile['show_email'])
                   && !empty($footerProfile['public_email']);
 
 $footerName = !empty($footerProfile['name']) ? $footerProfile['name'] : 'Mohammed Alrashadi';
+// Presentation guard: never show the template placeholder in the public footer
+if (strcasecmp(trim($footerName), 'Your Name') === 0) {
+    $footerName = 'Mohammed Alrashadi';
+}
 ?>
 <!-- Global Footer -->
 <footer class="site-footer py-10" aria-label="Site footer">
-  <div class="page-container site-footer__inner">
+
+
+  <div class="page-container site-footer__inner relative z-10">
 
     <a href="/index.php" class="site-footer__brand text-decoration-none" title="Home">
       <?php include __DIR__ . '/logo.php'; ?>
+      <span class="site-footer__brand-name"><?= htmlspecialchars($footerName, ENT_QUOTES, 'UTF-8') ?></span>
     </a>
 
     <!-- Explore links, with social media underneath -->

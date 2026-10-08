@@ -85,9 +85,11 @@ try {
           
           <div class="flex flex-col gap-3">
             <div class="aspect-[16/10] w-full rounded-xl overflow-hidden bg-surface-container relative border border-border/40">
+              <?php if (!empty($item['image'])): ?>
               <img loading="lazy" decoding="async" src="<?= htmlspecialchars($item['image']) ?>" 
                    alt="<?= htmlspecialchars(!empty($item['title']) ? $item['title'] : 'Bookmarked resource') ?>" 
                    class="w-full h-full object-cover">
+              <?php endif; ?>
               <div class="absolute top-2.5 left-2.5">
                 <span class="badge badge-neutral text-[10px] bg-surface backdrop-blur-sm">
                   <?= htmlspecialchars($item['type_badge']) ?>

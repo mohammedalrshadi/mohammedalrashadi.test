@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary": "#ffffff", "outline-variant": "#c7c4d8", "surface-container-high": "#dce9ff", "tertiary-fixed-dim": "#4cd7f6", "outline": "#777587", "tertiary-container": "#006a7c", "primary-fixed-dim": "#c3c0ff", "on-secondary": "#ffffff", "on-primary-fixed": "#0f0069", "on-secondary-fixed": "#131b2e", "on-secondary-fixed-variant": "#3f465c", "inverse-on-surface": "#eaf1ff", "tertiary": "#00505f", "primary-fixed": "#e2dfff", "tertiary-fixed": "#acedff", "on-background": "#0b1c30", "error-container": "#ffdad6", "inverse-primary": "#c3c0ff", "primary": "#3525cd", "surface-container-low": "#eff4ff", "on-secondary-container": "#5c647a", "on-error-container": "#93000a", "inverse-surface": "#213145", "on-tertiary-fixed-variant": "#004e5c", "on-surface": "#0b1c30", "surface-variant": "#d3e4fe", "secondary": "#565e74", "error": "#ba1a1a", "on-error": "#ffffff", "surface-bright": "#f8f9ff", "surface-container": "#e5eeff", "secondary-fixed-dim": "#bec6e0", "surface-container-highest": "#d3e4fe", "surface-tint": "#4d44e3", "on-primary-container": "#dad7ff", "surface-dim": "#cbdbf5", "on-primary-fixed-variant": "#3323cc", "surface": "#f8f9ff", "secondary-fixed": "#dae2fd", "on-tertiary-fixed": "#001f26", "secondary-container": "#dae2fd", "background": "#f8f9ff", "surface-container-lowest": "#ffffff", "on-surface-variant": "#464555", "on-tertiary-container": "#93e8ff", "primary-container": "#4f46e5", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1rem", "gutter-compact": "1rem", "gutter": "1.5rem", "space-xs": "0.25rem", "space-xl": "2rem", "space-lg": "1.5rem", "margin": "2rem", "space-md": "1rem", "space-2xl": "3rem" }, "fontFamily": { "headline-sm": [ "Manrope" ], "body-lg": [ "Hanken Grotesk" ], "headline-md": [ "Manrope" ], "body-md": [ "Hanken Grotesk" ], "headline-xl": [ "Manrope" ], "label-md": [ "Hanken Grotesk" ], "body-sm": [ "Hanken Grotesk" ], "code-sm": [ "JetBrains Mono" ], "display-lg": [ "Manrope" ], "headline-lg": [ "Manrope" ], "label-sm": [ "Hanken Grotesk" ] }, "fontSize": { "headline-sm": [ "1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" } ], "headline-md": [ "1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" } ], "headline-xl": [ "2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" } ], "code-sm": [ "0.75rem", { "lineHeight": "1rem", "fontWeight": "400" } ], "display-lg": [ "2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "headline-lg": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-[260px]"><img alt="Student Ecosystem Brand Mark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlRmqHXliftoz-zvjXmNei53JfNf56OGpU-2GMse_PZuJnIja-3EuD6r4ygXoVT8MWaU5JUGBrt0av2u_QfsZ8Xi7tUwZ8oS4fQE7DA2nQzmLpcuLA96GHtuDyLF7NhxrfT9IwH6OZFMHWMb_G0SQlmPriYtYkdxqup3Kljz8IYJ8KTjB-3jMm21jn5KgnxwJ7sjK-gOLnP33S3qx7I_Gm1vg2nH0YHGB4pYgtQYI"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Student Ecosystem</span><span class="font-code-sm text-code-sm text-on-surface-variant tracking-wider uppercase leading-none">Personal Operating System</span></div></div><div class="flex-1 max-w-xl mx-space-md hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3 text-secondary text-lg pointer-events-none">search</span><input class="w-full pl-9 pr-16 py-1.5 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(79,70,229,0.18)] transition-all placeholder:text-on-surface-variant/70" placeholder="Search courses, skills, projects, opportunities..." type="text"/><div class="absolute right-2.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-on-secondary-container pointer-events-none"><span class="text-[10px]">⌘</span><span>K</span></div></div></div><div class="flex items-center gap-space-sm"><div class="hidden xl:flex items-center p-1 bg-surface-container-low rounded-lg gap-1"><button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-[0_1px_3px_rgba(15,23,42,0.06)] font-semibold" type="button">Standard</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Easy</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Hard</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Go</button></div><div class="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-secondary-container/40"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface font-medium">Active Goal: <span class="font-semibold text-primary">Backend Engineer</span></span><div class="w-12 h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-3/4 h-full bg-primary rounded-full"></div></div></div><button aria-label="Contextual AI Assistant" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button"><span class="material-symbols-outlined text-base">arrow_back_ios_new</span><span class="font-medium">Intelligence</span></button><button aria-label="Notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error font-code-sm text-[10px] font-bold text-on-error">3</span></button><div class="flex items-center gap-2 pl-space-xs"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHwtCW7XZkTWN83XkdzOlbydjUsTTnazWHiYdmay4QfB6Mt6q3V6aa6yk-n_i62KKCmxbbRgeegA99khpJrWZFpE2GMu6l0ts-urMo6d1446UDiXRFZ1FlSA2PSKmXA_hz7IPltJwGCA3SGliP-wV6fGdwsOMs_rsju3qW8nS4GGYxM4cT1wIIYq710ivS96nYpiNARXwPLIT1hfaVhiTRpnSDCiP9TTdWSIDmXOc"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-surface-container-lowest"></span></div><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Alex Johnson</span><span class="font-code-sm text-[10px] text-emerald-700 leading-none">Online</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 z-40 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col justify-between overflow-y-auto"><div class="p-space-sm"><div class="px-space-sm pt-space-xs pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Student Loop</span></div><nav class="space-y-0.5 flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-lg">grid_view</span><span>Home</span></a><a aria-current="page" class="flex items-center gap-3 px-space-sm py-2 rounded-lg transition-colors bg-primary-container text-on-primary font-semibold" data-path="my-path" href="#"><span class="material-symbols-outlined text-lg">route</span><span>My Path</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="academic" href="#"><span class="material-symbols-outlined text-lg">school</span><span>Academic</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="learning" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Learning</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="skills" href="#"><span class="material-symbols-outlined text-lg">verified</span><span>Skills</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="projects" href="#"><span class="material-symbols-outlined text-lg">folder_special</span><span>Projects</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="career-and-opportunities" href="#"><span class="material-symbols-outlined text-lg">work</span><span>Career &amp; Opportunities</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="community" href="#"><span class="material-symbols-outlined text-lg">groups</span><span>Community</span></a></nav><div class="px-space-sm pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Ecosystem &amp; Operations</span></div><nav class="space-y-0.5 flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="calendar-and-tasks" href="#"><span class="material-symbols-outlined text-lg">calendar_month</span><span>Calendar &amp; Tasks</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="future-ecosystem" href="#"><span class="material-symbols-outlined text-lg">hub</span><span>Future Ecosystem</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="settings-and-privacy" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Settings &amp; Privacy</span></a></nav></div><div class="p-space-sm m-space-sm rounded-lg bg-surface-container-low"><div class="flex items-center justify-between mb-1"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Semester Progress</span><span class="font-code-sm text-code-sm text-primary font-bold">64%</span></div><div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-[64%] h-full bg-primary rounded-full"></div></div><span class="block font-body-sm text-[11px] text-on-surface-variant mt-2">Week 10 of 16 • 3 Finals Pending</span></div></aside><div class="pl-64"><main class="w-full pt-16 bg-surface min-h-screen"><div class="w-full px-gutter py-space-sm bg-surface-container-lowest shadow-[0_1px_4px_rgba(0,0,0,0.02)]"><div class="max-w-[1600px] mx-auto flex items-center justify-between font-label-sm text-label-sm"><div class="flex items-center gap-2 text-on-surface-variant"><span class="text-on-surface font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">explore</span>Where am I?</span><span class="text-outline-variant font-mono">→</span><span class="text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-sm text-tertiary">flag</span>Where am I going?</span><span class="text-outline-variant font-mono">→</span><span class="text-primary font-semibold flex items-center gap-1"><span class="material-symbols-outlined text-sm text-primary">bolt</span>What should I do next?</span></div><div class="hidden md:flex items-center gap-space-sm text-on-surface-variant"><span class="inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>All systems synced</span></div></div></div><div class="max-w-[1600px] mx-auto p-gutter"><div class="flex flex-col w-full">
+<!-- Top Command Horizon & Strategy Header -->
+<div class="relative w-full rounded-xl bg-surface-container-lowest shadow-sm p-gutter mb-gutter overflow-hidden">
+<div class="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-gradient-to-br from-primary-fixed/40 via-surface-container/20 to-transparent blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="flex flex-col max-w-3xl">
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-primary-fixed text-primary font-code-sm text-code-sm font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+            ACTIVE DESTINATION PIPELINE
+          </span>
+<span class="font-code-sm text-code-sm text-outline">Target: Graduating Spring 2027</span>
+</div>
+<div class="flex items-baseline gap-space-sm flex-wrap">
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">Backend Engineer</h1>
+<span class="font-headline-md text-headline-md text-secondary font-light">Fintech &amp; Cloud Platforms</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1.5">
+          “The ecosystem maps the terrain. You choose the destination. You control the pace and agency of every milestone.”
+        </p>
+</div>
+<!-- Quick Trajectory Controls -->
+<div class="flex items-center gap-space-sm flex-wrap xl:self-end">
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all shadow-sm" onclick="openGoalConfig()" type="button">
+<span class="material-symbols-outlined text-lg text-primary">flag</span>
+<span>Change Goal</span>
+</button>
+<button class="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-all shadow-sm" type="button">
+<span class="material-symbols-outlined text-lg text-secondary">tune</span>
+<span>Pacing Config</span>
+</button>
+<button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-on-primary font-label-md text-label-md shadow-sm hover:opacity-95 transition-opacity" type="button">
+<span class="material-symbols-outlined text-lg">auto_mode</span>
+<span>Recalibrate Path</span>
+</button>
+</div>
+</div>
+<!-- Live Horizon & Calibration Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md mt-space-lg pt-space-md border-t border-transparent bg-surface-container-low/60 rounded-xl p-space-md">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Calibration Baseline</span>
+<span class="font-headline-sm text-headline-sm text-on-surface mt-0.5">140+ Postings</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Aligned with CS 320 &amp; CS 350 syllabus</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Primary Horizon Milestone</span>
+<span class="font-headline-sm text-headline-sm text-primary mt-0.5">Summer 2026 Internship</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Stripe, Datadog, Affirm tier</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Skill Gap Velocity</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">5 of 8 Mastered</span>
+<span class="px-2 py-0.5 rounded bg-surface-container-high font-code-sm text-code-sm text-primary font-semibold">62.5%</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Next verification: REST Endpoints</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Dynamic Pipeline Stage</span>
+<span class="font-headline-sm text-headline-sm text-tertiary mt-0.5">Practice → Project Node</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">12 hrs logged this week</span>
+</div>
+</div>
+</div>
+<!-- Adaptive Pipeline Ribbon (Interactive Stages) -->
+<div class="w-full bg-surface-container-lowest rounded-xl shadow-sm p-space-md mb-gutter overflow-x-auto">
+<div class="flex items-center justify-between min-w-[860px] relative px-4 py-2">
+<!-- Continuous Background Track -->
+<div class="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-1 bg-surface-container rounded-full z-0"></div>
+<div class="absolute left-8 top-1/2 -translate-y-1/2 h-1 bg-primary rounded-full z-0 transition-all duration-500" style="width: 48%;"></div>
+<!-- Pipeline Step 1 -->
+<div class="relative z-10 flex flex-col items-center group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-code-sm text-code-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface mt-2">Current State</span>
+<span class="font-code-sm text-[11px] text-outline">Verified Base</span>
+</div>
+<!-- Pipeline Step 2 -->
+<div class="relative z-10 flex flex-col items-center group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-code-sm text-code-sm font-bold shadow-sm">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface mt-2">Skill Gap</span>
+<span class="font-code-sm text-[11px] text-outline">HTTP/JWT/Auth</span>
+</div>
+<!-- Pipeline Step 3: ACTIVE -->
+<div class="relative z-10 flex flex-col items-center group cursor-pointer">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary ring-4 ring-primary-fixed flex items-center justify-center font-code-sm text-code-sm font-bold shadow-md animate-pulse">
+<span class="material-symbols-outlined text-base">architecture</span>
+</div>
+<span class="font-label-sm text-label-sm font-bold text-primary mt-2">Learning &amp; Practice</span>
+<span class="font-code-sm text-[11px] text-primary font-medium">Node 2: Active</span>
+</div>
+<!-- Pipeline Step 4 -->
+<div class="relative z-10 flex flex-col items-center group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-code-sm text-code-sm font-semibold">
+<span class="material-symbols-outlined text-sm">developer_mode</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary mt-2">Project Sprint</span>
+<span class="font-code-sm text-[11px] text-outline">E-Commerce API</span>
+</div>
+<!-- Pipeline Step 5 -->
+<div class="relative z-10 flex flex-col items-center group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-code-sm text-code-sm font-semibold">
+<span class="material-symbols-outlined text-sm">hub</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary mt-2">GitHub &amp; Evidence</span>
+<span class="font-code-sm text-[11px] text-outline">CI/CD &gt;80% Test</span>
+</div>
+<!-- Pipeline Step 6 -->
+<div class="relative z-10 flex flex-col items-center group cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-code-sm text-code-sm font-semibold">
+<span class="material-symbols-outlined text-sm">domain</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary mt-2">Internship</span>
+<span class="font-code-sm text-[11px] text-outline">Summer 2026 Target</span>
+</div>
+</div>
+</div>
+<!-- Main Canvas: Two Columns (Node Map & Dynamic Inspector) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left & Center: Interactive Flow Canvas (7 Cols) -->
+<div class="lg:col-span-7 flex flex-col gap-space-md">
+<!-- Dynamic Visual Canvas Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-gutter flex flex-col">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">account_tree</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Interactive Pathway Nodes</h2>
+</div>
+<div class="flex items-center gap-1.5 bg-surface-container-low px-2 py-1 rounded-lg">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Live Dependency Graph</span>
+</div>
+</div>
+<!-- Node Stack with Semantic Connectors -->
+<div class="relative flex flex-col gap-space-lg pl-6">
+<!-- Flow Line Vector Overlay -->
+<div class="absolute left-3.5 top-6 bottom-12 w-0.5 bg-gradient-to-b from-primary via-primary-container to-surface-container-highest"></div>
+<!-- NODE 1: FOUNDATION (COMPLETED) -->
+<div class="relative bg-surface-container-low rounded-xl p-space-md transition-all hover:shadow-md cursor-pointer group" onclick="selectNode(1)">
+<div class="absolute -left-[27px] top-5 w-6 h-6 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-sm">
+<span class="w-3.5 h-3.5 rounded-full bg-tertiary flex items-center justify-center text-on-primary font-bold">
+<span class="material-symbols-outlined text-[10px]">done</span>
+</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container text-tertiary font-code-sm text-[11px] font-semibold">FOUNDATION VERIFIED</span>
+<span class="font-code-sm text-code-sm text-outline">Verified via CS 320</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">Core Systems &amp; Data Modeling</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Java SE 17 (Strong), SQL Relational Normalization (Strong), Git Branching Workflows.</p>
+</div>
+<span class="px-2.5 py-1 rounded-lg bg-surface-container-lowest text-tertiary font-label-sm text-label-sm font-semibold flex items-center gap-1 shrink-0">
+<span class="material-symbols-outlined text-sm">verified_user</span> 100%
+              </span>
+</div>
+</div>
+<!-- NODE 2: ACTIVE MILESTONE (IN PROGRESS) -->
+<div class="relative bg-surface-container-lowest ring-2 ring-primary rounded-xl p-space-md shadow-md cursor-pointer transition-all hover:shadow-lg" id="node-2-card" onclick="selectNode(2)">
+<div class="absolute -left-[27px] top-5 w-6 h-6 rounded-full bg-primary flex items-center justify-center text-on-primary shadow-sm animate-pulse">
+<span class="material-symbols-outlined text-xs">play_arrow</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm mb-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-primary font-code-sm text-[11px] font-bold">CURRENT ACTIVE FOCUS</span>
+<span class="font-code-sm text-code-sm text-primary font-medium">Sprint 4.2</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mt-1">RESTful Architecture &amp; API Contract Design</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+                  Developing stateful vs stateless protocol mastery, idempotent operations, and HTTP contract modeling.
+                </p>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-code-sm text-code-sm font-bold text-primary">65% Done</span>
+<span class="font-code-sm text-[11px] text-outline">Est: 4 hrs left</span>
+</div>
+</div>
+<!-- Active Sub-steps Indicator -->
+<div class="space-y-2 mt-3 pt-3 bg-surface-container-low rounded-lg p-space-sm">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-sm text-tertiary">check_circle</span>
+<span class="line-through text-outline">Database Schema Normalization Exercise</span>
+</div>
+<span class="font-code-sm text-[11px] text-outline">Completed</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<div class="flex items-center gap-2 text-on-surface">
+<span class="material-symbols-outlined text-sm text-primary">radio_button_checked</span>
+<span class="font-semibold text-on-surface">REST API Architectural Standards &amp; Status Matrix</span>
+</div>
+<span class="px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-[10px] text-primary font-semibold">IN REVIEW</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm opacity-60">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-outline">radio_button_unchecked</span>
+<span>Implement Stateless CRUD Endpoints with Postman Suite</span>
+</div>
+<span class="font-code-sm text-[11px] text-outline">Pending</span>
+</div>
+</div>
+<div class="flex items-center justify-between mt-space-md pt-2">
+<div class="flex items-center gap-2">
+<button class="px-3.5 py-1.5 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-medium shadow-sm hover:opacity-95 flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-base">code</span>
+                  Continue Learning
+                </button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors flex items-center gap-1.5" onclick="showSkillGapAlert()" type="button">
+<span class="material-symbols-outlined text-base text-primary">troubleshoot</span>
+                  Inspect Skill Gap
+                </button>
+</div>
+<span class="font-code-sm text-[11px] text-secondary">Linked with E-Commerce API</span>
+</div>
+</div>
+<!-- NODE 3: NEXT MILESTONE (LOCKED / UPCOMING) -->
+<div class="relative bg-surface-container-low rounded-xl p-space-md transition-all hover:shadow-md cursor-pointer group" onclick="selectNode(3)">
+<div class="absolute -left-[27px] top-5 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-outline shadow-sm">
+<span class="material-symbols-outlined text-xs">lock</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-secondary font-code-sm text-[11px] font-semibold">NEXT MILESTONE</span>
+<span class="font-code-sm text-code-sm text-outline">Prerequisite: Node 2</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">Frameworks: Spring Boot &amp; Microservice Fundamentals</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Dependency Injection, Spring Data JPA, Hibernate ORM, and Microservice patterns.</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container text-secondary font-code-sm text-code-sm shrink-0">CS 350 Core</span>
+</div>
+</div>
+<!-- NODE 4: APPLIED PROOF PROJECT -->
+<div class="relative bg-surface-container-low rounded-xl p-space-md transition-all hover:shadow-md cursor-pointer group" onclick="selectNode(4)">
+<div class="absolute -left-[27px] top-5 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-outline shadow-sm">
+<span class="material-symbols-outlined text-xs">folder_special</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-on-surface-variant font-code-sm text-[11px] font-semibold">PORTFOLIO ARTIFACT</span>
+<span class="font-code-sm text-code-sm text-outline">Repo Connected</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">E-Commerce Distributed Cart &amp; Orders API</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">PostgreSQL schemas planned, repository initialized, Docker orchestration queue waiting.</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container text-secondary font-code-sm text-code-sm shrink-0">v1.2 Staging</span>
+</div>
+</div>
+<!-- NODE 5: PUBLIC PROOF & EVIDENCE -->
+<div class="relative bg-surface-container-low rounded-xl p-space-md transition-all hover:shadow-md cursor-pointer group" onclick="selectNode(5)">
+<div class="absolute -left-[27px] top-5 w-6 h-6 rounded-full bg-surface-container flex items-center justify-center text-outline shadow-sm">
+<span class="material-symbols-outlined text-xs">terminal</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-surface-variant text-on-surface-variant font-code-sm text-[11px] font-semibold">VERIFIABLE EVIDENCE</span>
+<span class="font-code-sm text-code-sm text-outline">Target: &gt;80% Coverage</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">GitHub Artifact CI/CD &amp; OpenAPI Specs</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Automated test runners, Swagger UI documentation, Docker hub image build deployment.</p>
+</div>
+<span class="px-2.5 py-1 rounded bg-surface-container text-secondary font-code-sm text-code-sm shrink-0">Pending Build</span>
+</div>
+</div>
+<!-- NODE 6: DESTINATION / CAREER PLACEMENT -->
+<div class="relative bg-surface-container-high rounded-xl p-space-md transition-all hover:shadow-md cursor-pointer group" onclick="selectNode(6)">
+<div class="absolute -left-[27px] top-5 w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-xs">rocket_launch</span>
+</div>
+<div class="flex items-start justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary text-on-primary font-code-sm text-[11px] font-semibold">TARGET HORIZON</span>
+<span class="font-code-sm text-code-sm text-primary font-semibold">Summer 2026 Internship</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mt-1 group-hover:text-primary transition-colors">Fintech Backend Intern (Stripe / Datadog / Affirm)</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Target submission opening: September 2025. System readiness projection: 88% on schedule.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-xl shrink-0">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Real-Time Path Calibrator & Constraint Adjuster -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-gutter flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-code-sm text-code-sm text-outline uppercase tracking-wider">Dynamic Pacing Engine</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Path Adaptability &amp; Real-Life Constraints</h3>
+</div>
+<span class="material-symbols-outlined text-secondary">tune</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+          Adjust your current capacity. The ecosystem will recalculate milestone deadlines without sacrificing competency standards.
+        </p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md pt-2">
+<!-- Slider 1: Academic Load -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Academic Load</span>
+<span class="font-code-sm text-[11px] px-2 py-0.5 rounded bg-surface-container text-primary font-bold" id="load-label">Heavy (3 Exams)</span>
+</div>
+<input class="w-full accent-primary cursor-pointer h-1.5 bg-surface-container rounded-lg" max="3" min="1" oninput="updateLoad(this.value)" type="range" value="3"/>
+<span class="font-code-sm text-[10px] text-outline mt-2">Shifts practice deadlines by +4 days</span>
+</div>
+<!-- Slider 2: Weekly Commitment -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Time Commitment</span>
+<span class="font-code-sm text-[11px] px-2 py-0.5 rounded bg-surface-container text-primary font-bold" id="hours-label">12 hrs / wk</span>
+</div>
+<input class="w-full accent-primary cursor-pointer h-1.5 bg-surface-container rounded-lg" max="25" min="6" oninput="updateHours(this.value)" type="range" value="12"/>
+<span class="font-code-sm text-[10px] text-outline mt-2">Optimal for Summer 2026 trajectory</span>
+</div>
+<!-- Slider 3: Mode Strategy -->
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Pacing Strategy</span>
+<span class="font-code-sm text-[11px] px-2 py-0.5 rounded bg-surface-container text-tertiary font-bold">Balanced Growth</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container p-0.5 rounded-lg">
+<button class="flex-1 py-1 text-center font-code-sm text-[10px] rounded bg-surface-container-lowest font-bold text-on-surface shadow-sm" type="button">Balanced</button>
+<button class="flex-1 py-1 text-center font-code-sm text-[10px] rounded text-outline hover:text-on-surface transition-colors" type="button">Sprint</button>
+<button class="flex-1 py-1 text-center font-code-sm text-[10px] rounded text-outline hover:text-on-surface transition-colors" type="button">Deep-Dive</button>
+</div>
+<span class="font-code-sm text-[10px] text-outline mt-2">Standard cadence with proof gates</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Contextual Milestone Inspector (5 Cols) -->
+<div class="lg:col-span-5 flex flex-col gap-space-md sticky top-20">
+<!-- Dynamic Inspector Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-gutter flex flex-col" id="inspector-card">
+<!-- Inspector Eyebrow -->
+<div class="flex items-center justify-between pb-space-sm border-b border-transparent">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+<span class="font-code-sm text-code-sm text-primary font-bold uppercase tracking-wider">Milestone Inspector</span>
+</div>
+<span class="font-code-sm text-code-sm text-outline">Node #02 / 06</span>
+</div>
+<div class="mt-space-md">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-primary-fixed text-primary font-code-sm text-[11px] font-semibold">ACTIVE MILESTONE</span>
+<span class="font-code-sm text-[11px] text-outline">Competency Target</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-1">RESTful Architecture &amp; API Design</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 leading-relaxed">
+            Constructing strict HTTP-compliant interfaces, decoupling client-server communication boundaries, and ensuring idempotent data mutations.
+          </p>
+</div>
+<!-- Ecosystem Justification: Why This Exists -->
+<div class="mt-space-md bg-surface-container-low rounded-xl p-space-md flex flex-col gap-2">
+<div class="flex items-center gap-2 text-primary font-label-md text-label-md font-semibold">
+<span class="material-symbols-outlined text-base">psychology</span>
+<span>Why the Ecosystem Prescribed This</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-normal">
+            “Required directly by your upcoming <strong>E-Commerce API project</strong> and verified present in <strong>94% of backend internship criteria</strong> (Stripe, Datadog). This provides the contract layer before Spring Boot can be integrated.”
+          </p>
+<div class="flex items-center gap-2 mt-1">
+<span class="inline-flex items-center gap-1 font-code-sm text-[11px] text-outline">
+<span class="material-symbols-outlined text-xs text-tertiary">check</span> Syllabus sync: CS 320
+            </span>
+<span class="inline-flex items-center gap-1 font-code-sm text-[11px] text-outline">
+<span class="material-symbols-outlined text-xs text-tertiary">check</span> 140 Job Match
+            </span>
+</div>
+</div>
+<!-- Identified Skill Gaps -->
+<div class="mt-space-md flex flex-col gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Identified Skill Gaps to Close</span>
+<div class="space-y-2 mt-1">
+<div class="flex items-start justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-sm text-primary mt-0.5">priority_high</span>
+<div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface block">HTTP Status Code Precision</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Correct usage of 201 Created vs 204 No Content, 409 Conflict.</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-primary font-code-sm text-[10px] font-bold">CRITICAL</span>
+</div>
+<div class="flex items-start justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-sm text-secondary mt-0.5">lock_clock</span>
+<div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface block">Stateless JWT Authentication Handshake</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Decoupling session storage from app memory.</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-code-sm text-[10px] font-bold">INTERMEDIATE</span>
+</div>
+<div class="flex items-start justify-between p-2.5 rounded-lg bg-surface-container-low">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-sm text-secondary mt-0.5">speed</span>
+<div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface block">Token Bucket Rate Limiting</span>
+<span class="font-body-sm text-[12px] text-on-surface-variant">Protecting endpoints against DDoS patterns.</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-code-sm text-[10px] font-bold">RECOMMENDED</span>
+</div>
+</div>
+</div>
+<!-- Curated Learning Asset -->
+<div class="mt-space-md p-space-md rounded-xl bg-surface-container flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-primary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base">auto_stories</span> Recommended Core Resource
+            </span>
+<span class="font-code-sm text-code-sm text-outline">25 min read</span>
+</div>
+<div class="flex items-start gap-3 mt-1">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-xl">menu_book</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-label-md text-label-md font-semibold text-on-surface">Building Resilient REST APIs</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Martin Fowler Architecture Guide • Microservices Series</span>
+</div>
+</div>
+<button class="w-full mt-2 py-2 rounded-lg bg-surface-container-lowest hover:bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold transition-colors flex items-center justify-center gap-1.5 shadow-sm" type="button">
+<span>Read Article &amp; Take Verification Check</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<!-- Linked Proof Project -->
+<div class="mt-space-md flex items-center justify-between p-space-sm bg-surface-container-low rounded-xl">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-base">terminal</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface block">E-Commerce API v1.2</span>
+<span class="font-code-sm text-[11px] text-outline">Node 4 Dependency • 3 Endpoints defined</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline">link</span>
+</div>
+<!-- Student Sovereign Agency Controls (User Empowerment) -->
+<div class="mt-space-lg pt-space-md border-t border-transparent flex flex-col gap-2">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider font-semibold">Your Sovereign Journey Controls</span>
+<div class="grid grid-cols-2 gap-2 mt-1">
+<button class="px-3 py-2 rounded-lg bg-primary text-on-primary font-label-sm text-label-sm font-medium shadow-sm hover:opacity-95 text-center transition-all" onclick="acceptRecommendation()" type="button">
+              Accept &amp; Commit
+            </button>
+<button class="px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm text-center transition-all" onclick="postponeMilestone()" type="button">
+              Postpone (+1 Week)
+            </button>
+<button class="px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm text-center transition-all" onclick="markMastered()" type="button">
+              Mastered Elsewhere
+            </button>
+<button class="px-3 py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-error font-label-sm text-label-sm text-center transition-all" onclick="skipStep()" type="button">
+              Skip This Step
+            </button>
+</div>
+</div>
+</div>
+<!-- Opportunity Alignment Mini-Card -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm font-semibold text-on-surface">Target Hiring Signal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">Stripe Internship opens in ~120 days</span>
+</div>
+</div>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm transition-colors" type="button">
+          View Intel
+        </button>
+</div>
+</div>
+</div>
+<!-- Interactive Feedback Toast / Modal Dialog (Hidden by Default) -->
+<div class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none bg-surface-container-lowest text-on-surface px-space-md py-space-sm rounded-xl shadow-xl flex items-center gap-3 border border-transparent" id="toast-message">
+<span class="material-symbols-outlined text-primary text-xl" id="toast-icon">check_circle</span>
+<span class="font-label-md text-label-md font-medium" id="toast-text">Path updated successfully</span>
+</div>
+</div>
+<script>
+  // Sovereign Control Actions & Feedback Micro-interactions
+  function showToast(message, iconName = 'check_circle') {
+    const toast = document.getElementById('toast-message');
+    const toastText = document.getElementById('toast-text');
+    const toastIcon = document.getElementById('toast-icon');
+    if (!toast || !toastText || !toastIcon) return;
+
+    toastText.innerText = message;
+    toastIcon.innerText = iconName;
+    toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 3200);
+  }
+
+  function acceptRecommendation() {
+    showToast('Committed to Milestone 2: RESTful Architecture.');
+  }
+
+  function postponeMilestone() {
+    showToast('Milestone postponed by 7 days. Pipeline timelines recalculated.', 'schedule');
+  }
+
+  function markMastered() {
+    showToast('Marked as mastered. Prompting proof verification quiz...', 'verified');
+  }
+
+  function skipStep() {
+    showToast('Step skipped. Note: Downstream projects may flag skill gaps.', 'warning');
+  }
+
+  function showSkillGapAlert() {
+    showToast('Inspecting 3 identified gaps in RESTful API contract design.', 'search');
+  }
+
+  function openGoalConfig() {
+    showToast('Goal horizon switch opened: Backend Engineer (Fintech)', 'settings');
+  }
+
+  function updateLoad(val) {
+    const label = document.getElementById('load-label');
+    if (!label) return;
+    if (val == 1) {
+      label.innerText = 'Light (0-1 Exams)';
+      showToast('Path recalculated: Sprint cadence accelerated.');
+    } else if (val == 2) {
+      label.innerText = 'Moderate (2 Exams)';
+      showToast('Path recalculated: Standard weekly progression.');
+    } else {
+      label.innerText = 'Heavy (3+ Exams)';
+      showToast('Path adjusted: Milestone grace window +4 days.');
+    }
+  }
+
+  function updateHours(val) {
+    const label = document.getElementById('hours-label');
+    if (label) {
+      label.innerText = val + ' hrs / wk';
+    }
+  }
+
+  function selectNode(nodeId) {
+    const inspector = document.getElementById('inspector-card');
+    if (!inspector) return;
+    
+    // Subtle visual feedback when selecting nodes
+    inspector.classList.add('scale-[0.99]');
+    setTimeout(() => {
+      inspector.classList.remove('scale-[0.99]');
+    }, 120);
+
+    if (nodeId === 1) {
+      showToast('Loaded Foundation Node: Java SE & SQL Data Modeling', 'verified');
+    } else if (nodeId === 2) {
+      showToast('Active Node: RESTful Architecture & API Contract Design', 'play_arrow');
+    } else if (nodeId === 3) {
+      showToast('Upcoming Node: Frameworks (Spring Boot & Microservices)', 'lock');
+    } else if (nodeId === 4) {
+      showToast('Project Node: E-Commerce Distributed Cart API', 'folder_special');
+    } else if (nodeId === 5) {
+      showToast('Evidence Node: GitHub CI/CD & Automated Code Quality', 'terminal');
+    } else if (nodeId === 6) {
+      showToast('Target Horizon: Summer 2026 Fintech Internship', 'rocket_launch');
+    }
+  }
+</script></div></main></div></body></html>

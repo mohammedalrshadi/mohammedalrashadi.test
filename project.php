@@ -165,7 +165,7 @@ if ($project) {
           <div class="p-space-lg rounded-full bg-surface-container-low border border-outline-variant/10 text-outline">
             <span class="material-symbols-outlined text-[3rem]">inventory_2</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Case Study Not Found</h1>
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Case Study Not Found</h1>
           <p class="font-body-md text-body-md text-on-surface-variant max-w-lg leading-relaxed">
             The requested project case study was not found or is no longer available in the published engineering archive.
           </p>
@@ -191,7 +191,7 @@ if ($project) {
             </span>
           </div>
 
-          <h1 class="font-headline-lg lg:text-display text-on-surface tracking-tight leading-tight font-bold">
+          <h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg lg:text-display text-on-surface tracking-tight leading-tight font-bold">
             <?= htmlspecialchars($project['title']) ?>
           </h1>
 
@@ -217,11 +217,12 @@ if ($project) {
           </div>
         </header>
 
+        <?php if (!empty($project['image_url'])): ?>
         <!-- 2. ARCHITECTURE DIAGRAM / VISUAL ASSET -->
         <section class="flex flex-col gap-space-xs">
           <div class="relative w-full rounded-xl overflow-hidden bg-surface-container-lowest border border-outline-variant/10 shadow-xl group">
             <?= responsiveImage(
-                $project['image_url'] ?? '/assets/diagram_distributed_systems.png',
+                $project['image_url'],
                 htmlspecialchars($project['title']) . ' Architecture',
                 [
                     'class' => 'w-full h-auto object-cover object-center group-hover:scale-[1.01] transition-transform duration-500',
@@ -229,12 +230,9 @@ if ($project) {
                     'sizes' => '(max-width: 1024px) 100vw, 1200px'
                 ]
             ) ?>
-            <div class="absolute bottom-3 left-3 right-3 bg-surface-container-lowest/90 backdrop-blur-md px-space-md py-space-xs rounded-lg flex items-center justify-between text-on-surface">
-              <span class="font-label-code text-label-micro text-primary">System Architecture &amp; Data Flow</span>
-              <span class="font-label-code text-label-micro text-outline">Structural Diagram</span>
-            </div>
           </div>
         </section>
+        <?php endif; ?>
 
         <!-- 3. PROBLEM & SOLUTION -->
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">

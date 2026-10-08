@@ -92,7 +92,7 @@ if (file_exists(__DIR__ . '/api/config.local.php')) {
 
           <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
             <div class="max-w-3xl">
-              <h1 class="font-display text-display text-on-surface tracking-tight">Visual Gallery</h1>
+              <h1 class="font-display text-display-mobile lg:text-display text-on-surface tracking-tight">Visual Gallery</h1>
               <p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs leading-relaxed">
                 A curated visual archive documenting system topologies, 3D geometric computing structures, empirical benchmarks, and low-level architectural artifacts across my engineering journey.
               </p>
@@ -104,11 +104,6 @@ if (file_exists(__DIR__ . '/api/config.local.php')) {
                 <span class="w-2 h-2 rounded-full bg-primary"></span>
                 <span class="font-label-code text-label-code text-on-surface font-semibold"><?= count($artifacts) ?></span>
                 <span class="font-label-code text-label-micro text-on-surface-variant">Archived</span>
-              </div>
-              <span class="text-outline-variant text-xs">/</span>
-              <div class="flex items-center gap-1.5 px-space-xs py-1">
-                <span class="material-symbols-outlined text-sm text-secondary">verified</span>
-                <span class="font-label-code text-label-micro text-on-surface-variant">UHD Vector &amp; 4K</span>
               </div>
             </div>
           </div>
@@ -178,7 +173,7 @@ if (file_exists(__DIR__ . '/api/config.local.php')) {
               <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <div class="bg-surface-container-lowest/90 px-space-md py-space-xs rounded-full flex items-center gap-space-xs shadow-lg">
                   <span class="material-symbols-outlined text-primary text-sm">zoom_in</span>
-                  <span class="font-label-code text-label-code text-on-surface">Inspect High-Res Geometric Render</span>
+                  <span class="font-label-code text-label-code text-on-surface">View larger</span>
                 </div>
               </div>
             </div>

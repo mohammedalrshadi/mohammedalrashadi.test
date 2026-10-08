@@ -37,7 +37,7 @@ if (!empty($_GET['sent']) || !empty($_GET['ticket']) || !empty($_GET['success'])
       <!-- Page Header -->
       <div class="flex flex-col gap-2 border-b border-border/60 pb-6 text-center sm:text-left">
         <span class="font-mono text-xs text-primary uppercase tracking-wider font-semibold">// ASSISTANCE &amp; INQUIRIES</span>
-        <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Help &amp; Support</h1>
+        <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Help &amp; Support</h1>
         <p class="font-sans text-sm text-text-secondary max-w-xl">
           Have a question about a technical essay, digital product download, or account access? Review common questions below or send an inquiry directly.
         </p>

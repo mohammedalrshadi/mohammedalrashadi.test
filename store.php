@@ -74,7 +74,7 @@ $totalCount = count($products);
             <span class="material-symbols-outlined text-[1rem]">shopping_bag</span>
             <span>Digital Catalog &amp; Resources</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">Store</h1>
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight font-bold">Store</h1>
           <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
             Curated digital resources, downloadable technical guides, Notion templates, and recommended engineering tools.
           </p>

@@ -90,7 +90,7 @@ $totalCount = count($achievements);
             <span class="material-symbols-outlined text-[1rem]">workspace_premium</span>
             <span>Certificates & Awards</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">Achievements</h1>
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface tracking-tight font-bold">Achievements</h1>
           <p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
             Formal recognitions, academic certificates, and industry awards.
           </p>

@@ -7,6 +7,11 @@
 require_once __DIR__ . '/../api/user/home_feed.php';
 require_once __DIR__ . '/../api/auth/guard.php';
 
+// Add page-home class instantly to prevent FOUC
+echo '<script>document.body.classList.add("page-home");</script>';
+
+
+
 $pdo = getDB();
 $userId = currentUserId();
 $isLoggedIn = ($userId > 0);
@@ -57,15 +62,21 @@ if (!$isLoggedIn) {
         <!-- STACKED PANELS (NOW & ACCOUNT) -->
         <div class="lg:col-span-4 flex flex-col gap-6">
             <!-- NOW -->
+            <?php
+            $hwFocus = trim((string)(($profile ?? getSiteProfile())['current_focus'] ?? ''));
+            if ($hwFocus !== '' || !empty($primaryExperiment)):
+            ?>
             <section class="dash-panel" aria-labelledby="now-heading">
                 <header class="dash-panel-header">
                     <span id="now-heading" class="dash-overline">NOW</span>
                 </header>
                 <div class="flex flex-col gap-4">
+                    <?php if ($hwFocus !== ''): ?>
                     <div class="flex flex-col gap-1">
                         <span class="font-mono text-[10px] text-text-muted uppercase">Currently Studying</span>
-                        <span class="text-sm text-text-primary">MVCC and B-Tree Indexes</span>
+                        <span class="text-sm text-text-primary"><?= htmlspecialchars($hwFocus) ?></span>
                     </div>
+                    <?php endif; ?>
                     <?php if (!empty($primaryExperiment)): ?>
                     <div class="flex flex-col gap-1">
                         <span class="font-mono text-[10px] text-text-muted uppercase">Active Benchmark</span>
@@ -76,6 +87,7 @@ if (!$isLoggedIn) {
                     <?php endif; ?>
                 </div>
             </section>
+            <?php endif; ?>
 
             <!-- ACCOUNT -->
             <section class="dash-panel bg-surface-container" aria-labelledby="account-heading">
@@ -121,92 +133,6 @@ if (!$isLoggedIn) {
     // Rendered via HTML markup and js/world-clock.js
     ?>
     <div class="workspace-wrapper w-full">
-    <section class="grid grid-cols-1 md:grid-cols-12 gap-6 pt-6 pb-4 border-b border-border-subtle mb-6" aria-label="Workspace Header">
-        <!-- LEFT COLUMN -->
-        <div class="flex flex-col justify-center md:col-span-8 lg:col-span-9 py-2">
-            <!-- Mobile Top Row -->
-            <div class="flex justify-between items-center w-full md:hidden mb-4">
-                <span class="editorial-overline">WORKSPACE</span>
-                <!-- Mobile Watch -->
-                <div class="wt-clock-container" id="workspace-watch-mobile" aria-hidden="true" style="width: 120px; height: 120px;">
-                    <div class="wt-clock-face">
-                        <div class="wt-clock-rings"></div>
-                        <div class="wt-clock-markers"></div>
-                        <div class="wt-clock-date"><?= strtoupper(date('D M j')) ?></div>
-                        <div class="wt-clock-hands">
-                            <div class="wt-hand wt-hour-hand" id="hour-hand-mobile"></div>
-                            <div class="wt-hand wt-min-hand" id="min-hand-mobile"></div>
-                            <div class="wt-hand wt-sec-hand" id="sec-hand-mobile"></div>
-                        </div>
-                        <div class="wt-clock-center"></div>
-                    </div>
-                    <button class="wt-replay-btn js-replay-seed-btn" aria-label="Replay seed drop" style="display: none;">
-                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Desktop Overline -->
-            <div class="hidden md:block mb-2">
-                <span class="editorial-overline">WORKSPACE</span>
-            </div>
-            
-            <h1 class="font-display text-on-surface tracking-tight mb-2" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.1;">
-                <span id="greeting-prefix"><?= $isNewUser ? 'Welcome' : 'Welcome back' ?></span>, <?= htmlspecialchars($userName) ?>
-            </h1>
-            <span class="font-mono text-xs text-text-muted mb-5">Currently studying MVCC and B-Tree Indexes</span>
-            
-            <div class="w-full md:w-auto">
-                <nav aria-label="Your library shortcuts" class="dash-quick-bar">
-                    <a href="/dashboard/library.php" class="dash-quick-btn" aria-label="Library<?= $counts['library'] > 0 ? ', ' . $counts['library'] . ' items' : '' ?>">
-                        <span class="material-symbols-outlined dash-quick-icon" aria-hidden="true">folder_special</span>
-                        <span class="dash-quick-label">Library</span>
-                        <?php if ($counts['library'] > 0): ?>
-                            <span class="dash-quick-count"><?= $counts['library'] ?></span>
-                        <?php endif; ?>
-                    </a>
-                    <a href="/dashboard/bookmarks.php" class="dash-quick-btn" aria-label="Saved<?= $counts['saved'] > 0 ? ', ' . $counts['saved'] . ' items' : '' ?>">
-                        <span class="material-symbols-outlined dash-quick-icon" aria-hidden="true">bookmark</span>
-                        <span class="dash-quick-label">Saved</span>
-                        <?php if ($counts['saved'] > 0): ?>
-                            <span class="dash-quick-count"><?= $counts['saved'] ?></span>
-                        <?php endif; ?>
-                    </a>
-                    <a href="/dashboard/history.php" class="dash-quick-btn" aria-label="History<?= ($saveHistory && $counts['history'] > 0) ? ', ' . $counts['history'] . ' items' : '' ?>">
-                        <span class="material-symbols-outlined dash-quick-icon" aria-hidden="true">history</span>
-                        <span class="dash-quick-label">History</span>
-                        <?php if ($saveHistory && $counts['history'] > 0): ?>
-                            <span class="dash-quick-count"><?= $counts['history'] ?></span>
-                        <?php endif; ?>
-                    </a>
-                </nav>
-            </div>
-        </div>
-        
-        <!-- RIGHT COLUMN -->
-        <div class="hidden md:flex flex-col items-end justify-start gap-3 md:col-span-4 lg:col-span-3">
-            <!-- Desktop Watch -->
-            <div class="wt-clock-container" id="workspace-watch-desktop" aria-hidden="true" style="width: clamp(240px, 20vw, 320px); aspect-ratio: 1/1;">
-                <div class="wt-clock-face">
-                    <div class="wt-clock-rings"></div>
-                    <div class="wt-clock-markers"></div>
-                    <div class="wt-clock-date"><?= strtoupper(date('D M j')) ?></div>
-                    <div class="wt-clock-hands">
-                        <div class="wt-hand wt-hour-hand" id="hour-hand-desktop"></div>
-                        <div class="wt-hand wt-min-hand" id="min-hand-desktop"></div>
-                        <div class="wt-hand wt-sec-hand" id="sec-hand-desktop"></div>
-                    </div>
-                    <div class="wt-clock-center"></div>
-                </div>
-                <button class="wt-replay-btn js-replay-seed-btn" aria-label="Replay seed drop" style="display: none;">
-                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"></polyline><polyline points="23 20 23 14 17 14"></polyline><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path></svg>
-                </button>
-            </div>
-            <time class="dash-clock-caption" id="workspace-caption-desktop"></time>
-        </div>
-        <!-- Mobile Caption -->
-        <time class="sr-only" id="workspace-caption-mobile"></time>
-    </section>
 
     <?php if ($isNewUser): ?>
         <!-- NEW USER STATE -->
@@ -289,11 +215,11 @@ if (!$isLoggedIn) {
 
             <section class="lg:col-span-5 dash-panel" aria-labelledby="library-heading">
                 <header class="dash-panel-header">
-                    <span id="library-heading" class="dash-overline">YOUR LIBRARY</span>
+                    <span id="library-heading" class="dash-overline">EXPLORE THE ARCHIVE</span>
                 </header>
                 <div class="dash-empty">
-                    <span class="dash-empty-title">Nothing saved yet</span>
-                    <span class="dash-empty-text">Use the bookmark button on any article to keep it here.</span>
+                    <span class="dash-empty-title">Featured resources and saved collections will appear here as the site grows.</span>
+                    <span class="dash-empty-text">Bookmark content while logged in, or explore curated archives.</span>
                     <a href="/articles.php" class="btn btn-secondary text-sm mt-2">Browse writing</a>
                 </div>
             </section>
@@ -346,13 +272,13 @@ if (!$isLoggedIn) {
 
             <section class="<?= $row1ColSaved ?> dash-panel" aria-labelledby="saved-heading">
                 <header class="dash-panel-header">
-                    <span id="saved-heading" class="dash-overline">SAVED</span>
+                    <span id="saved-heading" class="dash-overline">SAVED ARCHIVE</span>
                     <a href="/dashboard/bookmarks.php" class="dash-header-link">All saved &rarr;</a>
                 </header>
                 <?php if (empty($savedItems)): ?>
                     <div class="dash-empty">
-                        <span class="dash-empty-title">No bookmarks</span>
-                        <span class="dash-empty-text">Save articles to read later.</span>
+                        <span class="dash-empty-title">Featured resources and saved collections will appear here as the site grows.</span>
+                        <span class="dash-empty-text">Bookmark content to add it to your archive.</span>
                     </div>
                 <?php else: ?>
                     <ul class="dash-list">
@@ -453,8 +379,6 @@ if (!$isLoggedIn) {
     </div>
 <?php } ?>
 
-<!-- World Tree Seed Drop Animation Elements -->
-<div id="wt-seed" class="wt-seed hidden" aria-hidden="true"></div>
-<div id="wt-ripple" class="wt-ripple hidden" aria-hidden="true"></div>
+
 
 

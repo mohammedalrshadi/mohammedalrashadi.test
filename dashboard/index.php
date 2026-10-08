@@ -170,9 +170,11 @@ try {
           ?>
             <div class="card p-3 sm:p-4 rounded-xl border border-border/60 flex items-center justify-between gap-4 hover:border-border transition-colors">
               <div class="flex items-center gap-3 overflow-hidden">
+                <?php if (!empty($item['image'])): ?>
                 <img loading="lazy" decoding="async" src="<?= htmlspecialchars($item['image']) ?>" 
                      alt="<?= htmlspecialchars(!empty($item['title']) ? $item['title'] : 'Recently viewed item') ?>" 
                      class="w-12 h-12 rounded-lg object-cover bg-surface-container flex-shrink-0 border border-border/40">
+                <?php endif; ?>
                 <div class="flex flex-col overflow-hidden">
                   <div class="flex items-center gap-2">
                     <span class="badge badge-neutral text-[10px] py-0 px-1.5"><?= htmlspecialchars($item['type_badge']) ?></span>

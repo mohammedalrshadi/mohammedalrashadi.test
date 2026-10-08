@@ -78,9 +78,11 @@ try {
       ?>
         <div class="card p-4 rounded-xl border border-border/70 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hover:border-primary/40 transition-colors">
           <div class="flex items-center gap-3.5 overflow-hidden">
+            <?php if (!empty($item['image'])): ?>
             <img loading="lazy" decoding="async" src="<?= htmlspecialchars($item['image']) ?>" 
                  alt="<?= htmlspecialchars(!empty($item['title']) ? $item['title'] : 'Reading history item') ?>" 
                  class="w-14 h-14 rounded-xl object-cover bg-surface-container flex-shrink-0 border border-border/50">
+            <?php endif; ?>
             <div class="flex flex-col overflow-hidden">
               <div class="flex items-center gap-2">
                 <span class="badge badge-neutral text-[10px] py-0 px-1.5"><?= htmlspecialchars($item['type_badge']) ?></span>

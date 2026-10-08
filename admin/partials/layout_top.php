@@ -86,13 +86,16 @@ if (function_exists('getDB')) {
 
     <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
 
-    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Material Symbols for Workspace -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
 
     <!-- DOMPurify for defense-in-depth sanitization -->
     <script src="/assets/vendor/dompurify/purify.min.js"></script>
@@ -100,6 +103,9 @@ if (function_exists('getDB')) {
     <!-- Design System & Admin Stylesheet with content hash cache busting -->
     <link rel="stylesheet" href="/css/styles.css?v=<?php echo filemtime(dirname(dirname(__DIR__)) . '/css/styles.css'); ?>">
     <link rel="stylesheet" href="/admin/css/admin.css?v=<?php echo htmlspecialchars($adminCssVersion, ENT_QUOTES, 'UTF-8'); ?>">
+    <?php if (str_starts_with($activeNav, 'ws-') || $activeNav === 'workspace'): ?>
+    <link rel="stylesheet" href="/admin/css/workspace.css">
+    <?php endif; ?>
     <script src="/js/theme-toggle.js?v=<?php echo filemtime(dirname(dirname(__DIR__)) . '/js/theme-toggle.js'); ?>" defer></script>
 </head>
 
@@ -138,259 +144,199 @@ if (function_exists('getDB')) {
     <!-- =====================================================
          SIDEBAR NAVIGATION
     ====================================================== -->
-    <aside class="sidebar" id="adminSidebar" aria-label="Admin Navigation">
+    <?php $isWorkspace = (str_starts_with($activeNav, 'ws-') || $activeNav === 'workspace'); ?>
+    <?php if (!$isWorkspace): ?>
+        <aside class="sidebar" id="adminSidebar" aria-label="Admin Navigation">
 
-        <!-- Branding -->
-        <a href="index.php" class="sidebar-brand">
-                <?php require dirname(dirname(__DIR__)) . '/includes/logo.php'; ?>
-                <div class="brand-text">
-                    <span class="brand-title">Mohammed Alrashadi</span>
-                    <span class="brand-subtitle">Admin Studio</span>
-                </div>
-            </a>
+            <!-- Branding -->
+            <a href="index.php" class="sidebar-brand">
+                    <?php require dirname(dirname(__DIR__)) . '/includes/logo.php'; ?>
+                    <div class="brand-text">
+                        <span class="brand-title">Mohammed Alrashadi</span>
+                        <span class="brand-subtitle">Admin Studio</span>
+                    </div>
+                </a>
+                
+            <div class="mode-switcher-container" style="padding: 16px 20px 0;">
+                <select id="adminModeSwitcher" onchange="window.location.href='workspace.php'" style="width: 100%; background: var(--bg-surface-elevated); color: var(--text-primary); border: 1px solid var(--border-subtle); padding: 8px; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer; appearance: none; -webkit-appearance: none; outline: none;">
+                    <option value="website" selected>🌍 Website Admin</option>
+                    <option value="workspace">🚀 Personal Workspace</option>
+                </select>
+            </div>
 
             <!-- Grouped Navigation -->
             <nav class="nav-groups-wrapper">
-
-                <!-- ================================================
-                     TIER 1 — EDITORIAL STUDIO
-                     Dashboard, Articles, Projects, Labs, Journey, Categories
-                     (Categories confirmed as cross-cutting Taxonomy Engine
-                     for blog, projects, labs, and store)
-                ================================================ -->
-                <div class="nav-group" data-group="editorial">
-                    <button type="button" class="nav-group-toggle" aria-expanded="true">
-                        <span class="nav-group-title">Editorial Studio</span>
-                        <i class="fas fa-chevron-down group-toggle-icon"></i>
-                    </button>
-                    <div class="nav-group-content">
-                        <ul class="nav-menu">
-                            <li class="nav-item">
-                                <a href="index.php" class="<?php echo navLinkClass('dashboard', $activeNav); ?>">
-                                    <i class="fas fa-chart-line" aria-hidden="true"></i>
-                                    <span>Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="articles.php" class="<?php echo navLinkClass('articles', $activeNav); ?>">
-                                    <i class="far fa-file-alt" aria-hidden="true"></i>
-                                    <span>Writing</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="projects.php" class="<?php echo navLinkClass('projects', $activeNav); ?>">
-                                    <i class="fas fa-code-branch" aria-hidden="true"></i>
-                                    <span>Projects</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="achievements.php" class="<?php echo navLinkClass('achievements', $activeNav); ?>">
-                                    <i class="fas fa-award" aria-hidden="true"></i>
-                                    <span>Achievements</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="labs.php" class="<?php echo navLinkClass('labs', $activeNav); ?>">
-                                    <i class="fas fa-flask" aria-hidden="true"></i>
-                                    <span>Studio Lab</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="journey.php" class="<?php echo navLinkClass('journey', $activeNav); ?>">
-                                    <i class="fas fa-route" aria-hidden="true"></i>
-                                    <span>Journey</span>
-                                </a>
-                            </li>
-                            <!-- Cross-cutting Taxonomy & Category Engine (blog, projects, labs, store) -->
-                            <li class="nav-item">
-                                <a href="categories.php" class="<?php echo navLinkClass('categories', $activeNav); ?>">
-                                    <i class="fas fa-tags" aria-hidden="true"></i>
-                                    <span>Categories</span>
-                                </a>
-                            </li>
-                        </ul>
+                <div id="navModeWebsite">
+                    <!-- TIER 1 -->
+                    <div class="nav-group" data-group="editorial">
+                        <button type="button" class="nav-group-toggle" aria-expanded="true">
+                            <span class="nav-group-title">Editorial Studio</span>
+                            <i class="fas fa-chevron-down group-toggle-icon"></i>
+                        </button>
+                        <div class="nav-group-content">
+                            <ul class="nav-menu">
+                                <li class="nav-item"><a href="index.php" class="<?php echo navLinkClass('dashboard', $activeNav); ?>"><i class="fas fa-chart-line"></i><span>Dashboard</span></a></li>
+                                <li class="nav-item"><a href="articles.php" class="<?php echo navLinkClass('articles', $activeNav); ?>"><i class="far fa-file-alt"></i><span>Writing</span></a></li>
+                                <li class="nav-item"><a href="projects.php" class="<?php echo navLinkClass('projects', $activeNav); ?>"><i class="fas fa-code-branch"></i><span>Projects</span></a></li>
+                                <li class="nav-item"><a href="achievements.php" class="<?php echo navLinkClass('achievements', $activeNav); ?>"><i class="fas fa-award"></i><span>Achievements</span></a></li>
+                                <li class="nav-item"><a href="labs.php" class="<?php echo navLinkClass('labs', $activeNav); ?>"><i class="fas fa-flask"></i><span>Studio Lab</span></a></li>
+                                <li class="nav-item"><a href="journey.php" class="<?php echo navLinkClass('journey', $activeNav); ?>"><i class="fas fa-route"></i><span>Journey</span></a></li>
+                                <li class="nav-item"><a href="categories.php" class="<?php echo navLinkClass('categories', $activeNav); ?>"><i class="fas fa-tags"></i><span>Categories</span></a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <!-- ================================================
-                     TIER 2 — COMMERCE & ASSETS
-                     Store, Media Library, Home Showcase
-                ================================================ -->
-                <div class="nav-group" data-group="commerce">
-                    <button type="button" class="nav-group-toggle" aria-expanded="true">
-                        <span class="nav-group-title">Commerce &amp; Assets</span>
-                        <i class="fas fa-chevron-down group-toggle-icon"></i>
-                    </button>
-                    <div class="nav-group-content">
-                        <ul class="nav-menu">
-                            <li class="nav-item">
-                                <a href="store.php" class="<?php echo navLinkClass('store', $activeNav); ?>">
-                                    <i class="fas fa-store" aria-hidden="true"></i>
-                                    <span>Store</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="media.php" class="<?php echo navLinkClass('media', $activeNav); ?>">
-                                    <i class="fas fa-images" aria-hidden="true"></i>
-                                    <span>Media Library</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="showcase.php" class="<?php echo navLinkClass('showcase', $activeNav); ?>">
-                                    <i class="fas fa-layer-group" aria-hidden="true"></i>
-                                    <span>Home Showcase</span>
-                                </a>
-                            </li>
-                        </ul>
+                    <!-- TIER 2 -->
+                    <div class="nav-group" data-group="commerce">
+                        <button type="button" class="nav-group-toggle" aria-expanded="true">
+                            <span class="nav-group-title">Commerce &amp; Assets</span>
+                            <i class="fas fa-chevron-down group-toggle-icon"></i>
+                        </button>
+                        <div class="nav-group-content">
+                            <ul class="nav-menu">
+                                <li class="nav-item"><a href="store.php" class="<?php echo navLinkClass('store', $activeNav); ?>"><i class="fas fa-store"></i><span>Store</span></a></li>
+                                <li class="nav-item"><a href="media.php" class="<?php echo navLinkClass('media', $activeNav); ?>"><i class="fas fa-images"></i><span>Media Library</span></a></li>
+                                <li class="nav-item"><a href="showcase.php" class="<?php echo navLinkClass('showcase', $activeNav); ?>"><i class="fas fa-layer-group"></i><span>Home Showcase</span></a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <!-- ================================================
-                     TIER 3 — AUDIENCE & INSIGHTS
-                     Analytics, SEO Workspace, Visitor Reviews, Support
-                ================================================ -->
-                <div class="nav-group" data-group="audience">
-                    <button type="button" class="nav-group-toggle" aria-expanded="true">
-                        <span class="nav-group-title">Audience &amp; Insights</span>
-                        <i class="fas fa-chevron-down group-toggle-icon"></i>
-                    </button>
-                    <div class="nav-group-content">
-                        <ul class="nav-menu">
-                            <li class="nav-item">
-                                <a href="analytics.php" class="<?php echo navLinkClass('analytics', $activeNav); ?>">
-                                    <i class="fas fa-chart-pie" aria-hidden="true"></i>
-                                    <span>Analytics</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="seo.php" class="<?php echo navLinkClass('seo', $activeNav); ?>">
-                                    <i class="fas fa-chart-simple" aria-hidden="true"></i>
-                                    <span>SEO Workspace</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="reviews.php" class="<?php echo navLinkClass('reviews', $activeNav); ?>">
-                                    <i class="far fa-comments" aria-hidden="true"></i>
-                                    <span>Visitor Reviews</span>
-                                    <?php if ($pendingReviewsCount > 0): ?>
-                                        <span class="nav-badge" id="reviewsNavBadge"><?= $pendingReviewsCount ?></span>
-                                    <?php else: ?>
-                                        <span class="nav-badge" id="reviewsNavBadge" style="display: none;">0</span>
-                                    <?php endif; ?>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="support.php" class="<?php echo navLinkClass('support', $activeNav); ?>">
-                                    <i class="far fa-life-ring" aria-hidden="true"></i>
-                                    <span>Support</span>
-                                    <?php if ($newSupportCount > 0): ?>
-                                        <span class="nav-badge" id="supportNavBadge"><?= $newSupportCount ?></span>
-                                    <?php else: ?>
-                                        <span class="nav-badge" id="supportNavBadge" style="display: none;">0</span>
-                                    <?php endif; ?>
-                                </a>
-                            </li>
-                        </ul>
+                    <!-- TIER 3 -->
+                    <div class="nav-group" data-group="audience">
+                        <button type="button" class="nav-group-toggle" aria-expanded="true">
+                            <span class="nav-group-title">Audience &amp; Insights</span>
+                            <i class="fas fa-chevron-down group-toggle-icon"></i>
+                        </button>
+                        <div class="nav-group-content">
+                            <ul class="nav-menu">
+                                <li class="nav-item"><a href="analytics.php" class="<?php echo navLinkClass('analytics', $activeNav); ?>"><i class="fas fa-chart-pie"></i><span>Analytics</span></a></li>
+                                <li class="nav-item"><a href="seo.php" class="<?php echo navLinkClass('seo', $activeNav); ?>"><i class="fas fa-chart-simple"></i><span>SEO Workspace</span></a></li>
+                                <li class="nav-item">
+                                    <a href="reviews.php" class="<?php echo navLinkClass('reviews', $activeNav); ?>"><i class="far fa-comments"></i><span>Visitor Reviews</span>
+                                    <?php if ($pendingReviewsCount > 0): ?><span class="nav-badge"><?= $pendingReviewsCount ?></span><?php endif; ?></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="support.php" class="<?php echo navLinkClass('support', $activeNav); ?>"><i class="far fa-life-ring"></i><span>Support</span>
+                                    <?php if ($newSupportCount > 0): ?><span class="nav-badge"><?= $newSupportCount ?></span><?php endif; ?></a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
-                <!-- ================================================
-                     TIER 4 — PLATFORM & SECURITY
-                     Users & Roles, Backups, Audit Log, Settings
-                ================================================ -->
-                <div class="nav-group" data-group="platform">
-                    <button type="button" class="nav-group-toggle" aria-expanded="true">
-                        <span class="nav-group-title">Platform &amp; Security</span>
-                        <i class="fas fa-chevron-down group-toggle-icon"></i>
-                    </button>
-                    <div class="nav-group-content">
-                        <ul class="nav-menu">
-                            <li class="nav-item">
-                                <a href="users.php" class="<?php echo navLinkClass('users', $activeNav); ?>">
-                                    <i class="far fa-user" aria-hidden="true"></i>
-                                    <span>Users &amp; Roles</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="backups.php" class="<?php echo navLinkClass('backups', $activeNav); ?>">
-                                    <i class="fas fa-database" aria-hidden="true"></i>
-                                    <span>Backups</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="audit-log.php" class="<?php echo navLinkClass('audit', $activeNav); ?>">
-                                    <i class="fas fa-clipboard-list" aria-hidden="true"></i>
-                                    <span>Audit Log</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="settings.php" class="<?php echo navLinkClass('settings', $activeNav); ?>">
-                                    <i class="fas fa-sliders" aria-hidden="true"></i>
-                                    <span>Settings</span>
-                                </a>
-                            </li>
-                        </ul>
+                    <!-- TIER 4 -->
+                    <div class="nav-group" data-group="platform">
+                        <button type="button" class="nav-group-toggle" aria-expanded="true">
+                            <span class="nav-group-title">Platform &amp; Security</span>
+                            <i class="fas fa-chevron-down group-toggle-icon"></i>
+                        </button>
+                        <div class="nav-group-content">
+                            <ul class="nav-menu">
+                                <li class="nav-item"><a href="users.php" class="<?php echo navLinkClass('users', $activeNav); ?>"><i class="far fa-user"></i><span>Users &amp; Roles</span></a></li>
+                                <li class="nav-item"><a href="backups.php" class="<?php echo navLinkClass('backups', $activeNav); ?>"><i class="fas fa-database"></i><span>Backups</span></a></li>
+                                <li class="nav-item"><a href="audit-log.php" class="<?php echo navLinkClass('audit', $activeNav); ?>"><i class="fas fa-clipboard-list"></i><span>Audit Log</span></a></li>
+                                <li class="nav-item"><a href="settings.php" class="<?php echo navLinkClass('settings', $activeNav); ?>"><i class="fas fa-sliders"></i><span>Settings</span></a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-
+                </div> 
             </nav>
+            <div class="sidebar-utilities-mobile">
+                <button type="button" class="sidebar-button logout-button text-danger" onclick="logoutAdmin()" style="color: var(--danger);"><i class="fas fa-right-from-bracket"></i><span>Log Out</span></button>
+            </div>
+        </aside>
+    <?php else: ?>
+        <aside class="pw-sidebar">
+            <div class="pw-nav-section">
+                <div class="pw-nav-label">Daily Focus</div>
+                <nav class="pw-nav-menu">
+                    <a href="workspace.php" class="pw-nav-link <?php echo $activeNav==='workspace'?'active':''; ?>"><span class="material-symbols-outlined">grid_view</span> Command Center</a>
+                    <a href="ws-calendar.php" class="pw-nav-link <?php echo $activeNav==='ws-calendar'?'active':''; ?>"><span class="material-symbols-outlined">calendar_today</span> Schedule &amp; Tasks</a>
+                    <a href="ws-habits.php" class="pw-nav-link <?php echo $activeNav==='ws-habits'?'active':''; ?>"><span class="material-symbols-outlined">repeat</span> Habits &amp; Routines</a>
+                </nav>
+            </div>
 
-        <!-- Mobile-Only Utilities Dock -->
-        <div class="sidebar-utilities-mobile">
-            <a href="../index.php" class="sidebar-button" target="_blank" rel="noopener">
-                <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i>
-                <span>Public Site</span>
-            </a>
-            <button type="button" class="sidebar-button logout-button text-danger" onclick="logoutAdmin()" style="color: var(--danger);">
-                <i class="fas fa-right-from-bracket" aria-hidden="true"></i>
-                <span>Log Out</span>
-            </button>
-        </div>
-
-    </aside>
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const toggles = document.querySelectorAll('.nav-group-toggle');
-        toggles.forEach(toggle => {
-            const group = toggle.closest('.nav-group');
-            const groupId = group.dataset.group;
-            const content = group.querySelector('.nav-group-content');
-            const hasActiveLink = group.querySelector('a.active') !== null;
-            // Phase 1: new group keys — editorial/commerce/audience/platform
-            // Old keys (overview/content/media/system) are preserved in localStorage
-            // but will just default to expanded since they won't match.
-            const isCollapsed = localStorage.getItem('sidebar_group_' + groupId) === 'collapsed' && !hasActiveLink;
+            <div class="pw-nav-section">
+                <div class="pw-nav-label">Growth &amp; Learning</div>
+                <nav class="pw-nav-menu">
+                    <a href="ws-overview.php" class="pw-nav-link <?php echo $activeNav==='ws-overview'?'active':''; ?>"><span class="material-symbols-outlined">route</span> My Path</a>
+                    <a href="ws-courses.php" class="pw-nav-link <?php echo $activeNav==='ws-courses'?'active':''; ?>"><span class="material-symbols-outlined">school</span> Academic Curriculum</a>
+                    <a href="ws-reading.php" class="pw-nav-link <?php echo $activeNav==='ws-reading'?'active':''; ?>"><span class="material-symbols-outlined">menu_book</span> Reading &amp; Study</a>
+                    <a href="ws-skills.php" class="pw-nav-link <?php echo $activeNav==='ws-skills'?'active':''; ?>"><span class="material-symbols-outlined">psychology</span> Skills Matrix</a>
+                </nav>
+            </div>
             
-            if (isCollapsed) {
-                toggle.setAttribute('aria-expanded', 'false');
-                content.style.display = 'none';
-                toggle.querySelector('.group-toggle-icon').style.transform = 'rotate(-90deg)';
-            }
+            <div class="pw-nav-section">
+                <div class="pw-nav-label">Ecosystem</div>
+                <nav class="pw-nav-menu">
+                    <a href="ws-projects.php" class="pw-nav-link <?php echo $activeNav==='ws-projects'?'active':''; ?>"><span class="material-symbols-outlined">terminal</span> Projects &amp; Evidence</a>
+                    <a href="ws-goals.php" class="pw-nav-link <?php echo $activeNav==='ws-goals'?'active':''; ?>"><span class="material-symbols-outlined">flag</span> Goals &amp; Career</a>
+                    <a href="ws-clubs.php" class="pw-nav-link <?php echo $activeNav==='ws-clubs'?'active':''; ?>"><span class="material-symbols-outlined">groups</span> Communities</a>
+                    <a href="ws-notes.php" class="pw-nav-link <?php echo $activeNav==='ws-notes'?'active':''; ?>"><span class="material-symbols-outlined">description</span> Knowledge Base</a>
+                </nav>
+            </div>
             
-            toggle.addEventListener('click', () => {
-                const expanded = toggle.getAttribute('aria-expanded') === 'true';
-                
-                if (expanded) {
-                    toggle.setAttribute('aria-expanded', 'false');
-                    content.style.display = 'none';
-                    toggle.querySelector('.group-toggle-icon').style.transform = 'rotate(-90deg)';
-                    localStorage.setItem('sidebar_group_' + groupId, 'collapsed');
-                } else {
-                    toggle.setAttribute('aria-expanded', 'true');
-                    content.style.display = 'block';
-                    toggle.querySelector('.group-toggle-icon').style.transform = 'rotate(0deg)';
-                    localStorage.setItem('sidebar_group_' + groupId, 'expanded');
-                }
-            });
-        });
-    });
-    </script>
+            <div class="pw-nav-section">
+                <div class="pw-nav-label">System</div>
+                <nav class="pw-nav-menu">
+                    <a href="ws-achievements.php" class="pw-nav-link <?php echo $activeNav==='ws-achievements'?'active':''; ?>"><span class="material-symbols-outlined">trophy</span> Achievements</a>
+                    <a href="ws-resources.php" class="pw-nav-link <?php echo $activeNav==='ws-resources'?'active':''; ?>"><span class="material-symbols-outlined">settings</span> Preferences</a>
+                </nav>
+            </div>
+            
+            <div class="pw-nav-section" style="margin-top: auto;">
+                <button type="button" onclick="window.location.href='index.php'" class="pw-btn" style="width: 100%; justify-content: center; background: var(--pw-surface-container-low); border: none; color: var(--pw-text-main);">
+                    <i class="fas fa-arrow-left"></i> Return to Admin
+                </button>
+            </div>
+        </aside>
+    <?php endif; ?>
 
     <!-- =====================================================
          MAIN WORKSPACE CONTENT CONTAINER
     ====================================================== -->
-    <main class="main-content" id="mainContent">
-
+        <main class="<?php echo $isWorkspace ? 'pw-main' : 'main-content'; ?>" id="mainContent">
+        
+        <?php if ($isWorkspace): ?>
+            <!-- NEW STUDENT OS HEADER -->
+            <header class="pw-header">
+                <div class="pw-brand">
+                    <div class="pw-brand-icon" style="background: var(--pw-text-main); color: var(--pw-surface);">M</div>
+                    <div class="pw-brand-text">
+                        <span class="pw-brand-title">Personal OS</span>
+                        <span class="pw-brand-subtitle">Private Workspace</span>
+                    </div>
+                </div>
+                <div class="pw-header-center">
+                    <div class="pw-search">
+                        <span class="material-symbols-outlined">search</span>
+                        <input type="text" placeholder="Search courses, skills, projects, opportunities...">
+                        <div class="pw-search-shortcut">⌘K</div>
+                    </div>
+                </div>
+                <div class="pw-header-right">
+                    <div class="pw-cognitive-mode" style="margin-right: 12px;">
+                        <button class="active">Standard</button>
+                        <button>Easy</button>
+                        <button>Hard</button>
+                        <button>Go</button>
+                    </div>
+                    <!-- Existing Admin identity simplified -->
+                    <?php
+                        $_gtbUser      = function_exists('currentUser') ? currentUser() : null;
+                        $_gtbFullName  = $_gtbUser ? ($_gtbUser['name'] ?? 'Administrator') : 'Administrator';
+                        $_gtbFirstName = ucfirst(strtolower(explode(' ', trim($_gtbFullName))[0]));
+                        $_gtbInitial   = mb_strtoupper(mb_substr($_gtbFirstName, 0, 1));
+                    ?>
+                    <button type="button" class="global-top-bar-bell" onclick="toggleAdminAlertsDropdown(event)" style="border: none; background: transparent; cursor: pointer; position: relative;">
+                        <span class="material-symbols-outlined" style="color: var(--pw-text-secondary);">notifications</span>
+                        <?php if ($unreadAlertsCount > 0): ?>
+                            <span style="position:absolute; top:-4px; right:-4px; background:var(--pw-danger); color:#fff; font-size:10px; font-weight:bold; border-radius:10px; padding:2px 5px;"><?= (int)$unreadAlertsCount ?></span>
+                        <?php endif; ?>
+                    </button>
+                    <a href="settings.php" class="user-identity-badge" title="Profile" style="padding: 4px; border-radius: 50%; border: 1px solid var(--pw-border);">
+                        <div class="admin-monogram-sm" style="margin: 0; background: var(--pw-surface-container-low); color: var(--pw-text-main);"><?= htmlspecialchars($_gtbInitial) ?></div>
+                    </a>
+                </div>
+            </header>
+            <div class="pw-content-scroll">
+        <?php else: ?>
         <?php
         // ── Phase 1: Global Top Bar ─────────────────────────────────────
         // Resolve admin user info for the identity badge.
@@ -490,6 +436,7 @@ if (function_exists('getDB')) {
 
             </div>
         </div><!-- /.global-top-bar -->
+        <?php endif; ?>
 
         <!-- Toast Notification Container (inside main workspace) -->
         <div id="toastContainer" class="toast-container" aria-live="polite"></div>

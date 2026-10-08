@@ -91,7 +91,7 @@ if ($achievement) {
           <div class="p-space-lg rounded-full bg-surface-container-low border border-outline-variant/10 text-outline">
             <span class="material-symbols-outlined text-[3rem]">workspace_premium</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Achievement Not Found</h1>
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Achievement Not Found</h1>
           <div class="pt-space-md">
             <a href="/achievements.php" class="px-space-lg py-space-sm rounded-lg bg-primary text-on-primary font-label-code text-label-code font-semibold hover:opacity-90 inline-flex items-center gap-2">
               <span class="material-symbols-outlined text-[1.125rem]">arrow_back</span>
@@ -112,7 +112,7 @@ if ($achievement) {
               </span>
               <?php endif; ?>
             </div>
-            <h1 class="font-headline-lg lg:text-display text-on-surface tracking-tight leading-tight font-bold">
+            <h1 class="text-headline-lg-mobile md:text-headline-lg font-headline-lg lg:text-display text-on-surface tracking-tight leading-tight font-bold">
               <?= htmlspecialchars($achievement['title']) ?>
             </h1>
             <?php if (!empty($achievement['organization'])): ?>

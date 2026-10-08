@@ -58,7 +58,7 @@ function resolveUserContent(?PDO $pdo, string $contentType, string $contentId): 
         'type_badge'   => getUserContentTypeBadge($type),
         'title'        => 'Untitled Resource',
         'category'     => 'General',
-        'image'        => '/assets/diagram_distributed_systems.png',
+        'image'        => '',
         'url'          => '#',
         'status'       => 'published',
         'is_missing'   => false,
@@ -100,7 +100,7 @@ function resolveUserContent(?PDO $pdo, string $contentType, string $contentId): 
 
                 $base['title']    = $post['title'];
                 $base['category'] = !empty($post['category']) ? $post['category'] : 'Technical Writing';
-                $base['image']    = !empty($post['image_url']) ? $post['image_url'] : '/assets/code_ide_architecture.png';
+                $base['image']    = !empty($post['image_url']) ? $post['image_url'] : '';
                 $base['url']      = '/post.php?id=' . (int)$post['id'];
                 $base['status']   = $post['status'];
                 $base['is_missing'] = false;
@@ -139,7 +139,7 @@ function resolveUserContent(?PDO $pdo, string $contentType, string $contentId): 
 
                 $base['title']    = $project['title'];
                 $base['category'] = !empty($project['category']) ? $project['category'] : 'Engineering Project';
-                $base['image']    = !empty($project['image_url']) ? $project['image_url'] : '/assets/diagram_distributed_systems.png';
+                $base['image']    = !empty($project['image_url']) ? $project['image_url'] : '';
                 $base['url']      = '/project.php?id=' . (int)$project['id'];
                 $base['status']   = $project['status'];
                 $base['is_missing'] = false;
@@ -199,7 +199,7 @@ function resolveUserContent(?PDO $pdo, string $contentType, string $contentId): 
                     if (isset($exp['id']) && strcasecmp($exp['id'], $id) === 0) {
                         $base['title']      = $exp['title'] ?? ('Experiment ' . $id);
                         $base['category']   = $exp['categoryLabel'] ?? ($exp['category'] ?? 'Lab Benchmark');
-                        $base['image']      = '/assets/code_ide_architecture.png';
+                        $base['image']      = '';
                         $base['url']        = '/lab-detail.php?id=' . rawurlencode($exp['id']);
                         $base['is_missing'] = false;
                         return $base;
@@ -211,7 +211,7 @@ function resolveUserContent(?PDO $pdo, string $contentType, string $contentId): 
             $base['is_missing'] = true;
             $base['title']    = 'Investigation Not Found';
             $base['category'] = 'Empirical Benchmark';
-            $base['image']    = '/assets/code_ide_architecture.png';
+            $base['image']    = '';
             $base['url']      = '/lab.php';
             return $base;
 

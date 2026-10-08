@@ -1,0 +1,344 @@
+/* ============================================================
+   NEW DESIGN OVERRIDES (World Tree Aesthetic)
+   css/new-design.css
+   ============================================================ */
+
+/* 1. LOGO TRANSPARENCY FIX */
+@supports not ((-webkit-mask-image: none) or (mask-image: none)) {}
+.platform-logo-spacer { opacity: 1 !important; }
+.platform-logo-mask { display: none !important; }
+[data-theme="light"] .platform-logo-spacer, html.light .platform-logo-spacer {
+    filter: invert(1) contrast(1.2);
+    mix-blend-mode: multiply;
+}
+[data-theme="dark"] .platform-logo-spacer, html.dark .platform-logo-spacer {
+    mix-blend-mode: screen;
+}
+
+/* 2. THEME OVERRIDES FOR HOMEPAGE */
+body.page-home {
+    /* Dark Theme Defaults */
+    --color-background: #02120e; /* obsidian-950 */
+    --color-surface: #031713; /* obsidian-900 */
+    --color-surface-container: #051d18; /* obsidian-850 */
+    --color-border: rgba(52, 211, 153, 0.14);
+    --color-border-subtle: rgba(52, 211, 153, 0.08);
+    --color-primary: #34D399; /* mint-400 */
+    --color-on-background: #E5E7EB;
+    --color-text-secondary: #9CA3AF;
+    --color-text-muted: #6B7280;
+    --hero-glow: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
+}
+
+html[data-theme="light"] body.page-home,
+body.page-home[data-theme="light"] {
+    --color-background: #F8F8F6; /* off-white */
+    --color-surface: #FFFFFF;
+    --color-surface-container: #F1F2ED;
+    --color-border: rgba(16, 185, 129, 0.2);
+    --color-border-subtle: rgba(16, 185, 129, 0.1);
+    --color-primary: #10B981; /* mint-500 */
+    --color-on-background: #02120e;
+    --color-text-secondary: #4B5563;
+    --color-text-muted: #6B7280;
+    --hero-glow: none;
+}
+
+/* Green theme: body.page-home tokens above would otherwise shadow the
+   html[data-theme="green"] tokens from styles.css. Same values as styles.css. */
+html[data-theme="green"] body.page-home {
+    --color-background: #0F2922;
+    --color-surface: #14372D;
+    --color-surface-container: #1A473A;
+    --color-border: rgba(45, 212, 143, 0.25);
+    --color-border-subtle: rgba(45, 212, 143, 0.12);
+    --color-primary: #2DD48F;
+    --color-on-background: #E6F5EE;
+    --color-text-secondary: #A4CCBD;
+    --color-text-muted: #A3C9B9;
+}
+
+/* 3. HERO STYLING */
+body.page-home::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+    background-image: var(--hero-glow);
+}
+
+body.page-home .workspace-wrapper {
+    margin-bottom: 4rem;
+}
+
+body.page-home .editorial-overline {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    text-transform: uppercase;
+}
+
+body.page-home h1.font-display {
+    font-size: clamp(2rem, 4vw, 3.5rem) !important;
+    font-weight: 700 !important;
+    line-height: 1.1 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* Highlight the name */
+body.page-home #greeting-prefix + span,
+body.page-home h1.font-display span:last-child {
+    color: var(--color-primary);
+}
+
+body.page-home .dash-quick-btn {
+    background: color-mix(in srgb, var(--color-surface-container) 80%, transparent);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px; /* refined outline pills */
+    padding: 0.6rem 1.2rem;
+    font-family: var(--font-mono);
+    transition: all 0.2s ease;
+    backdrop-filter: blur(4px);
+}
+body.page-home .dash-quick-btn:hover {
+    background: var(--color-surface);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(52, 211, 153, 0.1);
+}
+
+/* 4. SECTION HEADERS & CARDS */
+body.page-home .editorial-section-header {
+    margin-bottom: 1.75rem;
+    border-bottom: 0 !important;
+    padding-bottom: 0;
+}
+body.page-home .editorial-subtitle {
+    color: var(--color-text-secondary);
+}
+body.page-home .editorial-title {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+body.page-home .glass-card,
+body.page-home .dash-panel,
+body.page-home .project-card,
+body.page-home .article-card {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 90%, transparent) 0%, color-mix(in srgb, var(--color-surface-container) 90%, transparent) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px -5px rgba(0,0,0,0.2);
+}
+body.page-home .glass-card:hover,
+body.page-home .dash-panel:hover,
+body.page-home .project-card:hover,
+body.page-home .article-card:hover {
+    border-color: rgba(52, 211, 153, 0.32);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.4), 0 0 15px -3px rgba(52, 211, 153, 0.15);
+    transform: translateY(-2px);
+}
+
+/* COMING SOON / EMPTY STATES - solid glass cards with a mint hairline */
+body.page-home .staging-state {
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(120% 140% at 50% 0%, rgba(52, 211, 153, 0.06) 0%, transparent 55%),
+        linear-gradient(180deg, color-mix(in srgb, var(--color-surface) 94%, transparent) 0%, color-mix(in srgb, var(--color-surface-container) 94%, transparent) 100%) !important;
+    border: 1px solid var(--color-border) !important;
+    opacity: 1;
+    border-radius: 14px;
+    padding: 3.25rem 1.5rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03), 0 18px 40px -28px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+body.page-home .staging-state::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 40%;
+    height: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.55), transparent);
+}
+body.page-home .staging-state:hover {
+    border-color: rgba(52, 211, 153, 0.3) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 18px 40px -24px rgba(0, 0, 0, 0.8), 0 0 24px -8px rgba(52, 211, 153, 0.18);
+}
+body.page-home .staging-state-label {
+    color: var(--color-primary) !important;
+    letter-spacing: 0.2em;
+    font-size: 0.6875rem;
+}
+body.page-home .staging-state-title {
+    font-weight: 600;
+    color: var(--color-on-background);
+}
+html[data-theme="light"] body.page-home .staging-state {
+    background:
+        radial-gradient(120% 140% at 50% 0%, rgba(16, 185, 129, 0.05) 0%, transparent 55%),
+        #FFFFFF !important;
+    box-shadow: 0 1px 2px rgba(2, 18, 14, 0.04), 0 14px 32px -24px rgba(2, 18, 14, 0.25);
+}
+
+/* 5. PRINCIPLES & JOURNEY */
+body.page-home .conviction-dossier-card {
+    position: relative;
+}
+/* Thin vertical line for the tree-root idea on the second card */
+body.page-home .conviction-dossier-card:nth-child(2) {
+    position: relative;
+    padding-left: 1.5rem;
+}
+body.page-home .conviction-dossier-card:nth-child(2)::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4rem; /* below header */
+    bottom: 2rem;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--color-primary), transparent);
+}
+body.page-home .conviction-dossier-card:nth-child(2) .conviction-item {
+    position: relative;
+}
+body.page-home .conviction-dossier-card:nth-child(2) .conviction-item::before {
+    content: "";
+    position: absolute;
+    left: -1.75rem;
+    top: 0.25rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    box-shadow: 0 0 8px var(--color-primary);
+}
+
+/* 6. STORE BLOCK */
+body.page-home #store > div.flex {
+    background: var(--color-surface-container) !important;
+    border-left: 4px solid var(--color-primary) !important;
+    border-radius: 0 12px 12px 0;
+    padding: 2rem !important;
+    margin-top: 1rem;
+}
+
+/* 7. FOOTER - deep emerald stage for the World Tree (same in both themes) */
+.site-footer__brand-name,
+.world-tree-caption { display: none; }
+
+body.page-home .site-footer {
+    position: relative;
+    overflow: hidden;
+    color: #E7F5EF !important;
+    padding-top: 3.5rem !important; /* was 470px: stage for the removed canvas tree, left a big empty block */
+    padding-bottom: 1.75rem !important;
+    background:
+        radial-gradient(60% 50% at 50% 42%, rgba(16, 185, 129, 0.14) 0%, rgba(16, 185, 129, 0.04) 45%, transparent 70%),
+        linear-gradient(180deg, #03100C 0%, #04150F 45%, #03110D 100%) !important;
+    border-top: 1px solid rgba(52, 211, 153, 0.16) !important;
+}
+/* soft fade from the page into the footer so the roots feel continuous */
+body.page-home .site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(52, 211, 153, 0.45), transparent);
+    z-index: 1;
+}
+@media (min-width: 768px) {
+    body.page-home .site-footer { padding-top: 4.5rem !important; }
+}
+
+body.page-home .world-tree-caption {
+    display: block;
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+body.page-home .world-tree-caption__title {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.28em;
+    color: #6EE7B7;
+    text-shadow: 0 0 12px rgba(52, 211, 153, 0.45);
+    margin: 0 0 0.5rem;
+}
+body.page-home .world-tree-caption__sub {
+    font-size: 0.75rem;
+    color: rgba(209, 250, 229, 0.55);
+    margin: 0;
+}
+
+body.page-home .site-footer__inner {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid rgba(52, 211, 153, 0.12);
+}
+@media (min-width: 900px) {
+    body.page-home .site-footer__inner {
+        grid-template-columns: 1fr auto 1fr;
+        justify-items: stretch;
+    }
+    body.page-home .site-footer__inner > :last-child { justify-self: end; }
+}
+
+body.page-home .site-footer__brand {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.75rem;
+}
+body.page-home .site-footer__brand-name {
+    display: inline;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: #F8F8F6;
+    letter-spacing: -0.01em;
+}
+body.page-home .site-footer .platform-logo-spacer {
+    filter: none !important;
+    mix-blend-mode: screen !important;
+}
+
+body.page-home .site-footer__explore { display: flex; flex-direction: column; align-items: center; }
+body.page-home .site-footer__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.75rem;
+    font-size: 0.8125rem;
+    margin: 0;
+}
+
+body.page-home .site-footer a {
+    color: rgba(209, 250, 229, 0.78) !important;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+body.page-home .site-footer a:hover {
+    color: #FFFFFF !important;
+    text-shadow: 0 0 10px rgba(52, 211, 153, 0.5);
+}
+body.page-home .site-footer .site-footer__bottom {
+    border-top: 0;
+    margin-top: 1.75rem;
+    padding-top: 0;
+    text-align: center;
+    color: rgba(209, 250, 229, 0.5);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+}
+

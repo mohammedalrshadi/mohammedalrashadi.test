@@ -225,7 +225,7 @@ if ($product) {
           <div class="p-space-lg rounded-full bg-surface-container-low border border-outline-variant/10 text-outline">
             <span class="material-symbols-outlined text-[3rem]">storefront</span>
           </div>
-          <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Product Not Found</h1>
+          <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Product Not Found</h1>
           <p class="font-body-md text-body-md text-on-surface-variant max-w-lg leading-relaxed">
             The requested product is not available or has been unpublished from the public store catalog.
           </p>
@@ -492,7 +492,7 @@ if ($product) {
               <?php if (!empty($product['description'])): ?>
                 <section id="overview" class="scroll-mt-28 flex flex-col gap-4" aria-label="Overview">
                   <h2 class="text-2xl sm:text-3xl font-bold text-on-surface font-display tracking-tight border-b border-outline-variant/10 pb-4">Overview</h2>
-                  <div class="prose prose-on-surface max-w-none text-on-surface-variant text-base sm:text-lg leading-relaxed">
+                  <div class="prose prose-editorial max-w-none text-on-surface-variant text-base sm:text-lg leading-relaxed">
                     <?= ArticleHtmlSanitizer::sanitize((string) $product['description']) ?>
                   </div>
                 </section>

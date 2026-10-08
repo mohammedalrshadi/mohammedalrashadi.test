@@ -6,7 +6,7 @@ require_once __DIR__ . '/includes/settings.php';
 $profile = getSiteProfile();
 
 $pageTitle = 'About';
-$pageDescription = $profile['bio_short'];
+$pageDescription = $profile['bio_short'] !== '' ? $profile['bio_short'] : (string) getSiteSetting('seo.default_description');
 $canonicalUrl = 'https://mohammedalrashadi.com/about.php';
 
 // Database query with fallback — Principles cards + Focus Area tags,
@@ -133,24 +133,30 @@ $personSchema = [
                 <span class="font-mono text-xs text-text-muted uppercase">Role</span>
                 <span class="font-sans text-sm font-medium text-on-surface"><?= htmlspecialchars($profile['role']) ?></span>
               </div>
+              <?php if (trim($profile['current_focus']) !== ''): ?>
               <div class="flex items-center justify-between pb-2 border-b border-border">
                 <span class="font-mono text-xs text-text-muted uppercase">Current Focus</span>
                 <span class="font-mono text-xs text-primary font-medium"><?= htmlspecialchars($profile['current_focus']) ?></span>
               </div>
+              <?php endif; ?>
+              <?php if (trim($profile['location']) !== ''): ?>
               <div class="flex items-center justify-between pb-2 border-b border-border">
                 <span class="font-mono text-xs text-text-muted uppercase">Location</span>
                 <span class="font-sans text-sm text-text-secondary"><?= htmlspecialchars($profile['location']) ?></span>
               </div>
+              <?php endif; ?>
               <?php if (!empty($profile['show_email']) && !empty($profile['public_email'])): ?>
               <div class="flex items-center justify-between pb-2 border-b border-border">
                 <span class="font-mono text-xs text-text-muted uppercase">Public Email</span>
                 <a href="mailto:<?= htmlspecialchars($profile['public_email']) ?>" class="font-mono text-xs text-primary hover:underline"><?= htmlspecialchars($profile['public_email']) ?></a>
               </div>
               <?php endif; ?>
+              <?php if (trim($profile['motto']) !== ''): ?>
               <div class="flex items-center justify-between">
                 <span class="font-mono text-xs text-text-muted uppercase">Motto</span>
                 <span class="font-mono text-xs text-primary font-medium">"<?= htmlspecialchars($profile['motto']) ?>"</span>
               </div>
+              <?php endif; ?>
             </div>
 
         </div>
@@ -162,16 +168,20 @@ $personSchema = [
             <div class="flex items-center gap-2">
               <span class="badge badge-accent">Profile</span>
               <span class="text-text-muted font-mono text-xs hidden sm:inline">•</span>
-              <span class="font-mono text-xs text-text-muted hidden sm:inline">Software Engineering</span>
+              <?php if (trim($profile['role']) !== ''): ?>
+              <span class="font-mono text-xs text-text-muted hidden sm:inline"><?= htmlspecialchars($profile['role']) ?></span>
+              <?php endif; ?>
             </div>
 
             <div class="flex flex-col gap-1">
               <h1 class="font-headline-lg text-4xl lg:text-5xl text-on-surface font-bold tracking-tight">
                 <?= htmlspecialchars($profile['name']) ?>
               </h1>
+              <?php if (trim($profile['motto']) !== ''): ?>
               <p class="font-mono text-sm text-primary font-medium tracking-wide mt-1">
                 "<?= htmlspecialchars($profile['motto']) ?>"
               </p>
+              <?php endif; ?>
             </div>
 
             <div class="flex flex-col gap-space-md text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl pt-2">
@@ -190,12 +200,14 @@ $personSchema = [
           </div>
 
           <!-- Platform Purpose Box -->
+          <?php if (trim((string) getSiteSetting('website.platform_purpose')) !== ''): ?>
           <div class="pt-4 border-t border-border flex flex-col gap-2">
             <span class="font-mono text-xs text-primary uppercase tracking-wider font-semibold">Platform Purpose</span>
             <p class="font-sans text-sm text-text-secondary leading-relaxed">
               <?= htmlspecialchars(getSiteSetting('website.platform_purpose')) ?>
             </p>
           </div>
+          <?php endif; ?>
 
           <!-- Action Links -->
           <div class="flex flex-wrap items-center gap-space-sm pt-2">
@@ -221,6 +233,7 @@ $personSchema = [
       <!-- ============================================================
            2. CORE ENGINEERING PRINCIPLES
            ============================================================ -->
+      <?php if (!empty($aboutPrinciples)): ?>
       <section class="flex flex-col gap-space-md" aria-label="Core Engineering Principles">
         <div class="flex flex-col gap-1">
           <span class="font-mono text-xs text-primary uppercase tracking-wider font-semibold">Philosophy</span>
@@ -244,46 +257,17 @@ $personSchema = [
               </p>
             </div>
             <?php endforeach; ?>
-          <?php else: ?>
-
-          <div class="flex flex-col gap-space-xs border-t border-border pt-4">
-            <div class="flex items-center gap-2 text-primary mb-1">
-              <span class="material-symbols-outlined text-[20px]">shield</span>
-              <h3 class="font-headline-sm text-base text-on-surface font-semibold">Resilience First</h3>
-            </div>
-            <p class="font-sans text-sm text-text-secondary leading-relaxed">
-              Design software assuming that network splits, process crashes, and retries are inevitable. Systems should degrade gracefully under stress.
-            </p>
-          </div>
-
-          <div class="flex flex-col gap-space-xs border-t border-border pt-4">
-            <div class="flex items-center gap-2 text-secondary mb-1">
-              <span class="material-symbols-outlined text-[20px]">analytics</span>
-              <h3 class="font-headline-sm text-base text-on-surface font-semibold">Empirical Rigor</h3>
-            </div>
-            <p class="font-sans text-sm text-text-secondary leading-relaxed">
-              Measure rather than assume. Validate architectural decisions through reproducible benchmarks, profiling, and controlled test environments.
-            </p>
-          </div>
-
-          <div class="flex flex-col gap-space-xs border-t border-border pt-4">
-            <div class="flex items-center gap-2 text-primary mb-1">
-              <span class="material-symbols-outlined text-[20px]">layers</span>
-              <h3 class="font-headline-sm text-base text-on-surface font-semibold">Deep Clarity</h3>
-            </div>
-            <p class="font-sans text-sm text-text-secondary leading-relaxed">
-              Keep surfaces clean and intuitive, while giving technical collaborators full visibility into underlying mechanisms and trade-offs.
-            </p>
-          </div>
           <?php endif; ?>
 
         </div>
       </section>
+      <?php endif; ?>
 
 
       <!-- ============================================================
            3. ENGINEERING FOCUS & EXPLORATION
            ============================================================ -->
+      <?php if (!empty($aboutFocusGroups)): ?>
       <section class="flex flex-col gap-space-lg border-t border-border pt-space-xl" aria-label="Engineering Interests and Tooling">
         <div class="flex flex-col gap-1">
           <span class="font-mono text-xs text-primary uppercase tracking-wider font-semibold">Technical Exploration</span>
@@ -306,48 +290,11 @@ $personSchema = [
               </div>
             </div>
             <?php endforeach; ?>
-          <?php else: ?>
-
-          <!-- Category 1: Languages & Foundations -->
-          <div class="flex flex-col gap-space-xs">
-            <span class="font-mono text-xs text-text-muted uppercase tracking-wider font-semibold">Languages &amp; Core</span>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="tag badge-neutral">Go</span>
-              <span class="tag badge-neutral">C++</span>
-              <span class="tag badge-neutral">SQL</span>
-              <span class="tag badge-neutral">Python</span>
-              <span class="tag badge-neutral">PHP</span>
-              <span class="tag badge-neutral">JavaScript</span>
-            </div>
-          </div>
-
-          <!-- Category 2: Databases & Storage -->
-          <div class="flex flex-col gap-space-xs">
-            <span class="font-mono text-xs text-text-muted uppercase tracking-wider font-semibold">Databases &amp; Storage</span>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="tag badge-neutral">MySQL / InnoDB</span>
-              <span class="tag badge-neutral">B-Tree Indexing</span>
-              <span class="tag badge-neutral">Hash Indexes</span>
-              <span class="tag badge-neutral">Storage Engines</span>
-              <span class="tag badge-neutral">Key-Value Lookups</span>
-            </div>
-          </div>
-
-          <!-- Category 3: Systems & Architecture -->
-          <div class="flex flex-col gap-space-xs">
-            <span class="font-mono text-xs text-text-muted uppercase tracking-wider font-semibold">Systems &amp; Architecture</span>
-            <div class="flex flex-wrap gap-1.5 pt-1">
-              <span class="tag badge-neutral">Distributed Systems</span>
-              <span class="tag badge-neutral">Database Internals</span>
-              <span class="tag badge-neutral">Concurrency &amp; Runtimes</span>
-              <span class="tag badge-neutral">Systems Architecture</span>
-              <span class="tag badge-neutral">Empirical Benchmarks</span>
-            </div>
-          </div>
           <?php endif; ?>
 
         </div>
       </section>
+      <?php endif; ?>
 
     </div>
   </main>

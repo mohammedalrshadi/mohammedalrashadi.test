@@ -28,7 +28,7 @@ $canonicalUrl = 'https://mohammedalrashadi.com/privacy.php';
       <!-- Page Header -->
       <div class="flex flex-col gap-2 border-b border-border/60 pb-6">
         <span class="font-mono text-xs text-primary uppercase tracking-wider font-semibold">// LEGAL &amp; TRANSPARENCY</span>
-        <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold">Privacy Policy</h1>
+        <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface font-bold">Privacy Policy</h1>
         <p class="font-mono text-xs text-text-muted">Last Updated: September 2026 • Version 1.1</p>
       </div>
 

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300..900;1,300..900&amp;family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "on-primary": "#ffffff", "outline-variant": "#c7c4d8", "surface-container-high": "#dce9ff", "tertiary-fixed-dim": "#4cd7f6", "outline": "#777587", "tertiary-container": "#006a7c", "primary-fixed-dim": "#c3c0ff", "on-secondary": "#ffffff", "on-primary-fixed": "#0f0069", "on-secondary-fixed": "#131b2e", "on-secondary-fixed-variant": "#3f465c", "inverse-on-surface": "#eaf1ff", "tertiary": "#00505f", "primary-fixed": "#e2dfff", "tertiary-fixed": "#acedff", "on-background": "#0b1c30", "error-container": "#ffdad6", "inverse-primary": "#c3c0ff", "primary": "#3525cd", "surface-container-low": "#eff4ff", "on-secondary-container": "#5c647a", "on-error-container": "#93000a", "inverse-surface": "#213145", "on-tertiary-fixed-variant": "#004e5c", "on-surface": "#0b1c30", "surface-variant": "#d3e4fe", "secondary": "#565e74", "error": "#ba1a1a", "on-error": "#ffffff", "surface-bright": "#f8f9ff", "surface-container": "#e5eeff", "secondary-fixed-dim": "#bec6e0", "surface-container-highest": "#d3e4fe", "surface-tint": "#4d44e3", "on-primary-container": "#dad7ff", "surface-dim": "#cbdbf5", "on-primary-fixed-variant": "#3323cc", "surface": "#f8f9ff", "secondary-fixed": "#dae2fd", "on-tertiary-fixed": "#001f26", "secondary-container": "#dae2fd", "background": "#f8f9ff", "surface-container-lowest": "#ffffff", "on-surface-variant": "#464555", "on-tertiary-container": "#93e8ff", "primary-container": "#4f46e5", "on-tertiary": "#ffffff" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-sm": "0.5rem", "margin-mobile": "1rem", "gutter-compact": "1rem", "gutter": "1.5rem", "space-xs": "0.25rem", "space-xl": "2rem", "space-lg": "1.5rem", "margin": "2rem", "space-md": "1rem", "space-2xl": "3rem" }, "fontFamily": { "headline-sm": [ "Manrope" ], "body-lg": [ "Hanken Grotesk" ], "headline-md": [ "Manrope" ], "body-md": [ "Hanken Grotesk" ], "headline-xl": [ "Manrope" ], "label-md": [ "Hanken Grotesk" ], "body-sm": [ "Hanken Grotesk" ], "code-sm": [ "JetBrains Mono" ], "display-lg": [ "Manrope" ], "headline-lg": [ "Manrope" ], "label-sm": [ "Hanken Grotesk" ] }, "fontSize": { "headline-sm": [ "1.125rem", { "lineHeight": "1.5rem", "fontWeight": "600" } ], "body-lg": [ "1.125rem", { "lineHeight": "1.75rem", "fontWeight": "400" } ], "headline-md": [ "1.25rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "600" } ], "body-md": [ "0.9375rem", { "lineHeight": "1.5rem", "fontWeight": "400" } ], "headline-xl": [ "2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" } ], "label-md": [ "0.875rem", { "lineHeight": "1.25rem", "fontWeight": "500" } ], "body-sm": [ "0.8125rem", { "lineHeight": "1.25rem", "fontWeight": "400" } ], "code-sm": [ "0.75rem", { "lineHeight": "1rem", "fontWeight": "400" } ], "display-lg": [ "2.5rem", { "lineHeight": "3rem", "letterSpacing": "-0.025em", "fontWeight": "700" } ], "headline-lg": [ "1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" } ], "label-sm": [ "0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.02em", "fontWeight": "600" } ] } } } };</script></head><body class="bg-background font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 z-50 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md min-w-[260px]"><img alt="Student Ecosystem Brand Mark" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlRmqHXliftoz-zvjXmNei53JfNf56OGpU-2GMse_PZuJnIja-3EuD6r4ygXoVT8MWaU5JUGBrt0av2u_QfsZ8Xi7tUwZ8oS4fQE7DA2nQzmLpcuLA96GHtuDyLF7NhxrfT9IwH6OZFMHWMb_G0SQlmPriYtYkdxqup3Kljz8IYJ8KTjB-3jMm21jn5KgnxwJ7sjK-gOLnP33S3qx7I_Gm1vg2nH0YHGB4pYgtQYI"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-tight">Student Ecosystem</span><span class="font-code-sm text-code-sm text-on-surface-variant tracking-wider uppercase leading-none">Personal Operating System</span></div></div><div class="flex-1 max-w-xl mx-space-md hidden md:block"><div class="relative flex items-center w-full"><span class="material-symbols-outlined absolute left-3 text-secondary text-lg pointer-events-none">search</span><input class="w-full pl-9 pr-16 py-1.5 bg-surface-container-low text-on-surface font-body-sm text-body-sm rounded-lg focus:outline-none focus:bg-surface-container-lowest focus:shadow-[0_0_0_2px_rgba(79,70,229,0.18)] transition-all placeholder:text-on-surface-variant/70" placeholder="Search courses, skills, projects, opportunities..." type="text"/><div class="absolute right-2.5 flex items-center gap-0.5 px-1.5 py-0.5 rounded bg-surface-container font-code-sm text-code-sm text-on-secondary-container pointer-events-none"><span class="text-[10px]">⌘</span><span>K</span></div></div></div><div class="flex items-center gap-space-sm"><div class="hidden xl:flex items-center p-1 bg-surface-container-low rounded-lg gap-1"><button class="px-2.5 py-1 rounded bg-surface-container-lowest text-on-surface font-label-sm text-label-sm shadow-[0_1px_3px_rgba(15,23,42,0.06)] font-semibold" type="button">Standard</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Easy</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Hard</button><button class="px-2 py-1 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Go</button></div><div class="hidden lg:flex items-center gap-2 px-2.5 py-1 rounded-full bg-secondary-container/40"><span class="w-2 h-2 rounded-full bg-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface font-medium">Active Goal: <span class="font-semibold text-primary">Backend Engineer</span></span><div class="w-12 h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-3/4 h-full bg-primary rounded-full"></div></div></div><button aria-label="Contextual AI Assistant" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container text-primary hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button"><span class="material-symbols-outlined text-base">arrow_back_ios_new</span><span class="font-medium">Intelligence</span></button><button aria-label="Notifications" class="relative p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-1.5 right-1.5 flex h-4 w-4 items-center justify-center rounded-full bg-error font-code-sm text-[10px] font-bold text-on-error">3</span></button><div class="flex items-center gap-2 pl-space-xs"><div class="relative"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHwtCW7XZkTWN83XkdzOlbydjUsTTnazWHiYdmay4QfB6Mt6q3V6aa6yk-n_i62KKCmxbbRgeegA99khpJrWZFpE2GMu6l0ts-urMo6d1446UDiXRFZ1FlSA2PSKmXA_hz7IPltJwGCA3SGliP-wV6fGdwsOMs_rsju3qW8nS4GGYxM4cT1wIIYq710ivS96nYpiNARXwPLIT1hfaVhiTRpnSDCiP9TTdWSIDmXOc"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-surface-container-lowest"></span></div><div class="hidden xl:flex flex-col text-left"><span class="font-label-md text-label-md font-semibold text-on-surface leading-tight">Alex Johnson</span><span class="font-code-sm text-[10px] text-emerald-700 leading-none">Online</span></div></div></div></div></header><aside class="fixed left-0 top-16 bottom-0 w-64 z-40 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.03)] flex flex-col justify-between overflow-y-auto"><div class="p-space-sm"><div class="px-space-sm pt-space-xs pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Student Loop</span></div><nav class="space-y-0.5 flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="home" href="#"><span class="material-symbols-outlined text-lg">grid_view</span><span>Home</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="my-path" href="#"><span class="material-symbols-outlined text-lg">route</span><span>My Path</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="academic" href="#"><span class="material-symbols-outlined text-lg">school</span><span>Academic</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="learning" href="#"><span class="material-symbols-outlined text-lg">menu_book</span><span>Learning</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="skills" href="#"><span class="material-symbols-outlined text-lg">verified</span><span>Skills</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="projects" href="#"><span class="material-symbols-outlined text-lg">folder_special</span><span>Projects</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="career-and-opportunities" href="#"><span class="material-symbols-outlined text-lg">work</span><span>Career &amp; Opportunities</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="community" href="#"><span class="material-symbols-outlined text-lg">groups</span><span>Community</span></a></nav><div class="px-space-sm pt-space-lg pb-space-sm"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Ecosystem &amp; Operations</span></div><nav class="space-y-0.5 flex flex-col" data-active-classes="bg-primary-container text-on-primary font-semibold"><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="calendar-and-tasks" href="#"><span class="material-symbols-outlined text-lg">calendar_month</span><span>Calendar &amp; Tasks</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="future-ecosystem" href="#"><span class="material-symbols-outlined text-lg">hub</span><span>Future Ecosystem</span></a><a class="flex items-center gap-3 px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface font-label-md text-label-md transition-colors" data-path="settings-and-privacy" href="#"><span class="material-symbols-outlined text-lg">settings</span><span>Settings &amp; Privacy</span></a></nav></div><div class="p-space-sm m-space-sm rounded-lg bg-surface-container-low"><div class="flex items-center justify-between mb-1"><span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Semester Progress</span><span class="font-code-sm text-code-sm text-primary font-bold">64%</span></div><div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden"><div class="w-[64%] h-full bg-primary rounded-full"></div></div><span class="block font-body-sm text-[11px] text-on-surface-variant mt-2">Week 10 of 16 • 3 Finals Pending</span></div></aside><div class="pl-64"><main class="w-full pt-16 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<!-- Dynamic Top Segment Indicator Sync (Updates Shell Active States) -->
+<script>
+    (function() {
+      // Highlight sidebar 'Home'
+      const homeLink = document.querySelector('aside nav a[data-path="home"]');
+      if (homeLink) {
+        homeLink.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-low');
+        homeLink.classList.add('bg-primary-container', 'text-on-primary', 'font-semibold');
+      }
+      // Set Mode Switcher: Hard Active
+      const switcherButtons = document.querySelectorAll('header .hidden.xl\\:flex button');
+      if (switcherButtons && switcherButtons.length >= 4) {
+        switcherButtons.forEach(btn => {
+          btn.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'shadow-[0_1px_3px_rgba(15,23,42,0.06)]', 'font-semibold');
+          btn.classList.add('text-on-surface-variant');
+        });
+        const hardBtn = switcherButtons[2];
+        if (hardBtn) {
+          hardBtn.classList.add('bg-surface-container-lowest', 'text-primary', 'shadow-[0_1px_3px_rgba(15,23,42,0.06)]', 'font-semibold');
+          hardBtn.classList.remove('text-on-surface-variant');
+          hardBtn.innerHTML = '<span class="inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>Hard [100%]</span>';
+        }
+      }
+    })();
+  </script>
+<!-- Hard Mode Executive Canvas Container -->
+<div class="max-w-[1600px] w-full mx-auto px-margin py-gutter space-y-gutter">
+<!-- Section 1: Hero & Analytical Telemetry Status Strip -->
+<section class="relative overflow-hidden bg-surface-container-lowest rounded-xl shadow-sm p-space-lg">
+<div class="absolute -right-20 -top-24 w-96 h-96 rounded-full bg-primary/5 blur-3xl pointer-events-none"></div>
+<div class="absolute right-96 -bottom-20 w-80 h-80 rounded-full bg-tertiary-fixed-dim/10 blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col xl:flex-row xl:items-center justify-between gap-space-lg">
+<div class="max-w-3xl space-y-1.5">
+<div class="flex flex-wrap items-center gap-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-primary text-on-primary font-code-sm text-code-sm uppercase tracking-wider font-semibold">
+<span class="material-symbols-outlined text-sm">terminal</span>
+              Kernel: Systems Matrix
+            </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-code-sm text-code-sm font-semibold">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+              Live Telemetry Stream
+            </span>
+<span class="font-code-sm text-code-sm text-on-surface-variant">Formal Verification Engine v4.8.2</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+            Hard Mode <span class="text-primary font-code-sm text-headline-md tracking-normal font-medium">// Deep Competency &amp; Systems Matrix</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Exhaustive multi-dimensional telemetry, formal verification theorems, distributed systems benchmark telemetry, and algorithmic mastery mapping for engineering readiness.
+          </p>
+</div>
+<!-- Mode Cognitive Controls & Refresh Trigger -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm shrink-0">
+<div class="flex items-center p-1 bg-surface-container-low rounded-lg gap-1">
+<button class="px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Standard</button>
+<button class="px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Easy</button>
+<button class="px-3 py-1.5 rounded bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm font-bold flex items-center gap-1.5" type="button">
+<span class="material-symbols-outlined text-sm text-primary">speed</span>
+              Hard (Active 100%)
+            </button>
+<button class="px-3 py-1.5 rounded text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm transition-colors" type="button">Go</button>
+</div>
+<button class="flex items-center justify-center gap-2 px-3 py-1.5 bg-primary hover:bg-primary-container text-on-primary rounded-lg font-label-sm text-label-sm shadow-sm transition-all active:scale-[0.99]" id="recalibrate-btn" type="button">
+<span class="material-symbols-outlined text-sm">sync</span>
+<span>Recalibrate Engine</span>
+</button>
+</div>
+</div>
+<!-- Live Telemetry KPI Metrics Bar -->
+<div class="mt-space-lg pt-space-md grid grid-cols-2 md:grid-cols-4 gap-space-md bg-surface-container-low/60 rounded-lg p-space-md">
+<div class="flex items-start gap-3">
+<div class="p-2 rounded bg-surface-container-lowest text-primary shadow-sm">
+<span class="material-symbols-outlined text-xl">functions</span>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">F+ Closure Preserved</div>
+<div class="font-headline-md text-headline-md text-on-surface font-bold">100.0%</div>
+<span class="font-code-sm text-[11px] text-emerald-700 font-semibold">Strict Lossless Join Verified</span>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="p-2 rounded bg-surface-container-lowest text-primary shadow-sm">
+<span class="material-symbols-outlined text-xl">fact_check</span>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Evidentiary Proofs</div>
+<div class="font-headline-md text-headline-md text-on-surface font-bold">14 Active</div>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Across 3 Core Repositories</span>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="p-2 rounded bg-surface-container-lowest text-emerald-600 shadow-sm">
+<span class="material-symbols-outlined text-xl">memory</span>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Heap Leak Vectors</div>
+<div class="font-headline-md text-headline-md text-on-surface font-bold">0 Detected</div>
+<span class="font-code-sm text-[11px] text-emerald-700 font-semibold">Valgrind Clean 100k Nodes</span>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="p-2 rounded bg-surface-container-lowest text-primary shadow-sm">
+<span class="material-symbols-outlined text-xl">target</span>
+</div>
+<div>
+<div class="font-code-sm text-code-sm text-on-surface-variant uppercase tracking-wider">Stripe Infra Alignment</div>
+<div class="font-headline-md text-headline-md text-primary font-bold">88.4%</div>
+<span class="font-code-sm text-[11px] text-primary font-medium">+3.4% Above Hiring Bar</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Core Competency Multi-Axis Mastery Matrix (Primary Component) -->
+<section class="space-y-space-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">
+            Multi-Axis Engineering Mastery Matrix
+          </h2>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">ISO-Formal Verified</span>
+</div>
+<div class="flex items-center gap-2 font-code-sm text-code-sm text-on-surface-variant">
+<span>Sort: By Vulnerability Index</span>
+<span class="material-symbols-outlined text-base">tune</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-md">
+<!-- Domain 1: Relational Systems & Database Internals -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-start justify-between gap-4 mb-space-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded font-code-sm text-[11px] font-semibold bg-blue-50 text-blue-700">Academic &amp; Systems</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-semibold">Tier 4 / Senior Undergraduate</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Relational Systems &amp; Database Internals</h3>
+</div>
+<div class="text-right shrink-0">
+<div class="font-headline-lg text-headline-lg text-primary font-bold">94%</div>
+<span class="font-code-sm text-code-sm text-emerald-700 font-semibold flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-sm">verified</span> Verified Pass
+                </span>
+</div>
+</div>
+<!-- Quantitative Progress Bar -->
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden mb-space-md">
+<div class="w-[94%] h-full bg-primary rounded-full transition-all duration-700"></div>
+</div>
+<!-- Proven Theorems and Axioms -->
+<div class="space-y-2 mb-space-md">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Formally Proven Theorems &amp; Invariants:</div>
+<ul class="space-y-1.5 font-code-sm text-code-sm text-on-surface">
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>Boyce-Codd Normal Form (BCNF) strictly satisfies <code class="text-primary font-bold">X → Y &amp;implies X ⊆ Superkey</code></span>
+</li>
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>Chase Algorithm Lossless Join Matrix Matrix <code class="text-primary font-bold">[a_1, a_2, ..., a_6]</code> preserved</span>
+</li>
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">check_circle</span>
+<span>B-Tree Multi-Column Cardinality with selectivity skew <code class="text-primary font-bold">θ &lt; 0.042</code></span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Linked Artifact Footer -->
+<div class="pt-space-sm bg-surface-container-lowest flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-primary">link</span>
+<span class="font-label-sm text-label-sm">Linked: <span class="text-on-surface font-semibold">CS 320 Drill 4 (100%)</span> • <span class="font-code-sm">PR #14</span></span>
+</div>
+<button class="font-code-sm text-code-sm text-primary hover:text-primary-container font-semibold inline-flex items-center gap-0.5" type="button">
+              View Proof Artifact <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Domain 2: Algorithms & Asymptotic Profiling -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-start justify-between gap-4 mb-space-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded font-code-sm text-[11px] font-semibold bg-emerald-50 text-emerald-700">Algorithmic Systems</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-semibold">Tier 4 / Verified</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Algorithms &amp; Asymptotic Profiling</h3>
+</div>
+<div class="text-right shrink-0">
+<div class="font-headline-lg text-headline-lg text-primary font-bold">89%</div>
+<span class="font-code-sm text-code-sm text-emerald-700 font-semibold flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-sm">memory</span> Benchmarked
+                </span>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden mb-space-md">
+<div class="w-[89%] h-full bg-primary rounded-full transition-all duration-700"></div>
+</div>
+<div class="space-y-2 mb-space-md">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Asymptotic &amp; Hardware Bound Profiles:</div>
+<ul class="space-y-1.5 font-code-sm text-code-sm text-on-surface">
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">query_stats</span>
+<span>Fibonacci vs Binary Heap: <code class="text-primary font-bold">O((V + E) log V)</code> vs <code class="text-primary font-bold">O(E + V log V)</code></span>
+</li>
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">query_stats</span>
+<span>Valgrind Heap Max: <code class="text-primary font-bold">14.2 MB / 100,000 nodes</code>, 0 bytes leaked</span>
+</li>
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">query_stats</span>
+<span>Dijkstra Shortest Path Single Source runtime: <code class="text-primary font-bold">46.12ms</code> latency</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-space-sm bg-surface-container-lowest flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-primary">link</span>
+<span class="font-label-sm text-label-sm">Linked: <span class="text-on-surface font-semibold">CS 301 Lab 4</span> • <span class="font-code-sm">Valgrind Suite</span></span>
+</div>
+<button class="font-code-sm text-code-sm text-primary hover:text-primary-container font-semibold inline-flex items-center gap-0.5" type="button">
+              Inspect Flamegraph <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Domain 3: Distributed Systems & High Concurrency (Addressable Gap) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute -right-12 -top-12 w-28 h-28 rounded-full bg-amber-400/10 pointer-events-none"></div>
+<div>
+<div class="flex items-start justify-between gap-4 mb-space-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded font-code-sm text-[11px] font-semibold bg-amber-50 text-amber-700">Critical Target Gap</span>
+<span class="font-code-sm text-code-sm text-amber-800 font-semibold">Tier 3 / In-Progress</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Distributed Systems &amp; Concurrency</h3>
+</div>
+<div class="text-right shrink-0">
+<div class="font-headline-lg text-headline-lg text-amber-600 font-bold">76%</div>
+<span class="font-code-sm text-code-sm text-amber-700 font-semibold flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-sm">warning</span> −19% vs Target
+                </span>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden mb-space-md">
+<div class="w-[76%] h-full bg-amber-500 rounded-full transition-all duration-700"></div>
+</div>
+<div class="space-y-2 mb-space-md">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">System Concurrency Vectors &amp; Deficits:</div>
+<ul class="space-y-1.5 font-code-sm text-code-sm text-on-surface">
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-amber-600 text-base">pending</span>
+<span>Raft Consensus Log Replication: Leader heartbeat partition fallback incomplete</span>
+</li>
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-emerald-600 text-base">check_circle</span>
+<span>Token Bucket Rate Limiter: <code class="text-primary font-bold">50k req/s, p99 &lt; 1.82ms</code></span>
+</li>
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-amber-600 text-base">pending</span>
+<span>Serializable Snapshot Isolation (SSI) anomalous read skew prevention</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-space-sm bg-surface-container-lowest flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-amber-600">bolt</span>
+<span class="font-label-sm text-label-sm">Active PR: <span class="text-on-surface font-semibold">ecommerce-distributed-api #12</span></span>
+</div>
+<button class="px-2.5 py-1 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded font-code-sm text-code-sm font-semibold inline-flex items-center gap-1 transition-colors" type="button">
+<span>Start Consensus Drill (+4%)</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Domain 4: Systems Verification & CI/CD Integrity -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-start justify-between gap-4 mb-space-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded font-code-sm text-[11px] font-semibold bg-indigo-50 text-indigo-700">Reliability &amp; Formal CI</span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-semibold">Tier 4 / Verified</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">Systems Verification &amp; CI/CD Integrity</h3>
+</div>
+<div class="text-right shrink-0">
+<div class="font-headline-lg text-headline-lg text-primary font-bold">92%</div>
+<span class="font-code-sm text-code-sm text-emerald-700 font-semibold flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-sm">verified</span> Deterministic Pass
+                </span>
+</div>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden mb-space-md">
+<div class="w-[92%] h-full bg-primary rounded-full transition-all duration-700"></div>
+</div>
+<div class="space-y-2 mb-space-md">
+<div class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider font-semibold">Automated Test Harness Coverage:</div>
+<ul class="space-y-1.5 font-code-sm text-code-sm text-on-surface">
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">verified</span>
+<span><code class="text-primary font-bold">pg_prove</code> TAP Harness: 34 integration assertions pass</span>
+</li>
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">verified</span>
+<span>Docker multi-stage reproducible artifact build: <code class="text-primary font-bold">Alpine 28.4MB</code></span>
+</li>
+<li class="flex items-center gap-2 bg-surface-container-low px-2.5 py-1.5 rounded">
+<span class="material-symbols-outlined text-primary text-base">verified</span>
+<span>Liquibase zero-downtime rollback migration idempotency verified</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="pt-space-sm bg-surface-container-lowest flex items-center justify-between text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-primary">commit</span>
+<span class="font-label-sm text-label-sm">Run: <span class="font-code-sm text-on-surface font-semibold">GitHub Actions #142 (9f82d1c)</span></span>
+</div>
+<button class="font-code-sm text-code-sm text-primary hover:text-primary-container font-semibold inline-flex items-center gap-0.5" type="button">
+              View CI Telemetry <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Academic Dependency Graph & Functional Dependency Engine (F+) -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-space-md">
+<!-- Left Panel: Functional Dependency Closure & Lossless Join Proof Analyzer (7 cols) -->
+<div class="xl:col-span-7 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-lg">schema</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant font-semibold">Formal Proof Verification</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+                Functional Dependency Closure &amp; Lossless Join Engine ($F^+$)
+              </h3>
+</div>
+<span class="px-2 py-1 rounded bg-emerald-50 text-emerald-700 font-code-sm text-code-sm font-semibold">
+              $F_{min}$ Convergence: 100%
+            </span>
+</div>
+<!-- Formal Schema Decomposition Math Box -->
+<div class="bg-surface-container-low rounded-lg p-space-md font-code-sm text-code-sm space-y-2 mb-space-md">
+<div class="flex items-center justify-between text-on-surface-variant font-semibold">
+<span>TARGET RELATION: R(cust_id, email, prod_id, price, order_id, qty)</span>
+<span class="text-primary">NORMALIZED: BCNF + 3NF</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-on-surface">
+<div class="p-2 bg-surface-container-lowest rounded">
+<div class="font-semibold text-primary">R1(cust_id, email)</div>
+<div class="text-[11px] text-on-surface-variant">FD1: cust_id → email (Superkey: {cust_id})</div>
+</div>
+<div class="p-2 bg-surface-container-lowest rounded">
+<div class="font-semibold text-primary">R2(prod_id, price)</div>
+<div class="text-[11px] text-on-surface-variant">FD2: prod_id → price (Superkey: {prod_id})</div>
+</div>
+<div class="p-2 bg-surface-container-lowest rounded">
+<div class="font-semibold text-primary">R3(order_id, cust_id)</div>
+<div class="text-[11px] text-on-surface-variant">FD3: order_id → cust_id (Superkey: {order_id})</div>
+</div>
+<div class="p-2 bg-surface-container-lowest rounded">
+<div class="font-semibold text-primary">R4(order_id, prod_id, qty)</div>
+<div class="text-[11px] text-on-surface-variant">FD4: {order_id, prod_id} → qty (Candidate Key)</div>
+</div>
+</div>
+</div>
+<!-- Verifiable Step Matrix (Chase Algorithm Proof Trace) -->
+<div class="space-y-2 mb-space-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold uppercase tracking-wider">Chase Algorithm Tableau Row Equivalence Trace</span>
+<span class="font-code-sm text-[11px] text-on-surface-variant">Iteration 4 of 4 Completed</span>
+</div>
+<!-- Chase Algorithm Table Visual -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-code-sm text-code-sm">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant">
+<th class="py-1.5 px-3 rounded-l font-semibold">Sub-Relation</th>
+<th class="py-1.5 px-2 font-semibold">cust_id</th>
+<th class="py-1.5 px-2 font-semibold">email</th>
+<th class="py-1.5 px-2 font-semibold">prod_id</th>
+<th class="py-1.5 px-2 font-semibold">price</th>
+<th class="py-1.5 px-2 font-semibold">order_id</th>
+<th class="py-1.5 px-3 rounded-r font-semibold">qty</th>
+</tr>
+</thead>
+<tbody class="text-on-surface divide-y divide-surface-container-low">
+<tr>
+<td class="py-1.5 px-3 font-semibold text-primary">R1</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₁</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₂</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₁₃</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₁₄</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₁₅</td>
+<td class="py-1.5 px-3 text-on-surface-variant">b₁₆</td>
+</tr>
+<tr>
+<td class="py-1.5 px-3 font-semibold text-primary">R2</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₂₁</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₂₂</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₃</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₄</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₂₅</td>
+<td class="py-1.5 px-3 text-on-surface-variant">b₂₆</td>
+</tr>
+<tr>
+<td class="py-1.5 px-3 font-semibold text-primary">R3</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₁</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₃₂</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₃₃</td>
+<td class="py-1.5 px-2 text-on-surface-variant">b₃₄</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₅</td>
+<td class="py-1.5 px-3 text-on-surface-variant">b₃₆</td>
+</tr>
+<tr class="bg-primary/5 font-semibold">
+<td class="py-1.5 px-3 text-primary">R4* (Resolved)</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₁</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₂</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₃</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₄</td>
+<td class="py-1.5 px-2 text-emerald-700 font-bold">a₅</td>
+<td class="py-1.5 px-3 text-emerald-700 font-bold">a₆</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="text-[11px] font-code-sm text-emerald-700 font-medium">
+              • Row 4 satisfies all [a₁...a₆] original attributes &amp;implies Decomposition is strictly lossless.
+            </div>
+</div>
+</div>
+<div class="flex items-center justify-between pt-space-sm bg-surface-container-lowest">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-emerald-600">security</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Automated Proof Log: Hash <code class="text-primary font-bold">0x88f2ab</code></span>
+</div>
+<button class="px-3 py-1 bg-surface-container hover:bg-surface-container-high rounded text-on-surface font-code-sm text-code-sm font-semibold transition-colors" type="button">
+            Recompute Minimal Cover
+          </button>
+</div>
+</div>
+<!-- Right Panel: Prerequisite Critical Path & Milestone Graph DAG (5 cols) -->
+<div class="xl:col-span-5 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-lg">account_tree</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant font-semibold">Milestone DAG Execution</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+                Critical Path &amp; Exam Schedule
+              </h3>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-code-sm text-code-sm">
+              T-Minus 5 Days
+            </span>
+</div>
+<!-- DAG Stepper Workflow -->
+<div class="space-y-3 relative pl-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-3 before:w-0.5 before:bg-surface-container">
+<!-- Node 1: Completed -->
+<div class="relative pl-4">
+<span class="absolute -left-4 top-1 w-3 h-3 rounded-full bg-emerald-500 shadow-sm"></span>
+<div class="bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">CS 320 Unit 4 Drill</span>
+<span class="font-code-sm text-code-sm text-emerald-700 font-bold">100% DONE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">BCNF Lossless proofs and 3NF synthesis algorithm verified.</p>
+</div>
+</div>
+<!-- Node 2: Pending Review -->
+<div class="relative pl-4">
+<span class="absolute -left-4 top-1 w-3 h-3 rounded-full bg-primary shadow-sm animate-pulse"></span>
+<div class="bg-primary-fixed/30 p-2.5 rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-primary">PR #14 Liquibase Patch</span>
+<span class="font-code-sm text-code-sm text-primary font-bold">REVIEW IN-PROGRESS</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Schema migration rollback tested against Postgres 16 docker harness.</p>
+</div>
+</div>
+<!-- Node 3: Next Block -->
+<div class="relative pl-4">
+<span class="absolute -left-4 top-1 w-3 h-3 rounded-full bg-amber-400 shadow-sm"></span>
+<div class="bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">CS 320 Lab 5 Concurrency Engine</span>
+<span class="font-code-sm text-code-sm text-amber-700 font-semibold">UP NEXT (TOMORROW)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Multi-threaded 2-Phase Locking (2PL) and Deadlock Graph Detection.</p>
+</div>
+</div>
+<!-- Node 4: Scheduled Milestone Exam -->
+<div class="relative pl-4">
+<span class="absolute -left-4 top-1 w-3 h-3 rounded-full bg-error shadow-sm"></span>
+<div class="bg-surface-container-low p-2.5 rounded-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm text-error">event</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">CS 320 Midterm Exam</span>
+</div>
+<span class="font-code-sm text-code-sm text-error font-bold">SCHEDULED: 5 DAYS</span>
+</div>
+<div class="flex items-center justify-between mt-1 text-on-surface-variant font-code-sm text-[11px]">
+<span>Weight: 35.0% Overall Course Grade</span>
+<span class="text-emerald-700 font-bold">Projected: 96%</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- DAG Action Footer -->
+<div class="mt-space-md pt-space-sm bg-surface-container-lowest flex items-center justify-between">
+<div class="font-code-sm text-code-sm text-on-surface-variant">
+            Critical Path Slack: <span class="text-primary font-bold">0.8 Days Remaining</span>
+</div>
+<button class="px-3 py-1.5 bg-primary hover:bg-primary-container text-on-primary rounded font-label-sm text-label-sm font-semibold transition-colors" type="button">
+            Launch Lab 5 Workspace
+          </button>
+</div>
+</div>
+</section>
+<!-- Section 4: Multi-Repository Git & CI Benchmarks Telemetry -->
+<section class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-lg">code</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant font-semibold">Active Repository Telemetry</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">
+            Git Worktrees &amp; Concurrency Benchmarks
+          </h2>
+</div>
+<!-- Quick Action Terminal Controls -->
+<div class="flex flex-wrap items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-code-sm text-code-sm font-semibold flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">terminal</span>
+<span>Launch DevContainer</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-code-sm text-code-sm font-semibold flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">speed</span>
+<span>Run Concurrency Profiler</span>
+</button>
+<button class="px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-code-sm text-code-sm font-semibold flex items-center gap-1.5 transition-colors" type="button">
+<span class="material-symbols-outlined text-sm">difference</span>
+<span>Inspect SQL Diff</span>
+</button>
+</div>
+</div>
+<!-- Live Benchmarks Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-code-sm text-code-sm">
+<th class="py-2.5 px-4 rounded-l font-semibold">Repository / Branch</th>
+<th class="py-2.5 px-3 font-semibold">Commit Hash</th>
+<th class="py-2.5 px-3 font-semibold">CI Status</th>
+<th class="py-2.5 px-3 font-semibold">Unit Coverage</th>
+<th class="py-2.5 px-3 font-semibold">Heap Overhead</th>
+<th class="py-2.5 px-3 font-semibold">P99 Latency</th>
+<th class="py-2.5 px-4 rounded-r text-right font-semibold">Execution Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-code-sm text-code-sm">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">folder_data</span>
+<div>
+<span class="font-bold">ecommerce-distributed-api</span>
+<span class="block text-code-sm text-on-surface-variant">feat/database-sprint2-migration</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 text-primary font-bold">
+<span class="px-2 py-0.5 bg-primary-fixed/40 rounded">9f82d1c</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> 34 Passed
+                </span>
+</td>
+<td class="py-3 px-3 text-on-surface font-semibold">89.4%</td>
+<td class="py-3 px-3 text-on-surface">48.2 MB RSS</td>
+<td class="py-3 px-3 text-emerald-700 font-bold">1.82 ms</td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 bg-surface-container-low hover:bg-surface-container text-primary rounded font-semibold text-code-sm" type="button">
+                  Diff PR #14
+                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">alt_route</span>
+<div>
+<span class="font-bold">cs301-dijkstra-heap</span>
+<span class="block text-code-sm text-on-surface-variant">main</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 text-primary font-bold">
+<span class="px-2 py-0.5 bg-primary-fixed/40 rounded">4a2e01b</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-semibold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span> Valgrind Clean
+                </span>
+</td>
+<td class="py-3 px-3 text-on-surface font-semibold">96.8%</td>
+<td class="py-3 px-3 text-emerald-700 font-semibold">14.2 MB (0 Leaks)</td>
+<td class="py-3 px-3 text-emerald-700 font-bold">0.046 s</td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 bg-surface-container-low hover:bg-surface-container text-primary rounded font-semibold text-code-sm" type="button">
+                  View Valgrind
+                </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-4 font-body-md font-semibold text-on-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">hub</span>
+<div>
+<span class="font-bold">raft-kv-storage-engine</span>
+<span class="block text-code-sm text-on-surface-variant">experiment/election-jitter</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-3 text-primary font-bold">
+<span class="px-2 py-0.5 bg-primary-fixed/40 rounded">6b04a88</span>
+</td>
+<td class="py-3 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 font-semibold text-[11px]">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600"></span> In Progress (21/28)
+                </span>
+</td>
+<td class="py-3 px-3 text-amber-700 font-semibold">74.1%</td>
+<td class="py-3 px-3 text-on-surface">32.0 MB RSS</td>
+<td class="py-3 px-3 text-amber-700 font-bold">4.18 ms (p99)</td>
+<td class="py-3 px-4 text-right">
+<button class="px-2.5 py-1 bg-amber-50 hover:bg-amber-100 text-amber-800 rounded font-semibold text-code-sm" type="button">
+                  Debug Jitter
+                </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 5: Target Career Role Evidentiary Delta Radar & Remediation -->
+<section class="grid grid-cols-1 xl:grid-cols-12 gap-space-md">
+<!-- Career Delta Breakdown (8 cols) -->
+<div class="xl:col-span-8 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-lg">stacked_line_chart</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider text-on-surface-variant font-semibold">Hiring Bar Evidentiary Delta</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold">
+              Quantitative Production Eligibility Index
+            </h3>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary/10 text-primary font-code-sm text-code-sm font-bold">
+            Profile Status: High Confidence
+          </span>
+</div>
+<div class="space-y-space-md">
+<!-- Role 1: Stripe Backend Infrastructure -->
+<div class="p-space-md rounded-lg bg-surface-container-low space-y-2">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Stripe • Backend Infrastructure</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-code-sm text-code-sm font-bold">PASS (+3.4%)</span>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">
+                Bar Threshold: <span class="font-semibold text-on-surface">85.0%</span> • Alex Verified: <span class="font-bold text-primary">88.4%</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden flex">
+<div class="w-[88.4%] h-full bg-primary rounded-full"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span>Status: <strong class="text-emerald-700">Ready for Referral Submission</strong></span>
+<span class="font-code-sm text-code-sm text-primary font-semibold cursor-pointer hover:underline">Inspect Proof Package (PDF)</span>
+</div>
+</div>
+<!-- Role 2: Datadog Systems Intern -->
+<div class="p-space-md rounded-lg bg-surface-container-low space-y-2">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Datadog • Systems &amp; Observability Intern</span>
+<span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-code-sm text-code-sm font-bold">PASS (+2.0%)</span>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">
+                Bar Threshold: <span class="font-semibold text-on-surface">82.0%</span> • Alex Verified: <span class="font-bold text-primary">84.0%</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[84%] h-full bg-primary rounded-full"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span>Status: <strong class="text-on-surface">Technical Screen Confirmed for Nov 3</strong></span>
+<span class="font-code-sm text-code-sm text-on-surface-variant font-semibold">Assigned Interviewer: Staff Systems Eng</span>
+</div>
+</div>
+<!-- Role 3: Cloudflare Edge Runtime -->
+<div class="p-space-md rounded-lg bg-surface-container-low space-y-2">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">Cloudflare • Edge Runtime Core</span>
+<span class="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-code-sm text-code-sm font-bold">GAP (−1.0%)</span>
+</div>
+<div class="font-code-sm text-code-sm text-on-surface-variant">
+                Bar Threshold: <span class="font-semibold text-on-surface">80.0%</span> • Alex Verified: <span class="font-bold text-amber-600">79.0%</span>
+</div>
+</div>
+<div class="w-full h-2.5 bg-surface-container rounded-full overflow-hidden">
+<div class="w-[79%] h-full bg-amber-500 rounded-full"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm pt-1">
+<span>Primary Vector Deficit: <strong class="text-amber-800">Raft Consensus Log Replication Partition</strong></span>
+<span class="font-code-sm text-code-sm text-amber-700 font-semibold cursor-pointer hover:underline">Target Delta: +1.0% needed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Remediation & Action Launchpad Card (4 cols) -->
+<div class="xl:col-span-4 bg-primary text-on-primary rounded-xl p-space-lg shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-white/10 blur-xl pointer-events-none"></div>
+<div>
+<div class="flex items-center gap-2 mb-space-sm text-on-primary-container">
+<span class="material-symbols-outlined text-xl">auto_fix_high</span>
+<span class="font-code-sm text-code-sm uppercase tracking-wider font-bold">Remediation Engine</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg font-bold tracking-tight mb-2">
+            Close the Cloudflare Edge Runtime Gap
+          </h3>
+<p class="font-body-md text-body-md text-on-primary-container mb-space-md">
+            The automated diagnostic identifies a 1-point deficit in distributed consensus under split-brain network topologies. Resolving the Raft log partition drill will inject +4% into your profile.
+          </p>
+<div class="p-space-sm rounded-lg bg-surface-container-lowest/15 space-y-2 mb-space-md">
+<div class="flex items-center justify-between font-code-sm text-code-sm text-on-primary font-semibold">
+<span>Prescribed Task:</span>
+<span>45 Min Estimate</span>
+</div>
+<div class="font-body-sm text-body-sm text-on-primary">
+              “Implement Raft candidate election timeout randomization &amp; term rollover test suite.”
+            </div>
+<div class="font-code-sm text-[11px] text-tertiary-fixed font-bold">
+              Expected Lift: +4.0% • Cloudflare Match Projected: 83.0%
+            </div>
+</div>
+</div>
+<div class="space-y-2">
+<button class="w-full py-2.5 px-4 bg-surface-container-lowest hover:bg-surface-container-low text-primary rounded-lg font-label-md text-label-md font-bold shadow transition-all active:scale-[0.99] flex items-center justify-center gap-2" type="button">
+<span class="material-symbols-outlined text-base">rocket_launch</span>
+<span>Launch Raft Consensus Drill</span>
+</button>
+<div class="text-center font-code-sm text-[11px] text-on-primary-container">
+            Telemetric sync verified through Student Operating System kernel.
+          </div>
+</div>
+</div>
+</section>
+</div>
+<!-- Interactive Feedback Script -->
+<script>
+    document.getElementById('recalibrate-btn')?.addEventListener('click', function() {
+      const icon = this.querySelector('.material-symbols-outlined');
+      if (icon) {
+        icon.classList.add('animate-spin');
+        setTimeout(() => {
+          icon.classList.remove('animate-spin');
+          alert('Hard Mode Systems Matrix Telemetry Recalibrated: All F+ closures and heap benchmarks are strictly preserved.');
+        }, 800);
+      }
+    });
+  </script>
+</div></main></div></body></html>
